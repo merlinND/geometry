@@ -54,6 +54,7 @@ local.properties
 *.lo
 *.o
 *.obj
+Debug/
 
 # Compiled Dynamic libraries
 *.so
