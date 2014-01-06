@@ -70,3 +70,7 @@ Debug/
 # Executables
 *.exe
 *.app
+
+geometry/geometry/geometry.1
+
+src/geometry.1

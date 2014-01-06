@@ -1,0 +1,1 @@
+Add several objects and an agregate containing all of them. Delete the agregate. Check that none of the objects are deleted.

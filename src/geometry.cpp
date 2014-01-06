@@ -12,6 +12,7 @@ int main ( )
 	Circle cercle( centre, 2 );
 	cercle.GetRepresentation( );
 
+
 	Point uLC;
 	uLC.x=1;
 	uLC.y=2;
@@ -20,5 +21,7 @@ int main ( )
 	lRC.y=0;
 	Rectangle rect (uLC, lRC);
 	rect.GetRepresentation ( );
+
+
 	return 0;
 }
