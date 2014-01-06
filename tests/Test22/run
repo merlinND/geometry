@@ -1,0 +1,5 @@
+../geometry
+C myCircle 0 0 1
+DELETE myCircle myObjectThatDoesntExist
+LIST
+EXIT
