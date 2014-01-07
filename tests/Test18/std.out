@@ -1,0 +1,10 @@
+C myCircle 0 0 1
+OK
+R myRectangle 2 0 0 1
+OK
+OA myOA2
+OK
+L myLine 0 0 1 1
+OK
+OA myCircle myRectangle myLine myOA2
+OK

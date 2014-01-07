@@ -1,0 +1,5 @@
+../geometry
+C myCircle 0 0 1
+OA myCircle myRectangle myLine myOA2 myLine
+EXIT
+
