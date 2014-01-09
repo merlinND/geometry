@@ -1,10 +1,3 @@
-/*************************************************************************
-                           GeometricObject  -  description
-                             -------------------
-    début                : 6 janv. 2014
-    copyright            : (C) 2014 par rbrunat
-*************************************************************************/
-
 //---------- Interface de la classe <GeometricObject> (fichier GeometricObject.h) ------
 #if ! defined ( GEOMETRICOBJECT_H_ )
 #define GEOMETRICOBJECT_H_
@@ -33,7 +26,7 @@ public:
     //
     // Contrat :
     //
-virtual String GetRepresentation() = 0;
+virtual string GetRepresentation() = 0;
 
 //------------------------------------------------- Surcharge d'opérateurs
 

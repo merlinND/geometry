@@ -2,9 +2,9 @@
 #include <vector>
 #include <sstream>
 using namespace std;
-#include "Circle.h"
-#include "Rectangle.h"
-#include "Line.h"
+#include "geometricObjects/Circle.h"
+#include "geometricObjects/Rectangle.h"
+#include "geometricObjects/Line.h"
 
 int main ( )
 {

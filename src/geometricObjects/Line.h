@@ -1,17 +1,9 @@
-/*************************************************************************
- Line  -  description
- -------------------
- début                : 9 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
-//---------- Interface de la classe <Line> (fichier Line.h) ------
 #if ! defined ( LINE_H_ )
 #define LINE_H_
-#include "Point.h"
-#include "GeometricObject.h"
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Point.h"
+#include "GeometricObject.h"
 
 //------------------------------------------------------------- Constantes 
 
@@ -34,7 +26,7 @@ public:
 	//
 	// Contrat :
 	//
-	String GetRepresentation ( );
+	string GetRepresentation ( );
 
 //------------------------------------------------- Surcharge d'opérateurs
 	Line & operator = ( const Line & unLine );

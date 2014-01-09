@@ -1,16 +1,9 @@
-/*************************************************************************
- Line  -  description
- -------------------
- début                : 9 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
 //---------- Réalisation de la classe <Line> (fichier Line.cpp) -------
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
-using namespace std;Line
 #include <iostream>
 #include <sstream>
+using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Line.h"
 
@@ -55,7 +48,7 @@ Line::~Line ( )
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <Line>" << endl;
-#endifL
+#endif
 } //----- Fin de ~Line
 
 //------------------------------------------------------------------ PRIVE

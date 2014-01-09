@@ -1,16 +1,8 @@
-/*************************************************************************
- GeometricObject  -  description
- -------------------
- début                : 6 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
 //---------- Réalisation de la classe <GeometricObject> (fichier GeometricObject.cpp) -------
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
-
+using namespace std;
 //------------------------------------------------------ Include personnel
 #include "GeometricObject.h"
 
