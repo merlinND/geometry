@@ -1,13 +1,15 @@
 /*************************************************************************
-                           GeometricObject  -  description
-                             -------------------
-    début                : 6 janv. 2014
-    copyright            : (C) 2014 par rbrunat
-*************************************************************************/
+ Line  -  description
+ -------------------
+ début                : 9 janv. 2014
+ copyright            : (C) 2014 par rbrunat
+ *************************************************************************/
 
-//---------- Interface de la classe <GeometricObject> (fichier GeometricObject.h) ------
-#if ! defined ( GEOMETRICOBJECT_H_ )
-#define GEOMETRICOBJECT_H_
+//---------- Interface de la classe <Line> (fichier Line.h) ------
+#if ! defined ( LINE_H_ )
+#define LINE_H_
+#include "Point.h"
+#include "GeometricObject.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -16,40 +18,49 @@
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <GeometricObject>
+// Rôle de la classe <Line>
 //
 //
 //------------------------------------------------------------------------ 
 
-class GeometricObject
+class Line : public GeometricObject
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-virtual string GetRepresentation()=0;
+	// type Méthode ( liste des paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+	String GetRepresentation ( );
 
 //------------------------------------------------- Surcharge d'opérateurs
-
+	Line & operator = ( const Line & unLine );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 //-------------------------------------------- Constructeurs - destructeur
+	Line ( const Line & unLine );
+	// Mode d'emploi (constructeur de copie) :
+	//
+	// Contrat :
+	//
 
-    GeometricObject ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+	Line ( Point , Point );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
-    virtual ~GeometricObject ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+	virtual ~Line ( );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -57,9 +68,10 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	int lastAppliedCommandId;
+	Point first;
+	Point last;
 };
 
-//--------------------------- Autres définitions dépendantes de <GeometricObject>
+//--------------------------- Autres définitions dépendantes de <Line>
 
-#endif // GEOMETRICOBJECT_H_
+#endif // Line_H_
