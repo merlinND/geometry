@@ -6,6 +6,9 @@ using namespace std;
 #include "geometricObjects/Rectangle.h"
 #include "geometricObjects/Line.h"
 
+#include "commands/CommandFactory.h"
+#include "commands/AllCommands.h"
+
 int main ( )
 {
 	// Testing geometric objects representation
@@ -22,5 +25,17 @@ int main ( )
 	Point lastPoint ( 2, 3 );
 	Line line ( firstPoint, lastPoint );
 	line.GetRepresentation ( );
+	
+	// Testing CommandFactory & command id auto-increment
+	Command & mc = CommandFactory::getInstance()->getCommandFromText("MOVE");
+	Command & mc2 = CommandFactory::getInstance()->getCommandFromText("MOVE");
+	Command & mc3 = CommandFactory::getInstance()->getCommandFromText("MOVE");
+	cout << "Instanciated three commands. Their IDs : "
+		<< mc.getCommandId() << ", "
+		<< mc2.getCommandId() << ", "
+		<< mc3.getCommandId() << "." << endl;
+	
+	mc.execute();
+	
 	return 0;
 }
