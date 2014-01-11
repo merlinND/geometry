@@ -11,7 +11,7 @@
 // Simple intermediate class to group together all commands that should
 // be undoable.
 //------------------------------------------------------------------------
-class HistorizableCommand : Command
+class HistorizableCommand : public Command
 {
 	//----------------------------------------------------------------- PUBLIC
 public:
