@@ -8,6 +8,7 @@ using namespace std;
 
 #include "commands/CommandInterpreter.h"
 #include "commands/AllCommands.h"
+#include "commands/Controller.h"
 
 int main ( )
 {
@@ -35,7 +36,9 @@ int main ( )
 		<< mc2.getCommandId() << ", "
 		<< mc3.getCommandId() << "." << endl;
 	
-	mc.execute();
+	// Testing Controller
+	Controller * controller = Controller::getInstance();
+	controller->processCommand(mc);
 	
 	return 0;
 }
