@@ -30,10 +30,9 @@ using namespace std;
 string Agregate::GetRepresentation ( )
 {
 	ostringstream os;
-		os << upperLeftCorner.x << " " << upperLeftCorner.y << " " << lowerRightCorner.x << " " << lowerRightCorner.y << endl;
+
 		string representation;
-		representation = "R " + os.str( );
-		cout << representation;
+
 		return representation;
 }
 
@@ -41,15 +40,14 @@ string Agregate::GetRepresentation ( )
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Agregate::Agregate ( Point uLC, Point lRC )
+Agregate::Agregate ( )
 // Algorithme :
 //
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
-	upperLeftCorner = uLC;
-	lowerRightCorner = lRC;
+
 } //----- Fin de Agregate
 
 Agregate::~Agregate ( )

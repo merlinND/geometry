@@ -35,7 +35,7 @@ public:
 	// Contrat :
 	//
 	string GetRepresentation ( );
-	bool AddObject ( GeometricObject );
+	bool AddObject ( );
 //------------------------------------------------- Surcharge d'opérateurs
 	Agregate & operator = ( const Agregate & unAgregate );
 	// Mode d'emploi :
@@ -50,7 +50,7 @@ public:
 	// Contrat :
 	//
 
-	Agregate ( Point uLC, Point lRC );
+	Agregate (  );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -68,8 +68,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	Point upperLeftCorner;
-	Point lowerRightCorner;
+
+
 };
 
 //--------------------------- Autres définitions dépendantes de <Agregate>

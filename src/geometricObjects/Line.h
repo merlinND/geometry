@@ -1,18 +1,9 @@
-/*************************************************************************
- Line  -  description
- -------------------
- début                : 9 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
-//---------- Interface de la classe <Line> (fichier Line.h) ------
 #if ! defined ( LINE_H_ )
 #define LINE_H_
+
 #include "Point.h"
 #include "GeometricObject.h"
 #include <sstream>
-
-//--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes 
 

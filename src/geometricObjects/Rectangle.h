@@ -1,10 +1,3 @@
-/*************************************************************************
- Rectangle  -  description
- -------------------
- début                : 6 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
 //---------- Interface de la classe <Rectangle> (fichier Rectangle.h) ------
 #if ! defined ( RECTANGLE_H_ )
 #define RECTANGLE_H_

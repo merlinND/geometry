@@ -1,16 +1,9 @@
-/*************************************************************************
- Rectangle  -  description
- -------------------
- début                : 6 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
 //---------- Réalisation de la classe <Rectangle> (fichier Rectangle.cpp) -------
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 #include <sstream>
+using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Rectangle.h"
 
@@ -39,14 +32,13 @@ string Rectangle::GetRepresentation ( )
 //-------------------------------------------- Constructeurs - destructeur
 
 Rectangle::Rectangle ( Point uLC, Point lRC )
+	: upperLeftCorner( uLC ), lowerRightCorner( lRC )
 // Algorithme :
 //
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Rectangle>" << endl;
 #endif
-	upperLeftCorner = uLC;
-	lowerRightCorner = lRC;
 } //----- Fin de Rectangle
 
 Rectangle::~Rectangle ( )

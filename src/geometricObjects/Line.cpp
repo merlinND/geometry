@@ -1,16 +1,10 @@
-/*************************************************************************
- Line  -  description
- -------------------
- début                : 9 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
 //---------- Réalisation de la classe <Line> (fichier Line.cpp) -------
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
-using namespace std;
+
 #include <iostream>
 #include <sstream>
+using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Line.h"
 
@@ -40,14 +34,13 @@ string Line::GetRepresentation ( )
 //-------------------------------------------- Constructeurs - destructeur
 
 Line::Line ( Point firstPoint, Point lastPoint )
+	: first( firstPoint ), last( lastPoint )
 // Algorithme :
 //
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Line>" << endl;
 #endif
-	first = firstPoint;
-	last = lastPoint;
 } //----- Fin de Line
 
 Line::~Line ( )

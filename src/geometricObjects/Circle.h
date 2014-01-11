@@ -1,17 +1,14 @@
-/*************************************************************************
- Circle  -  description
- -------------------
- début                : 6 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
-
 //---------- Interface de la classe <Circle> (fichier Circle.h) ------
 #if ! defined ( CIRCLE_H_ )
 #define CIRCLE_H_
+
+//--------------------------------------------------- Interfaces utilisées
 #include "Point.h"
 #include "GeometricObject.h"
+
 #include <sstream>
 //--------------------------------------------------- Interfaces utilisées
+
 
 //------------------------------------------------------------- Constantes 
 
@@ -50,7 +47,7 @@ public:
 	// Contrat :
 	//
 
-	Circle ( Point centre, int R );
+	Circle ( Point theCenter, int R );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -69,7 +66,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 	Point center;
-	int rayon;
+	int radius;
 };
 
 //--------------------------- Autres définitions dépendantes de <Circle>

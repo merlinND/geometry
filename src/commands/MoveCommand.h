@@ -1,60 +1,46 @@
-//---------- Interface de la classe <GeometricObject> (fichier GeometricObject.h) ------
-#if ! defined ( GEOMETRICOBJECT_H_ )
-#define GEOMETRICOBJECT_H_
-#include <string>
+//-- Interface de la classe <MoveCommand> (fichier MoveCommand.h) -
+#if ! defined ( __MoveCommand___H_ )
+#define __MoveCommand___H_
 
 //--------------------------------------------------- Interfaces utilisées
-
-//------------------------------------------------------------- Constantes 
-
+#include "HistorizableCommand.h"
+//------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types 
-
 //------------------------------------------------------------------------ 
-// Rôle de la classe <GeometricObject>
-//
+// Rôle de la classe <MoveCommand>
 //
 //------------------------------------------------------------------------ 
 
-class GeometricObject
+class MoveCommand : public HistorizableCommand
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
+//--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-
-virtual string GetRepresentation() = 0;
-
-
+	virtual void execute ( );
+	virtual void undo ( );
+	
+	void setOffset ( Vector2D theOffset );
+	void setOffset ( int dx, int dy );
+	
 //------------------------------------------------- Surcharge d'opérateurs
-
-
 //-------------------------------------------- Constructeurs - destructeur
+	MoveCommand ( );
+	// Mode d'emploi :
+	// Moves a set of GeometricObjects by the desired vector.
 
-    GeometricObject ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~GeometricObject ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+	virtual ~MoveCommand ( );
 
 //------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
 //----------------------------------------------------- Attributs protégés
-	int lastAppliedCommandId;
+	// The quantity by which target objects should be displaced
+	Vector2D offset;
 };
 
-//--------------------------- Autres définitions dépendantes de <GeometricObject>
+//------------------- Autres définitions dépendantes de <MoveCommand>
 
-#endif // GEOMETRICOBJECT_H_
+#endif // __MoveCommand___H_ 

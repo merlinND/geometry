@@ -3,6 +3,7 @@
 #define COMMAND_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include "../geometricObjects/Point.h"
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
@@ -24,6 +25,8 @@ public:
 	// Undoing should bring back the application to the same state as before
 	// this Command was executed.
 	
+	int getCommandId ( );
+	
 	//------------------------------------------------- Surcharge d'opérateurs
 	//-------------------------------------------- Constructeurs - destructeur
 	Command ( );
@@ -33,6 +36,9 @@ public:
 protected:
 	//----------------------------------------------------- Méthodes protégées
 	//----------------------------------------------------- Attributs protégés
+	int commandId;
+	// A counter which is incremented each time a new command is instanciated
+	static int commandCounter;
 	
 };
 #endif // COMMAND_H_
