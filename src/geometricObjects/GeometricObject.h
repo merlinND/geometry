@@ -8,7 +8,7 @@
 //---------- Interface de la classe <GeometricObject> (fichier GeometricObject.h) ------
 #if ! defined ( GEOMETRICOBJECT_H_ )
 #define GEOMETRICOBJECT_H_
-
+#include <string>
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -33,7 +33,7 @@ public:
     //
     // Contrat :
     //
-virtual String GetRepresentation() = 0;
+virtual string GetRepresentation() =0;
 
 //------------------------------------------------- Surcharge d'opérateurs
 

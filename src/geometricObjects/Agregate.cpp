@@ -1,36 +1,38 @@
-/*************************************************************************
- Line  -  description
+/*
+
+ Agregate  -  description
  -------------------
- début                : 9 janv. 2014
+ début                : 6 janv. 2014
  copyright            : (C) 2014 par rbrunat
  *************************************************************************/
 
-//---------- Réalisation de la classe <Line> (fichier Line.cpp) -------
+//---------- Réalisation de la classe <Agregate>  Agregate  -  description
+
+//---------- Réalisation de la classe <Agregate> (fichier Agregate.cpp) -------
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
 #include <sstream>
 //------------------------------------------------------ Include personnel
-#include "Line.h"
+#include "Agregate.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Line::Méthode ( liste des paramètres )
+// type Agregate::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
-
-string Line::GetRepresentation ( )
+string Agregate::GetRepresentation ( )
 {
 	ostringstream os;
-		os << first.x << " " << first.y << " " << last.x << " " << last.y << endl;
+		os << upperLeftCorner.x << " " << upperLeftCorner.y << " " << lowerRightCorner.x << " " << lowerRightCorner.y << endl;
 		string representation;
-		representation = "L " + os.str( );
+		representation = "R " + os.str( );
 		cout << representation;
 		return representation;
 }
@@ -39,26 +41,25 @@ string Line::GetRepresentation ( )
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Line::Line ( Point firstPoint, Point lastPoint )
+Agregate::Agregate ( Point uLC, Point lRC )
 // Algorithme :
 //
 {
 #ifdef MAP
-	cout << "Appel au constructeur de <Line>" << endl;
+	cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
-	first = firstPoint;
-	last = lastPoint;
-} //----- Fin de Line
+	upperLeftCorner = uLC;
+	lowerRightCorner = lRC;
+} //----- Fin de Agregate
 
-Line::~Line ( )
+Agregate::~Agregate ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <Line>" << endl;
+	cout << "Appel au destructeur de <Agregate>" << endl;
 #endif
-} //----- Fin de ~Line
+} //----- Fin de ~Agregate
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées

@@ -1,30 +1,29 @@
 /*************************************************************************
- Line  -  description
+ Agregate  -  description
  -------------------
- début                : 9 janv. 2014
+ début                : 6 janv. 2014
  copyright            : (C) 2014 par rbrunat
  *************************************************************************/
 
-//---------- Interface de la classe <Line> (fichier Line.h) ------
-#if ! defined ( LINE_H_ )
-#define LINE_H_
+//---------- Interface de la classe <Agregate> (fichier Agregate.h) ------
+#if ! defined ( Agregate_H_ )
+#define Agregate_H_
 #include "Point.h"
 #include "GeometricObject.h"
-#include <sstream>
 
 //--------------------------------------------------- Interfaces utilisées
 
-//------------------------------------------------------------- Constantes 
+//------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------------ 
-// Rôle de la classe <Line>
+//------------------------------------------------------------------------
+// Rôle de la classe <Agregate>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
-class Line : public GeometricObject
+class Agregate : public GeometricObject
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,43 +35,43 @@ public:
 	// Contrat :
 	//
 	string GetRepresentation ( );
-
+	bool AddObject ( GeometricObject );
 //------------------------------------------------- Surcharge d'opérateurs
-	Line & operator = ( const Line & unLine );
+	Agregate & operator = ( const Agregate & unAgregate );
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
 //-------------------------------------------- Constructeurs - destructeur
-	Line ( const Line & unLine );
+	Agregate ( const Agregate & unAgregate );
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Line ( Point , Point );
+	Agregate ( Point uLC, Point lRC );
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Line ( );
+	virtual ~Agregate ( );
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-//------------------------------------------------------------------ PRIVE 
+//------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	Point first;
-	Point last;
+	Point upperLeftCorner;
+	Point lowerRightCorner;
 };
 
-//--------------------------- Autres définitions dépendantes de <Line>
+//--------------------------- Autres définitions dépendantes de <Agregate>
 
-#endif // Line_H_
+#endif // Agregate_H_

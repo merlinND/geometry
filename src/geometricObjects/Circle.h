@@ -10,6 +10,7 @@
 #define CIRCLE_H_
 #include "Point.h"
 #include "GeometricObject.h"
+#include <sstream>
 //--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes 
