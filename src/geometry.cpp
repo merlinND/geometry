@@ -8,29 +8,18 @@ using namespace std;
 
 int main ( )
 {
-
-	Point centre;
-	centre.x = 0;
-	centre.y = 1;
-	Circle cercle( centre, 2 );
+	// Testing geometric objects representation
+	Point center ( 0, 1 );
+	Circle cercle( center, 2 );
 	cercle.GetRepresentation( );
 
-
-	Point uLC;
-	uLC.x = 1;
-	uLC.y = 2;
-	Point lRC;
-	lRC.x = 0;
-	lRC.y = 0;
+	Point uLC ( 1, 2 );
+	Point lRC ( 0, 2 );
 	Rectangle rect ( uLC, lRC );
 	rect.GetRepresentation ( );
 
-	Point firstPoint;
-	firstPoint.x = 1;
-	firstPoint.y = 1;
-	Point lastPoint;
-	lastPoint.x = 2;
-	lastPoint.y = 3;
+	Point firstPoint ( 1, 1 );
+	Point lastPoint ( 2, 3 );
 	Line line ( firstPoint, lastPoint );
 	line.GetRepresentation ( );
 	return 0;

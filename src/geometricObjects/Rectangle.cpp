@@ -32,14 +32,13 @@ string Rectangle::GetRepresentation ( )
 //-------------------------------------------- Constructeurs - destructeur
 
 Rectangle::Rectangle ( Point uLC, Point lRC )
+	: upperLeftCorner( uLC ), lowerRightCorner( lRC )
 // Algorithme :
 //
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Rectangle>" << endl;
 #endif
-	upperLeftCorner = uLC;
-	lowerRightCorner = lRC;
 } //----- Fin de Rectangle
 
 Rectangle::~Rectangle ( )

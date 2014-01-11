@@ -42,7 +42,7 @@ public:
 	// Contrat :
 	//
 
-	Circle ( Point centre, int R );
+	Circle ( Point theCenter, int R );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -61,7 +61,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 	Point center;
-	int rayon;
+	int radius;
 };
 
 //--------------------------- Autres définitions dépendantes de <Circle>

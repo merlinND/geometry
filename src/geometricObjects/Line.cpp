@@ -32,14 +32,13 @@ string Line::GetRepresentation ( )
 //-------------------------------------------- Constructeurs - destructeur
 
 Line::Line ( Point firstPoint, Point lastPoint )
+	: first( firstPoint ), last( lastPoint )
 // Algorithme :
 //
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Line>" << endl;
 #endif
-	first = firstPoint;
-	last = lastPoint;
 } //----- Fin de Line
 
 Line::~Line ( )
