@@ -6,8 +6,9 @@ using namespace std;
 #include "geometricObjects/Rectangle.h"
 #include "geometricObjects/Line.h"
 
-#include "commands/CommandFactory.h"
+#include "commands/CommandInterpreter.h"
 #include "commands/AllCommands.h"
+#include "commands/Controller.h"
 
 int main ( )
 {
@@ -27,15 +28,17 @@ int main ( )
 	line.GetRepresentation ( );
 	
 	// Testing CommandFactory & command id auto-increment
-	Command & mc = CommandFactory::getInstance()->getCommandFromText("MOVE");
-	Command & mc2 = CommandFactory::getInstance()->getCommandFromText("MOVE");
-	Command & mc3 = CommandFactory::getInstance()->getCommandFromText("MOVE");
+	Command & mc = CommandInterpreter::interpretCommand("MOVE");
+	Command & mc2 = CommandInterpreter::interpretCommand("MOVE");
+	Command & mc3 = CommandInterpreter::interpretCommand("MOVE");
 	cout << "Instanciated three commands. Their IDs : "
 		<< mc.getCommandId() << ", "
 		<< mc2.getCommandId() << ", "
 		<< mc3.getCommandId() << "." << endl;
 	
-	mc.execute();
+	// Testing Controller
+	Controller * controller = Controller::getInstance();
+	controller->processCommand(mc);
 	
 	return 0;
 }

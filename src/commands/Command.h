@@ -25,6 +25,8 @@ public:
 	// Undoing should bring back the application to the same state as before
 	// this Command was executed.
 	
+	virtual bool isHistorizable ( ) = 0;
+	
 	int getCommandId ( );
 	
 	//------------------------------------------------- Surcharge d'opérateurs

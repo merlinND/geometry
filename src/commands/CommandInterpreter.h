@@ -1,6 +1,6 @@
-//-- Interface de la classe <CommandFactory> (fichier CommandFactory.h)
-#if ! defined ( __CommandFactory___H_ )
-#define __CommandFactory___H_
+//-- Interface de la classe <CommandInterpreter> (fichier CommandInterpreter.h)
+#if ! defined ( __CommandInterpreter___H_ )
+#define __CommandInterpreter___H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Command.h"
@@ -8,14 +8,13 @@
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
-// Rôle de la classe <CommandFactory>
-// CommandFactory est une classe Singleton permettant d'obtenir une
-// instance de commande à partir de sa représentation textuelle données
-// par l'utilisateur.
-// Ex : "MOVE" => MoveCommand
+// Rôle de la classe <CommandInterpreter>
+// CommandInterpreter is a static class allowing to obtain an instance
+// of the Command object representing the action corresponding to the
+// user input (given as string).
 //------------------------------------------------------------------------
 
-class CommandFactory
+class CommandInterpreter
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -23,32 +22,31 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	
-	static CommandFactory * getInstance ( );
-	// Mode d'emploi :
-	// L'unique manière d'obtenir une instance de CommandFactory
-	
-	Command & getCommandFromText ( const std::string text );
+	static Command & interpretCommand ( std::string line );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-	virtual ~CommandFactory ( );
-	// Mode d'emploi :
-	// 
-	// Contrat :
-	// 
-
+	// Static class => private constructor
+	virtual ~CommandInterpreter ( );
+	
 //------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-	CommandFactory ( );
+	
+	CommandInterpreter ( );
 	// Contrat :
-	// Constructeur privé par la classe est un singleton
+	// Static class
+	
+	static Command & getCommandFromText ( const std::string text );
+	// Mode d'emploi :
+	// Returns a new instance of the appropriate Command
+	// Example: "MOVE" => MoveCommand
+	
 //----------------------------------------------------- Attributs protégés
-	static CommandFactory * theInstance;
 };
 
-//------------------- Autres définitions dépendantes de <CommandFactory>
+//------------------- Autres définitions dépendantes de <CommandInterpreter>
 
-#endif // __CommandFactory___H_ 
+#endif // __CommandInterpreter___H_ 
