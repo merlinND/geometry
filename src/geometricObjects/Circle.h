@@ -47,7 +47,7 @@ public:
 	// Contrat :
 	//
 
-	Circle ( Point theCenter, int R );
+	Circle ( string myCircle, Point theCenter, int R );
 	// Mode d'emploi :
 	//
 	// Contrat :

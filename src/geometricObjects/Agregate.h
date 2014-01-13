@@ -1,27 +1,29 @@
 /*************************************************************************
- Agregate  -  description
- -------------------
- début                : 6 janv. 2014
- copyright            : (C) 2014 par rbrunat
- *************************************************************************/
+                           Agregate  -  description
+                             -------------------
+    début                : Jan 13, 2014
+    copyright            : (C) 2014 par rbrunat
+*************************************************************************/
 
 //---------- Interface de la classe <Agregate> (fichier Agregate.h) ------
-#if ! defined ( Agregate_H_ )
-#define Agregate_H_
-#include "Point.h"
+#if ! defined ( AGREGATE_H_ )
+#define AGREGATE_H_
 #include "GeometricObject.h"
+using namespace std;
+#include <vector>
+#include <sstream>
 
 //--------------------------------------------------- Interfaces utilisées
 
-//------------------------------------------------------------- Constantes
+//------------------------------------------------------------- Constantes 
 
-//------------------------------------------------------------------ Types
+//------------------------------------------------------------------ Types 
 
-//------------------------------------------------------------------------
+//------------------------------------------------------------------------ 
 // Rôle de la classe <Agregate>
 //
 //
-//------------------------------------------------------------------------
+//------------------------------------------------------------------------ 
 
 class Agregate : public GeometricObject
 {
@@ -29,49 +31,50 @@ class Agregate : public GeometricObject
 
 public:
 //----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste des paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 	string GetRepresentation ( );
-	bool AddObject ( );
+
 //------------------------------------------------- Surcharge d'opérateurs
-	Agregate & operator = ( const Agregate & unAgregate );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    Agregate & operator = ( const Agregate & unAgregate );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
 
 //-------------------------------------------- Constructeurs - destructeur
-	Agregate ( const Agregate & unAgregate );
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
+    /* Agregate ( const Agregate & unAgregate );
+    // Mode d'emploi (constructeur de copie) :
+    //
+    // Contrat :
+    //
+*/
+    Agregate (string ,vector <string>);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
-	Agregate (  );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    virtual ~Agregate ( );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
-	virtual ~Agregate ( );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+vector <string> agregateComponents;
 
 };
 
 //--------------------------- Autres définitions dépendantes de <Agregate>
 
-#endif // Agregate_H_
+#endif // AGREGATE_H_

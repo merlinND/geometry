@@ -1,11 +1,11 @@
 /*************************************************************************
-                           Agregate  -  description
+                           Polyline  -  description
                              -------------------
     début                : Jan 13, 2014
     copyright            : (C) 2014 par rbrunat
 *************************************************************************/
 
-//---------- Réalisation de la classe <Agregate> (fichier Agregate.cpp) -------
+//---------- Réalisation de la classe <Polyline> (fichier Polyline.cpp) -------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,35 +14,35 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Agregate.h"
+#include "Polyline.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Agregate::Méthode ( liste des paramètres )
+// type Polyline::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
-string Agregate::GetRepresentation()
-{//
+string Polyline::GetRepresentation()
+{
 	ostringstream os;
-	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+	for (int i = 0; ( int ) i < points.size(); i++)
 	{
-		os << agregateComponents[i] << " " ;
+		os << points[i].x << " " << points[i].y << " " ;
 	}
 		os << name << " " << os << endl;
 		string representation;
-		representation = "OA " + os.str( );
+		representation = "PL " + os.str( );
 		cout << representation;
 		return representation;
 
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Agregate & Agregate::operator = ( const Agregate & unAgregate )
+Polyline & Polyline::operator = ( const Polyline & unPolyline )
 // Algorithme :
 //
 {
@@ -50,42 +50,42 @@ Agregate & Agregate::operator = ( const Agregate & unAgregate )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-/*Agregate::Agregate ( const Agregate & unAgregate )
+/*Polyline::Polyline ( const Polyline & unPolyline  )
 // Algorithme :
 //
-{// TODO: throw exception if used
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Agregate>" << endl;
-#endif
-} //----- Fin de Agregate (constructeur de copie)
+{
 
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Polyline>" << endl;
+#endif
+} //----- Fin de Polyline (constructeur de copie)
 */
-Agregate::Agregate ( string myAgregate, vector <string> components) : GeometricObject ( myAgregate )
+
+Polyline::Polyline ( string myPolyline, vector <Point> polyPoint) : GeometricObject ( myPolyline)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Agregate>" << endl;
+    cout << "Appel au constructeur de <Polyline>" << endl;
 #endif
 
-  //  for ( int i = 0; i < components.sizeof(); i++)
-  //  {
-  //  	agregateComponents[i] = components[i];
-  //  }
-} //----- Fin de Agregate
+	for (int i = 0; i < (int) polyPoint.size(); i++)
+	{
+		points [i] = polyPoint [i];
+	}
+} //----- Fin de Polyline
 
 
-Agregate::~Agregate ( )
+Polyline::~Polyline ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Agregate>" << endl;
+    cout << "Appel au destructeur de <Polyline>" << endl;
 #endif
-} //----- Fin de ~Agregate
+} //----- Fin de ~Polyline
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

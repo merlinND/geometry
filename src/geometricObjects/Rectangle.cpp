@@ -20,7 +20,7 @@ using namespace std;
 string Rectangle::GetRepresentation ( )
 {
 	ostringstream os;
-		os << upperLeftCorner.x << " " << upperLeftCorner.y << " " << lowerRightCorner.x << " " << lowerRightCorner.y << endl;
+		os << name << " " << upperLeftCorner.x << " " << upperLeftCorner.y << " " << lowerRightCorner.x << " " << lowerRightCorner.y << endl;
 		string representation;
 		representation = "R " + os.str( );
 		cout << representation;
@@ -31,8 +31,8 @@ string Rectangle::GetRepresentation ( )
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Rectangle::Rectangle ( Point uLC, Point lRC )
-	: upperLeftCorner( uLC ), lowerRightCorner( lRC )
+Rectangle::Rectangle ( string myRectangle, Point uLC, Point lRC )
+	: GeometricObject ( myRectangle ),upperLeftCorner( uLC ), lowerRightCorner( lRC )
 // Algorithme :
 //
 {

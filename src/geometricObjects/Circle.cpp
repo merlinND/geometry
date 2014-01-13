@@ -20,7 +20,7 @@ using namespace std;
 string Circle::GetRepresentation ( )
 {
 	ostringstream os;
-	os << center.x << " " << center.y << " " << radius << endl;
+	os << name << " " << center.x << " " << center.y << " " << radius << endl;
 	string representation;
 	representation = "C " + os.str( );
 	cout << representation;
@@ -29,8 +29,8 @@ string Circle::GetRepresentation ( )
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Circle::Circle ( Point theCenter, int R )
-	: center ( theCenter ), radius ( R )
+Circle::Circle ( string myCircle, Point theCenter, int R )
+	: GeometricObject ( myCircle ), center ( theCenter ), radius ( R )
 // Algorithme :
 //
 {

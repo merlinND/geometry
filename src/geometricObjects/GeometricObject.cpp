@@ -21,7 +21,7 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeometricObject::GeometricObject ( )
+GeometricObject::GeometricObject ( string myObject )
 // Algorithme :
 //
 {
@@ -29,6 +29,7 @@ GeometricObject::GeometricObject ( )
 	cout << "Appel au constructeur de <GeometricObject>" << endl;
 #endif
 	lastAppliedCommandId = 0;
+	name = myObject;
 } //----- Fin de GeometricObject
 
 GeometricObject::~GeometricObject ( )

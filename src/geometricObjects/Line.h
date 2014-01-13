@@ -42,7 +42,7 @@ public:
 	// Contrat :
 	//
 
-	Line ( Point , Point );
+	Line ( string , Point , Point );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -60,6 +60,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+
 	Point first;
 	Point last;
 };

@@ -12,6 +12,12 @@ struct Point
 		x = initialX;
 		y = initialY;
 	}
+
+	Point ( )
+	{
+		x = 0;
+		y = 0;
+	}
 };
 
 // A vector in two dimensions is simply composed of two coordinates

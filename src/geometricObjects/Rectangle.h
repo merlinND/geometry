@@ -3,6 +3,7 @@
 #define RECTANGLE_H_
 #include "Point.h"
 #include "GeometricObject.h"
+#include <string>
 //--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes 
@@ -42,7 +43,7 @@ public:
 	// Contrat :
 	//
 
-	Rectangle ( Point uLC, Point lRC );
+	Rectangle ( string myRectangle, Point uLC, Point lRC );
 	// Mode d'emploi :
 	//
 	// Contrat :

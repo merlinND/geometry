@@ -1,21 +1,31 @@
-//---------- Interface de la classe <GeometricObject> (fichier GeometricObject.h) ------
-#if ! defined ( GEOMETRICOBJECT_H_ )
-#define GEOMETRICOBJECT_H_
-#include <string>
+/*************************************************************************
+                           Polyline  -  description
+                             -------------------
+    début                : Jan 13, 2014
+    copyright            : (C) 2014 par rbrunat
+*************************************************************************/
+
+//---------- Interface de la classe <Polyline> (fichier Polyline.h) ------
+#if ! defined ( POLYLINE_H_ )
+#define POLYLINE_H_
+using namespace std;
+#include "GeometricObject.h"
+#include "Point.h"
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <vector>
+#include <sstream>
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <GeometricObject>
+// Rôle de la classe <Polyline>
 //
 //
 //------------------------------------------------------------------------ 
 
-class GeometricObject
+class Polyline : public GeometricObject
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -25,22 +35,31 @@ public:
     // Mode d'emploi :
     //
     // Contrat :
-
-virtual string GetRepresentation() = 0;
-
+    //
+	string GetRepresentation ( );
 
 //------------------------------------------------- Surcharge d'opérateurs
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
-    GeometricObject ( string );
+    Polyline & operator = ( const Polyline & unPolyline );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~GeometricObject ( );
+
+//-------------------------------------------- Constructeurs - destructeur
+    Polyline ( const Polyline & unPolyline );
+    // Mode d'emploi (constructeur de copie) :
+    //
+    // Contrat :
+    //
+
+    Polyline ( string, vector <Point> );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    virtual ~Polyline ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -52,10 +71,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	int lastAppliedCommandId;
-	string name;
+vector <Point> points;
 };
 
-//--------------------------- Autres définitions dépendantes de <GeometricObject>
+//--------------------------- Autres définitions dépendantes de <Polyline>
 
-#endif // GEOMETRICOBJECT_H_
+#endif // POLYLINE_H_

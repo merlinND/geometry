@@ -22,19 +22,19 @@ using namespace std;
 string Line::GetRepresentation ( )
 {
 	ostringstream os;
-		os << first.x << " " << first.y << " " << last.x << " " << last.y << endl;
-		string representation;
-		representation = "L " + os.str( );
-		cout << representation;
-		return representation;
+	os << name << " " << first.x << " " << first.y << " " << last.x << " " << last.y << endl;
+	string representation;
+	representation = "L " + os.str( );
+	cout << representation;
+	return representation;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Line::Line ( Point firstPoint, Point lastPoint )
-	: first( firstPoint ), last( lastPoint )
+Line::Line ( string myLine, Point firstPoint, Point lastPoint )
+	: GeometricObject ( myLine ), first ( firstPoint ), last( lastPoint )
 // Algorithme :
 //
 {
