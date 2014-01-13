@@ -3,6 +3,7 @@
 #define COMMAND_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
 #include "../geometricObjects/Point.h"
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
@@ -16,12 +17,14 @@ class Command
 	
 public:
 //----------------------------------------------------- Méthodes publiques
+	virtual bool IsHistorizable ( ) = 0;
+	
+	virtual void AddTarget ( std::string const targetName );
+	
 	virtual void Execute ( ) = 0;
 	// Mode d'emploi :
 	// Execute the command. It should gather any information needed
 	// to be able to be undone.
-	
-	virtual bool IsHistorizable ( ) = 0;
 	
 	int GetCommandId ( );
 	
@@ -39,5 +42,8 @@ protected:
 	// is instanciated
 	static int commandCounter;
 	
+	// A list of the target(s)' name
+	// To access the actual instances, use Controller::GetObjectByName
+	std::vector<std::string> targets;
 };
 #endif // COMMAND_H_

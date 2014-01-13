@@ -1,6 +1,8 @@
 //---------- Réalisation de la classe <Command> (fichier Command.cpp) ----
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
+#include <iostream>
+using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Command.h"
 //------------------------------------------------------------- Constantes
@@ -9,6 +11,11 @@ int Command::commandCounter = 0;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
+
+void Command::AddTarget( string const targetName )
+{
+	targets.push_back( targetName );
+}
 
 int Command::GetCommandId ( )
 {

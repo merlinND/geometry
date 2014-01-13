@@ -40,6 +40,11 @@ public:
 	// Use this method to indicate that the application should exit
 	
 	GeometricObject * GetObjectByName ( std::string name );
+	// Mode d'emploi :
+	// This method should be the only access point to actual
+	// GeometricObject instances. Agregate and Command objects only
+	// have their targets' names. They must use this method to access
+	// the corresponding instances.
 	// Contrat :
 	// Returns NULL if the object is not found
 	
