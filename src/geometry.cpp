@@ -8,37 +8,31 @@ using namespace std;
 
 #include "commands/CommandInterpreter.h"
 #include "commands/AllCommands.h"
-#include "commands/Controller.h"
+#include "Controller.h"
 
 int main ( )
 {
-	// Testing geometric objects representation
-	Point center ( 0, 1 );
-	Circle cercle( center, 2 );
-	cercle.GetRepresentation( );
-
-	Point uLC ( 1, 2 );
-	Point lRC ( 0, 2 );
-	Rectangle rect ( uLC, lRC );
-	rect.GetRepresentation ( );
-
-	Point firstPoint ( 1, 1 );
-	Point lastPoint ( 2, 3 );
-	Line line ( firstPoint, lastPoint );
-	line.GetRepresentation ( );
-	
-	// Testing CommandFactory & command id auto-increment
-	Command & mc = CommandInterpreter::interpretCommand("MOVE");
-	Command & mc2 = CommandInterpreter::interpretCommand("MOVE");
-	Command & mc3 = CommandInterpreter::interpretCommand("MOVE");
-	cout << "Instanciated three commands. Their IDs : "
-		<< mc.getCommandId() << ", "
-		<< mc2.getCommandId() << ", "
-		<< mc3.getCommandId() << "." << endl;
-	
-	// Testing Controller
 	Controller * controller = Controller::getInstance();
-	controller->processCommand(mc);
+	
+	// Basic command prompt
+	string text, returnText;
+	Command * currentCommand = NULL;
+	while ( !controller->shouldExit() )
+	{
+		cout << "> ";
+		cin >> text;
+		currentCommand = CommandInterpreter::interpretCommand( text );
+		if ( NULL != currentCommand )
+		{
+			returnText = controller->processCommand( currentCommand );
+			
+		}
+		else
+		{
+			returnText = "ERR";
+		}
+		cout << returnText << endl;
+	}
 	
 	return 0;
 }
