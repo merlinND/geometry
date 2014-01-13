@@ -18,11 +18,11 @@ class MoveCommand : public HistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void execute ( );
-	virtual void undo ( );
+	virtual void Execute ( );
+	virtual void Undo ( );
 	
-	void setOffset ( Vector2D theOffset );
-	void setOffset ( int dx, int dy );
+	void SetOffset ( Vector2D theOffset );
+	void SetOffset ( int dx, int dy );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

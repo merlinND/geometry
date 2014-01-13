@@ -16,14 +16,14 @@ class Command
 	
 public:
 //----------------------------------------------------- Méthodes publiques
-	virtual void execute ( ) = 0;
+	virtual void Execute ( ) = 0;
 	// Mode d'emploi :
 	// Execute the command. It should gather any information needed
 	// to be able to be undone.
 	
-	virtual bool isHistorizable ( ) = 0;
+	virtual bool IsHistorizable ( ) = 0;
 	
-	int getCommandId ( );
+	int GetCommandId ( );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

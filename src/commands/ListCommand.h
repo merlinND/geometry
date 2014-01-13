@@ -16,7 +16,7 @@ class ListCommand : public NonHistorizableCommand
 	
 public:
 	//----------------------------------------------------- Méthodes publiques
-	virtual void execute ( );
+	virtual void Execute ( );
 	
 	//------------------------------------------------- Surcharge d'opérateurs
 	//-------------------------------------------- Constructeurs - destructeur

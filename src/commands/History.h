@@ -19,18 +19,18 @@ class History
 	
 public:
 	//----------------------------------------------------- Méthodes publiques
-	void undo ( );
+	void Undo ( );
 	// Mode d'emploi :
 	// Contrat :
-	void redo ( );
+	void Redo ( );
 	// Mode d'emploi :
 	// Contrat :
 	
-	void addCommand ( HistorizableCommand * commandToAdd );
+	void AddCommand ( HistorizableCommand * commandToAdd );
 	// Mode d'emploi :
 	// Add a command to the history. It will then become the first command to
 	// be undone.
-	void deleteLastCommand ( );
+	void DeleteLastCommand ( );
 	// Mode d'emploi :
 	// Delete the last command from the history. It is lost forever.
 	

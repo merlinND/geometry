@@ -25,25 +25,25 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	
-	static Controller * getInstance ( );
+	static Controller * GetInstance ( );
 	// Mode d'emploi :
 	// Only acess point to a Controller instance (Singleton pattern)
 	
-	void undo ( );
-	void redo ( );
+	void Undo ( );
+	void Redo ( );
 	
-	bool shouldExit ( );
+	bool ShouldExit ( );
 	// Mode d'emploi :
 	// Use this method to know wether the application should exit or not
-	void exit ( );
+	void Exit ( );
 	// Mode d'emploi :
 	// Use this method to indicate that the application should exit
 	
-	GeometricObject * getObjectByName ( std::string name );
+	GeometricObject * GetObjectByName ( std::string name );
 	// Contrat :
 	// Returns NULL if the object is not found
 	
-	std::string processCommand ( Command * command );
+	std::string ProcessCommand ( Command * command );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

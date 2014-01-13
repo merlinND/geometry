@@ -10,7 +10,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-Command * CommandInterpreter::interpretCommand ( string line )
+Command * CommandInterpreter::InterpretCommand ( string line )
 {
 	// TODO: actual command interpreting (parameters, etc)
 	return getCommandFromText( line );

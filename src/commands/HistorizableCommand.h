@@ -16,12 +16,12 @@ class HistorizableCommand : public Command
 	//----------------------------------------------------------------- PUBLIC
 public:
 	//----------------------------------------------------- Méthodes publiques
-	virtual inline bool isHistorizable ( )
+	virtual inline bool IsHistorizable ( )
 	{
 		return true;
 	}
 	
-	virtual void undo ( ) = 0;
+	virtual void Undo ( ) = 0;
 	// Mode d'emploi :
 	// Undoing should bring back the application to the same state as before
 	// this Command was executed.

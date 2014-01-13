@@ -16,7 +16,7 @@ class NonHistorizableCommand : public Command
 	//----------------------------------------------------------------- PUBLIC
 public:
 	//----------------------------------------------------- Méthodes publiques
-	virtual inline bool isHistorizable ( )
+	virtual inline bool IsHistorizable ( )
 	{
 		return false;
 	}

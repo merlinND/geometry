@@ -13,7 +13,7 @@ Controller * Controller::theInstance = NULL;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-Controller * Controller::getInstance ( )
+Controller * Controller::GetInstance( )
 {
 	if ( NULL == theInstance )
 	{
@@ -28,37 +28,37 @@ Controller * Controller::getInstance ( )
 	return theInstance;
 } // ----- End getInstance
 
-void Controller::undo()
+void Controller::Undo()
 {
-	history.undo();
+	history.Undo();
 }
-void Controller::redo()
+void Controller::Redo()
 {
-	history.redo();
+	history.Redo();
 }
 
-bool Controller::shouldExit()
+bool Controller::ShouldExit()
 {
 	return exitFlag;
 }
-void Controller::exit()
+void Controller::Exit()
 {
 	exitFlag = true;
 }
 
-string Controller::processCommand ( Command * command )
+string Controller::ProcessCommand ( Command * command )
 {
-	command->execute();
+	command->Execute();
 	
-	if ( command->isHistorizable() )
+	if ( command->IsHistorizable() )
 	{
-		history.addCommand( (HistorizableCommand *) command );
+		history.AddCommand( (HistorizableCommand *) command );
 	}
 	
 	return "OK";
 } // ----- End processCommand
 
-GeometricObject * Controller::getObjectByName ( string name )
+GeometricObject * Controller::GetObjectByName ( string name )
 {
 	GeometricMap::iterator it = allObjects.find( name );
 	if ( it != allObjects.end() )

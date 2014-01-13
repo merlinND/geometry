@@ -10,20 +10,20 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void MoveCommand::execute ( )
+void MoveCommand::Execute ( )
 {
 	cout << "Executing MoveCommand [not implemented]" << endl;
 }
-void MoveCommand::undo ( )
+void MoveCommand::Undo ( )
 {
 	cout << "Undoing MoveCommand [not implemented]" << endl;
 }
 
-void MoveCommand::setOffset ( Vector2D theOffset )
+void MoveCommand::SetOffset ( Vector2D theOffset )
 {
 	offset = theOffset;
 }
-void MoveCommand::setOffset ( int dx, int dy )
+void MoveCommand::SetOffset ( int dx, int dy )
 {
 	offset.x = dx;
 	offset.y = dy;

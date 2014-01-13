@@ -10,7 +10,7 @@ int Command::commandCounter = 0;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-int Command::getCommandId ( )
+int Command::GetCommandId ( )
 {
 	return commandId;
 }

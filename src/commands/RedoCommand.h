@@ -18,7 +18,7 @@ class RedoCommand : public NonHistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void execute ( );
+	virtual void Execute ( );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

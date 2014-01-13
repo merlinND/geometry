@@ -12,19 +12,19 @@ using namespace std;
 
 int main ( )
 {
-	Controller * controller = Controller::getInstance();
+	Controller * controller = Controller::GetInstance();
 	
 	// Basic command prompt
 	string text, returnText;
 	Command * currentCommand = NULL;
-	while ( !controller->shouldExit() )
+	while ( !controller->ShouldExit() )
 	{
 		cout << "> ";
 		cin >> text;
-		currentCommand = CommandInterpreter::interpretCommand( text );
+		currentCommand = CommandInterpreter::InterpretCommand( text );
 		if ( NULL != currentCommand )
 		{
-			returnText = controller->processCommand( currentCommand );
+			returnText = controller->ProcessCommand( currentCommand );
 			
 		}
 		else

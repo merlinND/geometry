@@ -11,11 +11,11 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void ExitCommand::execute ( )
+void ExitCommand::Execute ( )
 {
 	cout << "Executing ExitCommand" << endl;
-	Controller * c = Controller::getInstance();
-	c->exit();
+	Controller * c = Controller::GetInstance();
+	c->Exit();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

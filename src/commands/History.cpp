@@ -9,13 +9,13 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-void History::undo ( )
+void History::Undo ( )
 {
 	if ( !undoStack.empty() )
 	{
 		HistorizableCommand * mostRecentCommand = undoStack.top();
 		undoStack.pop();
-		mostRecentCommand->undo();
+		mostRecentCommand->Undo();
 		redoStack.push(mostRecentCommand);
 	}
 	else
@@ -24,13 +24,13 @@ void History::undo ( )
 	}
 } // ----- End undo
 
-void History::redo ( )
+void History::Redo ( )
 {
 	if ( !redoStack.empty() )
 	{
 		HistorizableCommand * mostRecentlyUndoneCommand = redoStack.top();
 		redoStack.pop();
-		mostRecentlyUndoneCommand->execute();
+		mostRecentlyUndoneCommand->Execute();
 		undoStack.push(mostRecentlyUndoneCommand);
 	}
 	else
@@ -39,11 +39,11 @@ void History::redo ( )
 	}
 } // ----- End redo
 
-void History::addCommand ( HistorizableCommand * commandToAdd )
+void History::AddCommand ( HistorizableCommand * commandToAdd )
 {
 	undoStack.push( commandToAdd );
 } // ----- End addCommand
-void History::deleteLastCommand ( )
+void History::DeleteLastCommand ( )
 {
 	undoStack.pop();
 } // ----- End deleteLastCommand

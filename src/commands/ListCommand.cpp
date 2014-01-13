@@ -9,7 +9,7 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-void ListCommand::execute ( )
+void ListCommand::Execute ( )
 {
 	cout << "Executing the list command [TODO]" << endl;
 }

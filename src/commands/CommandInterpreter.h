@@ -22,7 +22,7 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	
-	static Command * interpretCommand ( std::string line );
+	static Command * InterpretCommand ( std::string line );
 	// Mode d'emploi :
 	// Returns a pointer to the command object corresponding to the text
 	// entered, configured with all the correct parameters.
