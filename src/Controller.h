@@ -3,11 +3,15 @@
 #define __Controller___H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Command.h"
-#include "History.h"
-#include "../geometricObjects/GeometricObject.h"
+#include <map>
+
+#include "commands/Command.h"
+#include "commands/History.h"
+#include "geometricObjects/GeometricObject.h"
 //------------------------------------------------------------- Constantes 
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------------------ Types
+typedef map<std::string, GeometricObject *> GeometricMap;
+
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Controller>
 //
@@ -24,6 +28,17 @@ public:
 	static Controller * getInstance ( );
 	// Mode d'emploi :
 	// Only acess point to a Controller instance (Singleton pattern)
+	
+	bool shouldExit ( );
+	// Mode d'emploi :
+	// Use this method to know wether the application should exit or not
+	void exit ( );
+	// Mode d'emploi :
+	// Use this method to indicate that the application should exit
+	
+	GeometricObject * getObjectByName ( std::string name );
+	// Contrat :
+	// Returns NULL if the object is not found
 	
 	std::string processCommand ( Command & command );
 	
@@ -53,7 +68,8 @@ protected:
 //----------------------------------------------------- Attributs protégés
 	// Pointer to the only Controller instance that exists
 	static Controller * theInstance;
-	
+	// Indicated if the application should exit
+	bool exitFlag;
 	
 	History history;
 
@@ -61,9 +77,10 @@ protected:
 	// currently part of the document
 	// TODO: change to an Agregate type (and not pointer)
 	GeometricObject * model;
-	// A list of *all* GeometricObjects that were created in this session,
-	// even if they are not part of the document
-	// TODO: choose appropriate type
+	
+	// An associative array of GeometricObjects that were created
+	// in this session, even if they are not part of the document
+	GeometricMap allObjects;
 };
 
 //------------------- Autres définitions dépendantes de <Controller>

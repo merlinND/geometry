@@ -28,6 +28,15 @@ Controller * Controller::getInstance ( )
 	return theInstance;
 }
 
+bool Controller::shouldExit()
+{
+	return exitFlag;
+}
+void Controller::exit()
+{
+	exitFlag = true;
+}
+
 string Controller::processCommand ( Command & command )
 {
 	command.execute();
@@ -38,6 +47,19 @@ string Controller::processCommand ( Command & command )
 	}
 	
 	return "OK";
+}
+
+GeometricObject * Controller::getObjectByName ( string name )
+{
+	GeometricMap::iterator it = allObjects.find( name );
+	if ( it != allObjects.end() )
+	{
+		return it->second;
+	}
+	else
+	{
+		return NULL;
+	}
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -54,7 +76,7 @@ Controller::~Controller ( )
 
 //----------------------------------------------------- Méthodes protégées
 
-Controller::Controller ( )
+Controller::Controller ( ) : exitFlag( false )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Controller>" << endl;
