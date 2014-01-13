@@ -29,6 +29,14 @@ string Line::GetRepresentation ( )
 	return representation;
 }
 
+void Line::Move (int dx, int dy)
+{
+	first.x += dx;
+	first.y += dy;
+	last.x += dx;
+	last.y += dy;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -41,6 +49,7 @@ Line::Line ( string myLine, Point firstPoint, Point lastPoint )
 #ifdef MAP
 	cout << "Appel au constructeur de <Line>" << endl;
 #endif
+
 } //----- Fin de Line
 
 Line::~Line ( )

@@ -27,6 +27,7 @@ public:
     // Contrat :
 
 virtual string GetRepresentation() = 0;
+virtual void Move(int dx, int dy) = 0;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -53,6 +54,8 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 	int lastAppliedCommandId;
+	int objectId;
+	static int objectIdCounter;
 	string name;
 };
 

@@ -15,6 +15,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Agregate.h"
+#include "../Controller.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -40,7 +41,15 @@ string Agregate::GetRepresentation()
 		return representation;
 
 }
-
+void Agregate::Move(int dx, int dy)
+{
+	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+	{
+		agregateComponents [i];
+		Controller * controller = Controller::GetInstance();
+		controller->GetObjectByName(agregateComponents [i]);
+	}
+}
 //------------------------------------------------- Surcharge d'opérateurs
 Agregate & Agregate::operator = ( const Agregate & unAgregate )
 // Algorithme :
@@ -68,11 +77,12 @@ Agregate::Agregate ( string myAgregate, vector <string> components) : GeometricO
     cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
 
-  //  for ( int i = 0; i < components.sizeof(); i++)
-  //  {
-  //  	agregateComponents[i] = components[i];
-  //  }
+    for ( int i = 0; i < components.size(); i++)
+    {
+    	agregateComponents[i] = components[i];
+    }
 } //----- Fin de Agregate
+
 
 
 Agregate::~Agregate ( )

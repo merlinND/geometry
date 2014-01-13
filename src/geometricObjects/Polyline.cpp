@@ -41,6 +41,18 @@ string Polyline::GetRepresentation()
 
 }
 
+void Polyline::Move (int dx, int dy)
+{
+	for (int i = 0; ( int ) i < points.size(); i++)
+	{
+		points[i].x += dx;
+		points[i].y += dy;
+	}
+}
+
+
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 Polyline & Polyline::operator = ( const Polyline & unPolyline )
 // Algorithme :
@@ -73,6 +85,7 @@ Polyline::Polyline ( string myPolyline, vector <Point> polyPoint) : GeometricObj
 	{
 		points [i] = polyPoint [i];
 	}
+
 } //----- Fin de Polyline
 
 

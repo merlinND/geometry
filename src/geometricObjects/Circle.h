@@ -33,6 +33,7 @@ public:
 	//
 
 	string GetRepresentation ( );
+	void Move (int dx, int dy);
 //------------------------------------------------- Surcharge d'opérateurs
 	Circle & operator = ( const Circle & unCircle );
 	// Mode d'emploi :

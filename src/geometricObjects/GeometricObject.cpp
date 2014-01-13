@@ -8,6 +8,7 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
+int GeometricObject::objectIdCounter = 0;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -30,6 +31,8 @@ GeometricObject::GeometricObject ( string myObject )
 #endif
 	lastAppliedCommandId = 0;
 	name = myObject;
+	objectId = objectIdCounter;
+	objectIdCounter++;
 } //----- Fin de GeometricObject
 
 GeometricObject::~GeometricObject ( )

@@ -26,6 +26,12 @@ string Circle::GetRepresentation ( )
 	cout << representation;
 	return representation;
 }
+void Circle::Move (int dx, int dy)
+{
+	center.x += dx;
+	center.y += dy;
+	return ;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -37,6 +43,7 @@ Circle::Circle ( string myCircle, Point theCenter, int R )
 #ifdef MAP
 	cout << "Appel au constructeur de <Circle>" << endl;
 #endif
+
 } //----- Fin de Circle
 
 Circle::~Circle ( )

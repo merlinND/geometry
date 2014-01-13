@@ -37,6 +37,7 @@ public:
     // Contrat :
     //
 	string GetRepresentation ( );
+	void Move (int dx, int dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
     Polyline & operator = ( const Polyline & unPolyline );

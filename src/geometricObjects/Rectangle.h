@@ -28,6 +28,7 @@ public:
 	// Contrat :
 	//
 	string GetRepresentation ( );
+	void Move (int dx, int dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
 	Rectangle & operator = ( const Rectangle & unRectangle );

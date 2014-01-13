@@ -27,6 +27,15 @@ string Rectangle::GetRepresentation ( )
 		return representation;
 }
 
+void Rectangle::Move (int dx, int dy)
+{
+	upperLeftCorner.x += dx;
+	upperLeftCorner.y += dy;
+	lowerRightCorner.x += dx;
+	lowerRightCorner.y += dy;
+}
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -39,6 +48,7 @@ Rectangle::Rectangle ( string myRectangle, Point uLC, Point lRC )
 #ifdef MAP
 	cout << "Appel au constructeur de <Rectangle>" << endl;
 #endif
+
 } //----- Fin de Rectangle
 
 Rectangle::~Rectangle ( )
