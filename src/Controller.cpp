@@ -71,6 +71,13 @@ GeometricObject * Controller::GetObjectByName ( string name )
 	}
 } // ----- End getObjectByName
 
+bool Controller::IsNameUsedInDocument( string name )
+{
+	return true;
+	// TODO : use the agregate's method to return the result
+	//return model.HasObjectWithName( name );
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 

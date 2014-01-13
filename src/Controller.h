@@ -48,6 +48,11 @@ public:
 	// Contrat :
 	// Returns NULL if the object is not found
 	
+	bool IsNameUsedInDocument ( std::string name );
+	// Mode d'emploi :
+	// Enables to check if a name is used by an object that is
+	// *currently* part of the document.
+	
 	std::string ProcessCommand ( Command * command );
 	
 //------------------------------------------------- Surcharge d'opérateurs

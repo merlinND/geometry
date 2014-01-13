@@ -3,6 +3,8 @@
 #define __CommandInterpreter___H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <iostream>
+
 #include "Command.h"
 
 //------------------------------------------------------------- Constantes
@@ -22,12 +24,12 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	
-	static Command * InterpretCommand ( std::string line );
+	static Command * InterpretCommand ( istream & line );
 	// Mode d'emploi :
 	// Returns a pointer to the command object corresponding to the text
 	// entered, configured with all the correct parameters.
 	// Contrat :
-	// If this text corresponds to no known command, or is wrong in any
+	// If the input corresponds to no known command, or is wrong in any
 	// way, returns NULL
 	
 //------------------------------------------------- Surcharge d'opérateurs
@@ -45,12 +47,27 @@ protected:
 	// Contrat :
 	// Static class
 	
-	static Command * getCommandFromText ( const std::string text );
+	static bool isNameUsedInDocument ( std::string name );
 	// Mode d'emploi :
-	// Returns a pointer to a new instance of the appropriate Command
-	// Example: "MOVE" => MoveCommand
-	// Contrat :
-	// If this text corresponds to no known command, returns NULL
+	// Checks whether an object with the given name *currently*
+	// exists in the document
+	
+	static bool isValidName ( std::string text );
+	// Mode d'emploi :
+	// Checks if a given string is a valid name to be given
+	// to a GeometricObject
+	
+	static bool isValidPoint ( std::string stringX, std::string stringY );
+	// Mode d'emploi :
+	// Checks if the two strings can be used to create a valid Point
+	// or Vector2D. We accept integer coordinates only.
+	
+	static Point makePointFromInput ( std::string stringX,
+									  std::string stringY );
+	// Mode d'emploi :
+	// Creates a Point instance from the given strings.
+	// Contract :
+	// The given strings have been checked first using isValidPoint.
 	
 //----------------------------------------------------- Attributs protégés
 };

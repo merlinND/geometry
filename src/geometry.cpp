@@ -20,12 +20,11 @@ int main ( )
 	while ( !controller->ShouldExit() )
 	{
 		cout << "> ";
-		cin >> text;
-		currentCommand = CommandInterpreter::InterpretCommand( text );
+		
+		currentCommand = CommandInterpreter::InterpretCommand( cin );
 		if ( NULL != currentCommand )
 		{
 			returnText = controller->ProcessCommand( currentCommand );
-			
 		}
 		else
 		{
