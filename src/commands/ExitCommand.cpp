@@ -13,7 +13,6 @@ using namespace std;
 
 void ExitCommand::Execute ( )
 {
-	cout << "Executing ExitCommand" << endl;
 	Controller * c = Controller::GetInstance();
 	c->Exit();
 }

@@ -55,6 +55,7 @@ string Controller::ProcessCommand ( Command * command )
 		history.AddCommand( (HistorizableCommand *) command );
 	}
 	
+	// TODO : modulate input (do not input anything on empty lines)
 	return "OK";
 } // ----- End processCommand
 

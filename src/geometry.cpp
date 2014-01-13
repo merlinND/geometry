@@ -30,7 +30,12 @@ int main ( )
 		{
 			returnText = "ERR";
 		}
-		cout << returnText << endl;
+		
+		// When the application exits, it mustn't output anything
+		if ( !controller->ShouldExit() )
+		{
+			cout << returnText << endl;
+		}
 	}
 	
 	return 0;
