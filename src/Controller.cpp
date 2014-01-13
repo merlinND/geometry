@@ -37,13 +37,13 @@ void Controller::exit()
 	exitFlag = true;
 }
 
-string Controller::processCommand ( Command & command )
+string Controller::processCommand ( Command * command )
 {
-	command.execute();
+	command->execute();
 	
-	if ( command.isHistorizable() )
+	if ( command->isHistorizable() )
 	{
-		history.addCommand( command );
+		history.addCommand( (HistorizableCommand *) command );
 	}
 	
 	return "OK";

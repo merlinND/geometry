@@ -40,7 +40,7 @@ public:
 	// Contrat :
 	// Returns NULL if the object is not found
 	
-	std::string processCommand ( Command & command );
+	std::string processCommand ( Command * command );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

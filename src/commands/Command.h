@@ -20,10 +20,6 @@ public:
 	// Mode d'emploi :
 	// Execute the command. It should gather any information needed
 	// to be able to be undone.
-	virtual void undo ( ) = 0;
-	// Mode d'emploi :
-	// Undoing should bring back the application to the same state as before
-	// this Command was executed.
 	
 	virtual bool isHistorizable ( ) = 0;
 	

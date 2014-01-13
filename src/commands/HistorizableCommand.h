@@ -20,5 +20,10 @@ public:
 	{
 		return true;
 	}
+	
+	virtual void undo ( ) = 0;
+	// Mode d'emploi :
+	// Undoing should bring back the application to the same state as before
+	// this Command was executed.
 };
 #endif // HISTORIZABLE_COMMAND_H_

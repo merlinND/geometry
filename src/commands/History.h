@@ -5,10 +5,10 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <stack>
 
-#include "Command.h"
+#include "HistorizableCommand.h"
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
-typedef std::stack<Command *> CommandStack;
+typedef std::stack<HistorizableCommand *> CommandStack;
 //------------------------------------------------------------------------
 // Rôle de la classe <History>
 // TODO
@@ -26,7 +26,7 @@ public:
 	// Mode d'emploi :
 	// Contrat :
 	
-	void addCommand ( Command & commandToAdd );
+	void addCommand ( HistorizableCommand * commandToAdd );
 	// Mode d'emploi :
 	// Add a command to the history. It will then become the first command to
 	// be undone.

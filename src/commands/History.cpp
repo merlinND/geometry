@@ -9,7 +9,7 @@
 //----------------------------------------------------- Méthodes publiques
 void History::undo ( )
 {
-	Command * mostRecentCommand = undoStack.top();
+	HistorizableCommand * mostRecentCommand = undoStack.top();
 	undoStack.pop();
 	mostRecentCommand->undo();
 	redoStack.push(mostRecentCommand);
@@ -17,15 +17,15 @@ void History::undo ( )
 
 void History::redo ( )
 {
-	Command * mostRecentlyUndoneCommand = redoStack.top();
+	HistorizableCommand * mostRecentlyUndoneCommand = redoStack.top();
 	redoStack.pop();
 	mostRecentlyUndoneCommand->execute();
 	undoStack.push(mostRecentlyUndoneCommand);
 } // ----- End redo
 
-void History::addCommand ( Command & commandToAdd )
+void History::addCommand ( HistorizableCommand * commandToAdd )
 {
-	undoStack.push(& commandToAdd);
+	undoStack.push( commandToAdd );
 } // ----- End addCommand
 void History::deleteLastCommand ( )
 {
