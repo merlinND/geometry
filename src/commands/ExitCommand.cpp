@@ -1,35 +1,40 @@
-//---------- Réalisation de la classe <Command> (fichier Command.cpp) ----
+//-- Réalisation de la classe <ExitCommand> (fichier ExitCommand.cpp)
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "ListCommand.h"
+#include "ExitCommand.h"
+#include "../Controller.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-void ListCommand::execute ( )
+
+void ExitCommand::execute ( )
 {
-	cout << "Executing the list command [TODO]" << endl;
+	cout << "Executing ExitCommand" << endl;
+	Controller * c = Controller::getInstance();
+	c->exit();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-ListCommand::ListCommand ( )
+
+ExitCommand::ExitCommand ( )
 {
 #ifdef MAP
-	cout << "Appel au constructeur de <ListCommand>" << endl;
+	cout << "Appel au constructeur de <ExitCommand>" << endl;
 #endif
-} //----- Fin de ListCommand
+} //----- Fin de ExitCommand 
 
-ListCommand::~ListCommand ( )
+ExitCommand::~ExitCommand ( )
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <ListCommand>" << endl;
+	cout << "Appel au destructeur de <ExitCommand>" << endl;
 #endif
-} //----- Fin de ~ListCommand
+} //----- Fin de ~ExitCommand
 
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVÉ
 
 //----------------------------------------------------- Méthodes protégées

@@ -1,35 +1,39 @@
-//---------- Réalisation de la classe <Command> (fichier Command.cpp) ----
+//-- Réalisation de la classe <UndoCommand> (fichier UndoCommand.cpp)
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "ListCommand.h"
+#include "UndoCommand.h"
+#include "../Controller.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-void ListCommand::execute ( )
+
+void UndoCommand::execute ( )
 {
-	cout << "Executing the list command [TODO]" << endl;
+	cout << "Executing UndoCommand" << endl;
+	Controller::getInstance()->undo();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-ListCommand::ListCommand ( )
+
+UndoCommand::UndoCommand ( )
 {
 #ifdef MAP
-	cout << "Appel au constructeur de <ListCommand>" << endl;
+	cout << "Appel au constructeur de <UndoCommand>" << endl;
 #endif
-} //----- Fin de ListCommand
+} //----- Fin de UndoCommand 
 
-ListCommand::~ListCommand ( )
+UndoCommand::~UndoCommand ( )
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <ListCommand>" << endl;
+	cout << "Appel au destructeur de <UndoCommand>" << endl;
 #endif
-} //----- Fin de ~ListCommand
+} //----- Fin de ~UndoCommand
 
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVÉ
 
 //----------------------------------------------------- Méthodes protégées

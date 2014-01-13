@@ -1,35 +1,39 @@
-//---------- Réalisation de la classe <Command> (fichier Command.cpp) ----
+//-- Réalisation de la classe <RedoCommand> (fichier RedoCommand.cpp)
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "ListCommand.h"
+#include "RedoCommand.h"
+#include "../Controller.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-void ListCommand::execute ( )
+
+void RedoCommand::execute ( )
 {
-	cout << "Executing the list command [TODO]" << endl;
+	cout << "Executing RedoCommand" << endl;
+	Controller::getInstance()->redo();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-ListCommand::ListCommand ( )
+
+RedoCommand::RedoCommand ( )
 {
 #ifdef MAP
-	cout << "Appel au constructeur de <ListCommand>" << endl;
+	cout << "Appel au constructeur de <RedoCommand>" << endl;
 #endif
-} //----- Fin de ListCommand
+} //----- Fin de RedoCommand 
 
-ListCommand::~ListCommand ( )
+RedoCommand::~RedoCommand ( )
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <ListCommand>" << endl;
+	cout << "Appel au destructeur de <RedoCommand>" << endl;
 #endif
-} //----- Fin de ~ListCommand
+} //----- Fin de ~RedoCommand
 
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVÉ
 
 //----------------------------------------------------- Méthodes protégées

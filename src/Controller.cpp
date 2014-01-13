@@ -26,6 +26,15 @@ Controller * Controller::getInstance ( )
 #endif
 	}
 	return theInstance;
+} // ----- End getInstance
+
+void Controller::undo()
+{
+	history.undo();
+}
+void Controller::redo()
+{
+	history.redo();
 }
 
 bool Controller::shouldExit()
@@ -47,7 +56,7 @@ string Controller::processCommand ( Command * command )
 	}
 	
 	return "OK";
-}
+} // ----- End processCommand
 
 GeometricObject * Controller::getObjectByName ( string name )
 {
@@ -60,7 +69,7 @@ GeometricObject * Controller::getObjectByName ( string name )
 	{
 		return NULL;
 	}
-}
+} // ----- End getObjectByName
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

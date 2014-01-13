@@ -29,6 +29,9 @@ public:
 	// Mode d'emploi :
 	// Only acess point to a Controller instance (Singleton pattern)
 	
+	void undo ( );
+	void redo ( );
+	
 	bool shouldExit ( );
 	// Mode d'emploi :
 	// Use this method to know wether the application should exit or not

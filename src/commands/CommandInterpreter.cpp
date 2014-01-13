@@ -33,6 +33,14 @@ Command * CommandInterpreter::getCommandFromText( const string text )
 	{
 		return new ListCommand( );
 	}
+	else if ( "UNDO" == text )
+	{
+		return new UndoCommand( );
+	}
+	else if ( "REDO" == text )
+	{
+		return new RedoCommand( );
+	}
 	else if ( "EXIT" == text )
 	{
 		return new ExitCommand( );
