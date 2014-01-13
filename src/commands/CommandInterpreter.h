@@ -22,7 +22,13 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	
-	static Command & interpretCommand ( std::string line );
+	static Command * interpretCommand ( std::string line );
+	// Mode d'emploi :
+	// Returns a pointer to the command object corresponding to the text
+	// entered, configured with all the correct parameters.
+	// Contrat :
+	// If this text corresponds to no known command, or is wrong in any
+	// way, returns NULL
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
@@ -39,10 +45,12 @@ protected:
 	// Contrat :
 	// Static class
 	
-	static Command & getCommandFromText ( const std::string text );
+	static Command * getCommandFromText ( const std::string text );
 	// Mode d'emploi :
-	// Returns a new instance of the appropriate Command
+	// Returns a pointer to a new instance of the appropriate Command
 	// Example: "MOVE" => MoveCommand
+	// Contrat :
+	// If this text corresponds to no known command, returns NULL
 	
 //----------------------------------------------------- Attributs protégés
 };

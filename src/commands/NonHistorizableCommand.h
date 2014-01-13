@@ -11,7 +11,7 @@
 // Simple intermediate class to group together all commands that
 // should *not* be part of the history.
 //------------------------------------------------------------------------
-class NonHistorizableCommand : Command
+class NonHistorizableCommand : public Command
 {
 	//----------------------------------------------------------------- PUBLIC
 public:

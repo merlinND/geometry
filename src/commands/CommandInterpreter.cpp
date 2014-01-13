@@ -10,7 +10,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-Command & CommandInterpreter::interpretCommand ( string line )
+Command * CommandInterpreter::interpretCommand ( string line )
 {
 	// TODO: actual command interpreting (parameters, etc)
 	return getCommandFromText( line );
@@ -23,18 +23,24 @@ Command & CommandInterpreter::interpretCommand ( string line )
 
 //----------------------------------------------------- Méthodes protégées
 
-Command & CommandInterpreter::getCommandFromText( const string text )
+Command * CommandInterpreter::getCommandFromText( const string text )
 {
-	Command * c = NULL;
 	if ( "MOVE" == text )
 	{
-		c = new MoveCommand( );
+		return new MoveCommand( );
+	}
+	else if ( "LIST" == text )
+	{
+		return new ListCommand( );
+	}
+	else if ( "EXIT" == text )
+	{
+		return new ExitCommand( );
 	}
 	// TODO: add support for all command types
 	else
 	{
 		// TODO: error handling (command not found)
+		return NULL;
 	}
-	
-	return *c;
 }

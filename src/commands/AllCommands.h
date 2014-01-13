@@ -6,6 +6,7 @@
 // Simple fichier header pour regrouper les includes
 // de toutes les commandes
 #include "MoveCommand.h"
-
+#include "ListCommand.h"
+#include "ExitCommand.h"
 
 #endif // __AllCommands___H_ 

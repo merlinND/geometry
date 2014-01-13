@@ -20,8 +20,5 @@ public:
 	{
 		return true;
 	}
-	
-protected:
-	
 };
 #endif // HISTORIZABLE_COMMAND_H_

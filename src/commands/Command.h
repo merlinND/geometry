@@ -12,14 +12,14 @@
 //------------------------------------------------------------------------
 class Command
 {
-	//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 	
 public:
-	//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Méthodes publiques
 	virtual void execute ( ) = 0;
 	// Mode d'emploi :
-	// Execute the command. It should gather any information needed to be able
-	// to be undone.
+	// Execute the command. It should gather any information needed
+	// to be able to be undone.
 	virtual void undo ( ) = 0;
 	// Mode d'emploi :
 	// Undoing should bring back the application to the same state as before
@@ -29,17 +29,18 @@ public:
 	
 	int getCommandId ( );
 	
-	//------------------------------------------------- Surcharge d'opérateurs
-	//-------------------------------------------- Constructeurs - destructeur
+//------------------------------------------------- Surcharge d'opérateurs
+//-------------------------------------------- Constructeurs - destructeur
 	Command ( );
 	virtual ~Command ( );
-	//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE
 	
 protected:
-	//----------------------------------------------------- Méthodes protégées
-	//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Attributs protégés
 	int commandId;
-	// A counter which is incremented each time a new command is instanciated
+	// A counter which is incremented each time a new command
+	// is instanciated
 	static int commandCounter;
 	
 };

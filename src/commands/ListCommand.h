@@ -10,7 +10,7 @@
 // Rôle de la classe <ListCommand>
 // TODO
 //------------------------------------------------------------------------
-class ListCommand : NonHistorizableCommand
+class ListCommand : public NonHistorizableCommand
 {
 	//----------------------------------------------------------------- PUBLIC
 	
