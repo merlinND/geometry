@@ -1,6 +1,8 @@
 //---------- Réalisation de la classe <History> (fichier History.cpp) ----
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
+#include <iostream>
+using namespace std;
 //------------------------------------------------------ Include personnel
 #include "History.h"
 //------------------------------------------------------------- Constantes
@@ -9,18 +11,32 @@
 //----------------------------------------------------- Méthodes publiques
 void History::undo ( )
 {
-	HistorizableCommand * mostRecentCommand = undoStack.top();
-	undoStack.pop();
-	mostRecentCommand->undo();
-	redoStack.push(mostRecentCommand);
+	if ( !undoStack.empty() )
+	{
+		HistorizableCommand * mostRecentCommand = undoStack.top();
+		undoStack.pop();
+		mostRecentCommand->undo();
+		redoStack.push(mostRecentCommand);
+	}
+	else
+	{
+		cout << "Nothing to undo" << endl;
+	}
 } // ----- End undo
 
 void History::redo ( )
 {
-	HistorizableCommand * mostRecentlyUndoneCommand = redoStack.top();
-	redoStack.pop();
-	mostRecentlyUndoneCommand->execute();
-	undoStack.push(mostRecentlyUndoneCommand);
+	if ( !redoStack.empty() )
+	{
+		HistorizableCommand * mostRecentlyUndoneCommand = redoStack.top();
+		redoStack.pop();
+		mostRecentlyUndoneCommand->execute();
+		undoStack.push(mostRecentlyUndoneCommand);
+	}
+	else
+	{
+		cout << "Nothing to redo" << endl;
+	}
 } // ----- End redo
 
 void History::addCommand ( HistorizableCommand * commandToAdd )
