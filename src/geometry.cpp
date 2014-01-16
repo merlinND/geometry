@@ -21,8 +21,8 @@ int main ( )
 	vector <Point> v;
 	v.push_back(p1);
 	v.push_back(p1);
-	vector <string>ag;
-
+	
+	vector <string> ag;
 	ag.push_back("myCircle");
 	Agregate agregat("myFirstAgregate", ag);
 	cout << "hu" << v[0].x << endl;

@@ -18,17 +18,13 @@ using namespace std;
 
 string Agregate::GetRepresentation()
 {
-	ostringstream os;
-	string temp;
+	string representation = "OA " + name;
 	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
 	{
-		os << agregateComponents[i] << " " ;
-		temp += os.str();
+		representation += " " + agregateComponents[i];
 	}
-		string representation;
-		representation = "OA " + name + temp;
-		cout << representation;
-		return representation;
+	cout << representation;
+	return representation;
 } //----- End GetRepresentation
 
 void Agregate::Move(int dx, int dy)
