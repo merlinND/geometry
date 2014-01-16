@@ -30,13 +30,14 @@ using namespace std;
 string Agregate::GetRepresentation()
 {//
 	ostringstream os;
+	string temp;
 	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
 	{
 		os << agregateComponents[i] << " " ;
+		temp += os.str();
 	}
-		os << name << " " << os << endl;
 		string representation;
-		representation = "OA " + os.str( );
+		representation = "OA " + name + temp;
 		cout << representation;
 		return representation;
 
@@ -76,7 +77,10 @@ Agregate::Agregate ( string myAgregate, vector <string> components) : GeometricO
 #ifdef MAP
     cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
-
+    //cout <<"test";
+    //agregateComponents[0]=components[0];
+    //cout << agregateComponents[0];
+// affectation ne fonctionne pas....
     for ( int i = 0; i < components.size(); i++)
     {
     	agregateComponents[i] = components[i];

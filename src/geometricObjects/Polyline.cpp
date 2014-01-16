@@ -7,11 +7,12 @@
 
 //---------- Réalisation de la classe <Polyline> (fichier Polyline.cpp) -------
 
+#include <iostream>
+using namespace std;
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
-#include <iostream>
+
 
 //------------------------------------------------------ Include personnel
 #include "Polyline.h"
@@ -29,21 +30,27 @@ using namespace std;
 string Polyline::GetRepresentation()
 {
 	ostringstream os;
-	for (int i = 0; ( int ) i < points.size(); i++)
+	string temp = "";
+
+	for (int i = 0; i < (int) points.size(); i++)
 	{
 		os << points[i].x << " " << points[i].y << " " ;
+		temp += os.str();
 	}
-		os << name << " " << os << endl;
 		string representation;
-		representation = "PL " + os.str( );
+		representation = "PL " + name +os.str()+ temp;
 		cout << representation;
 		return representation;
 
 }
+void Polyline::AddPoint(Point extraPoint)
+{
+	points.push_back(extraPoint);
+}
 
 void Polyline::Move (int dx, int dy)
 {
-	for (int i = 0; ( int ) i < points.size(); i++)
+	for (int i = 0;  i < ( int ) points.size(); i++)
 	{
 		points[i].x += dx;
 		points[i].y += dy;
@@ -54,11 +61,11 @@ void Polyline::Move (int dx, int dy)
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Polyline & Polyline::operator = ( const Polyline & unPolyline )
+//olyline & Polyline::operator = ( const Polyline & unPolyline )
 // Algorithme :
 //
-{
-} //----- Fin de operator =
+//{
+//} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -77,14 +84,16 @@ Polyline::Polyline ( string myPolyline, vector <Point> polyPoint) : GeometricObj
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Polyline>" << endl;
-#endif
 
 	for (int i = 0; i < (int) polyPoint.size(); i++)
 	{
 		points [i] = polyPoint [i];
 	}
+
+#ifdef MAP
+    cout << "Appel au constructeur de <Polyline>" << endl;
+#endif
+
 
 } //----- Fin de Polyline
 

@@ -5,6 +5,8 @@ using namespace std;
 #include "geometricObjects/Circle.h"
 #include "geometricObjects/Rectangle.h"
 #include "geometricObjects/Line.h"
+#include "geometricObjects/Polyline.h"
+#include "geometricObjects/Agregate.h"
 
 #include "commands/CommandInterpreter.h"
 #include "commands/AllCommands.h"
@@ -12,6 +14,27 @@ using namespace std;
 
 int main ( )
 {
+
+	Point p1;
+	p1.x = 1;
+	p1.y=2;
+	Circle cercle("myCircle", p1, 3);
+	cercle.GetRepresentation();
+	vector <Point> v;
+	v.push_back(p1);
+	v.push_back(p1);
+	vector <string>ag;
+
+	ag.push_back("myCircle");
+	Agregate agregat("myFirstAgregate" , ag);
+	cout << "hu" << v[0].x << endl;
+		agregat.GetRepresentation();
+
+	Polyline myPoly ("myPoly", v);
+
+	myPoly.GetRepresentation();
+	myPoly.AddPoint(p1);
+
 	Controller * controller = Controller::GetInstance();
 	
 	// Basic command prompt

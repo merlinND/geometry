@@ -38,6 +38,7 @@ public:
     //
 	string GetRepresentation ( );
 	void Move (int dx, int dy);
+	void AddPoint (Point);
 
 //------------------------------------------------- Surcharge d'opérateurs
     Polyline & operator = ( const Polyline & unPolyline );
