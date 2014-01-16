@@ -29,15 +29,23 @@ using namespace std;
 //} //----- Fin de Méthode
 string Agregate::GetRepresentation()
 {//
-	ostringstream os;
+
 	string temp;
-	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+	/*for ( int i = 0; i < ( int )agregateComponents.size (); i++)
 	{
 		os << agregateComponents[i] << " " ;
 		temp += os.str();
-	}
+	}*/
+
+		ostringstream os;
+		os << name << " " ;
+		for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+			{
+				os << agregateComponents.at(i) << " " ;
+
+			}
 		string representation;
-		representation = "OA " + name + temp;
+		representation = "OA " + os.str( );
 		cout << representation;
 		return representation;
 
@@ -80,10 +88,10 @@ Agregate::Agregate ( string myAgregate, vector <string> components) : GeometricO
     //cout <<"test";
     //agregateComponents[0]=components[0];
     //cout << agregateComponents[0];
-// affectation ne fonctionne pas....
+// affectation ne fonctionne pas....[i] =
     for ( int i = 0; i < components.size(); i++)
     {
-    	agregateComponents[i] = components[i];
+    	agregateComponents.push_back( components[i]);
     }
 } //----- Fin de Agregate
 
