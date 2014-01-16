@@ -1,21 +1,16 @@
-/*************************************************************************
-                           Polyline  -  description
-                             -------------------
-    début                : Jan 13, 2014
-    copyright            : (C) 2014 par rbrunat
-*************************************************************************/
-
 //---------- Interface de la classe <Polyline> (fichier Polyline.h) ------
 #if ! defined ( POLYLINE_H_ )
 #define POLYLINE_H_
-using namespace std;
-#include "GeometricObject.h"
-#include "Point.h"
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <sstream>
-//------------------------------------------------------------- Constantes 
+using namespace std;
+
+#include "GeometricObject.h"
+#include "Point.h"
+
+//------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
 

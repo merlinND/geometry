@@ -15,9 +15,7 @@ using namespace std;
 int main ( )
 {
 
-	Point p1;
-	p1.x = 1;
-	p1.y=2;
+	Point p1(1, 2);
 	Circle cercle("myCircle", p1, 3);
 	cercle.GetRepresentation();
 	vector <Point> v;
@@ -26,9 +24,9 @@ int main ( )
 	vector <string>ag;
 
 	ag.push_back("myCircle");
-	Agregate agregat("myFirstAgregate" , ag);
+	Agregate agregat("myFirstAgregate", ag);
 	cout << "hu" << v[0].x << endl;
-		agregat.GetRepresentation();
+	agregat.GetRepresentation();
 
 	Polyline myPoly ("myPoly", v);
 
@@ -36,7 +34,6 @@ int main ( )
 	myPoly.AddPoint(p1);
 
 	Controller * controller = Controller::GetInstance();
-	
 	// Basic command prompt
 	string text, returnText;
 	Command * currentCommand = NULL;

@@ -1,21 +1,13 @@
-/*************************************************************************
-                           Agregate  -  description
-                             -------------------
-    début                : Jan 13, 2014
-    copyright            : (C) 2014 par rbrunat
-*************************************************************************/
-
 //---------- Interface de la classe <Agregate> (fichier Agregate.h) ------
 #if ! defined ( AGREGATE_H_ )
 #define AGREGATE_H_
-#include "GeometricObject.h"
-using namespace std;
+
+//--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <sstream>
 
-//--------------------------------------------------- Interfaces utilisées
-
-//------------------------------------------------------------- Constantes 
+#include "GeometricObject.h"
+//------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types 
 
@@ -31,30 +23,19 @@ class Agregate : public GeometricObject
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
+	
+	string GetRepresentation ( );
+	// Mode d'emploi :
     //
     // Contrat :
     //
-	string GetRepresentation ( );
+	
 	void Move (int dx, int dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Agregate & operator = ( const Agregate & unAgregate );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
 //-------------------------------------------- Constructeurs - destructeur
-    /* Agregate ( const Agregate & unAgregate );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-*/
-    Agregate (string ,vector <string>);
+
+    Agregate ( std::string agregateNames, vector <std::string> contained);
     // Mode d'emploi :
     //
     // Contrat :
@@ -72,7 +53,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-vector <string> agregateComponents;
+	// A list of all the ids contained in this agregate object
+	vector <std::string> agregateComponents;
 
 };
 

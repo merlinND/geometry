@@ -1,10 +1,12 @@
 #if ! defined ( LINE_H_ )
 #define LINE_H_
 
-#include "Point.h"
-#include "GeometricObject.h"
+
+//--------------------------------------------------- Interfaces utilisées
 #include <sstream>
 
+#include "Point.h"
+#include "GeometricObject.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
