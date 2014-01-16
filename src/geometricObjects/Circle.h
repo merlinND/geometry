@@ -3,13 +3,10 @@
 #define CIRCLE_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <sstream>
+
 #include "Point.h"
 #include "GeometricObject.h"
-
-#include <sstream>
-//--------------------------------------------------- Interfaces utilisées
-
-
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 

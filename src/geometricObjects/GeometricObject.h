@@ -21,13 +21,9 @@ class GeometricObject
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
 
-virtual string GetRepresentation() = 0;
-virtual void Move(int dx, int dy) = 0;
+	virtual string GetRepresentation() = 0;
+	virtual void Move(int dx, int dy) = 0;
 
 
 //------------------------------------------------- Surcharge d'opérateurs

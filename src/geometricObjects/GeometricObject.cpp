@@ -7,19 +7,12 @@ using namespace std;
 #include "GeometricObject.h"
 
 //------------------------------------------------------------- Constantes
-
 int GeometricObject::objectIdCounter = 0;
+
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type GeometricObject::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 //------------------------------------------------- Surcharge d'opérateurs
-
 //-------------------------------------------- Constructeurs - destructeur
 
 GeometricObject::GeometricObject ( string myObject )
