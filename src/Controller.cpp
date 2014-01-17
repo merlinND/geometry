@@ -86,6 +86,11 @@ void Controller::Redo()
 	history.Redo();
 }
 
+IdSet Controller::GetAllIdsInDocument ( )
+{
+	return model.GetComponents();
+}
+
 GeometricObject * Controller::GetObjectById ( int idToFind )
 {
 	GeometricMap::iterator it = allObjects.find( idToFind );
@@ -137,6 +142,14 @@ bool Controller::IsNameUsedInDocument( string name )
 	//return model.HasObjectWithName( name );
 }
 
+void Controller::RemoveObjectFromDocument( int idToRemove )
+{
+	model.RemoveComponent( idToRemove );
+}
+void Controller::AddObjectBackInDocument( int idToAdd )
+{
+	model.AddComponent( idToAdd );
+}
 IdSet Controller::ClearDocument ( )
 {
 	IdSet removedIds = model.GetComponents();

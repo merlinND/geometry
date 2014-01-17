@@ -6,13 +6,22 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "ListCommand.h"
 #include "../Controller.h"
+#include "../geometricObjects/GeometricObject.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 void ListCommand::Execute ( )
 {
-	cout << "Executing the list command [TODO]" << endl;
+	Controller * controller = Controller::GetInstance();
+	IdSet allIds = controller->GetAllIdsInDocument();
+	GeometricObject * currentObject;
+	for ( IdSet::iterator it = allIds.begin();
+		 it != allIds.end(); ++it )
+	{
+		currentObject = controller->GetObjectById( *it );
+		cout << currentObject->GetRepresentation() << endl;
+	}
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

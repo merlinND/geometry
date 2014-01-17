@@ -43,8 +43,6 @@ int main ( )
 	agregate->AddComponent( poly->GetId() );
 	agregate->GetRepresentation();
 	
-	cout << endl << endl;
-	
 	// Basic command prompt
 	string text, returnText;
 	Command * currentCommand = NULL;
@@ -65,7 +63,7 @@ int main ( )
 		}
 		
 		// When the application exits, it mustn't output anything
-		// TODO : suppress output for NoneCommand as well
+		// TODO : suppress output for ListCommand, NoneCommand and others
 		if ( !controller->ShouldExit() )
 		{
 			cout << returnText << endl;

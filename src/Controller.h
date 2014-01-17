@@ -51,6 +51,10 @@ public:
 	// Mode d'emploi :
 	// Redo the last un-done command.
 	
+	IdSet GetAllIdsInDocument ( );
+	// Mode d'emploi :
+	// Returns the set of ids currently contained in the document.
+	
 	GeometricObject * GetObjectById ( int idToFind );
 	// Mode d'emploi :
 	// This method should be the only access point to actual
@@ -77,6 +81,18 @@ public:
 	// Mode d'emploi :
 	// Enables to check if a name is used by an object that is
 	// *currently* part of the document.
+	
+	void RemoveObjectFromDocument ( int idToRemove );
+	// Mode d'emploi :
+	// This method removes the given id from the document (model)
+	// but its instance keeps living since we might add it back
+	// to the document later.
+	void AddObjectBackInDocument ( int idToAdd );
+	// Mode d'emploi :
+	// Add an object back into the document (model).
+	// Contrat :
+	// The given id corresponds to an object that was previously
+	// removed from the document using RemoveObjectFromDocument.
 	
 	IdSet ClearDocument ( );
 	// Mode d'emploi :
