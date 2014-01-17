@@ -42,6 +42,9 @@ void History::Redo ( )
 void History::AddCommand ( HistorizableCommand * commandToAdd )
 {
 	undoStack.push( commandToAdd );
+	// As soon as you add a command on top of the history,
+	// it becomes impossible to redo anything that you had undone
+	emptyRedoStack();
 } // ----- End addCommand
 void History::DeleteLastCommand ( )
 {
@@ -69,5 +72,6 @@ History::~History ( )
 //----------------------------------------------------- Méthodes protégées
 void History::emptyRedoStack ( )
 {
-	redoStack.empty();
+	CommandStack emptyStack;
+	redoStack = emptyStack;
 }
