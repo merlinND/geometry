@@ -7,8 +7,9 @@ using namespace std;
 #include "Controller.h"
 #include "geometricObjects/AllGeometricObjects.h"
 //------------------------------------------------------------- Constantes
-// Initializing static field
+// Initializing static fields
 Controller * Controller::theInstance = NULL;
+int Controller::NOT_FOUND = -1;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -131,7 +132,7 @@ int Controller::GetIdByName( string name )
 		}
 		++it;
 	}
-	return NULL;
+	return NOT_FOUND;
 } //----- End GetNameById
 
 

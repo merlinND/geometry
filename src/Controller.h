@@ -23,6 +23,8 @@ class Controller
 
 public:
 //--------------------------------------------------- Constantes de classe
+	static int NOT_FOUND;
+	
 //----------------------------------------------------- Méthodes publiques
 	
 	static Controller * GetInstance ( );
@@ -62,7 +64,7 @@ public:
 	// have their targets' id. They must use this method to access
 	// the corresponding instances.
 	// Contrat :
-	// Returns NULL if the object is not found
+	// Returns NOT_FOUND if the object is not found
 	
 	std::string GetNameById ( int idToFind );
 	// Mode d'emploi :

@@ -48,10 +48,10 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		// Parameters : target name and offset
 		if ( tokens.size() == 4 )
 		{
-			if ( isNameUsedInDocument( tokens[1] ) )
+			// Find the id corresponding to this name (in the current document)
+			int targetId = controller->GetIdByName( tokens[1] );
+			if ( targetId != Controller::NOT_FOUND )
 			{
-				// Find the id corresponding to this name (in the current document)
-				int targetId = controller->GetIdByName( tokens[1] );
 				mc->AddTarget( targetId );
 				
 				if ( isValidPoint( tokens[2], tokens[3] ) )

@@ -28,6 +28,9 @@ public:
 	
 	virtual void Move ( int dx, int dy ) = 0;
 
+	int GetLastAppliedCommandId ( );
+	void SetLastAppliedCommandId ( int commandId );
+	
 //------------------------------------------------- Surcharge d'opérateurs
 
 

@@ -22,6 +22,15 @@ int GeometricObject::GetId ( )
 	return objectId;
 }
 
+int GeometricObject::GetLastAppliedCommandId()
+{
+	return lastAppliedCommandId;
+}
+void GeometricObject::SetLastAppliedCommandId( int commandId )
+{
+	lastAppliedCommandId = commandId;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 

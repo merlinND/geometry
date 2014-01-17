@@ -25,8 +25,6 @@ public:
 	// Execute the command. It should gather any information needed
 	// to be able to be undone.
 	
-	int GetCommandId ( );
-	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	Command ( );
@@ -36,10 +34,9 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
-	int commandId;
 	// A counter which is incremented each time a new command
-	// is instanciated
-	static int commandCounter;
+	// is executed.
+	static int executionCounter;
 	
 	// A list of the target(s)' name
 	// To access the actual instances, use Controller::GetObjectByName
