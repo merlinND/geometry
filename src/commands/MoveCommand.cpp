@@ -5,6 +5,7 @@
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "MoveCommand.h"
+#include "../Controller.h"
 #include "../geometricObjects/Point.h"
 
 //------------------------------------------------------------- Constantes
@@ -14,11 +15,27 @@ using namespace std;
 
 void MoveCommand::Execute ( )
 {
-	cout << "Executing MoveCommand [not implemented]" << endl;
+	executionCounter++;
+	
+	Controller * controller = Controller::GetInstance();
+	GeometricObject * currentObject;
+	for ( IdSet::iterator it = targets.begin();
+		 it != targets.end(); ++it )
+	{
+		currentObject = controller->GetObjectById( *it );
+		if ( currentObject->GetLastAppliedCommandId() != executionCounter )
+		{
+			currentObject->Move( offset.x, offset.y );
+			currentObject->SetLastAppliedCommandId( executionCounter );
+		}
+	}
 }
 void MoveCommand::Undo ( )
 {
-	cout << "Undoing MoveCommand [not implemented]" << endl;
+	// Re-execute the movement with an inversed offset
+	offset.Reverse();
+	Execute();
+	offset.Reverse();
 }
 
 void MoveCommand::SetOffset ( Vector2D theOffset )

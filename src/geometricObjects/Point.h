@@ -29,6 +29,12 @@ struct Point
 		os << y;
 		return os.str();
 	}
+	
+	void Reverse ( )
+	{
+		x = -x;
+		y = -y;
+	}
 };
 
 // A vector in two dimensions is simply composed of two coordinates
