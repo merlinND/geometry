@@ -16,11 +16,10 @@ using namespace std;
 string Circle::GetRepresentation ( )
 {
 	ostringstream os;
-	os << name << " " << center.x << " " << center.y << " " << radius << endl;
-	string representation;
-	representation = "C " + os.str( );
-	cout << representation;
-	return representation;
+	os << "C " + name + " ";
+	os << center.GetRepresentation() + " ";
+	os << radius;
+	return os.str();
 }
 void Circle::Move (int dx, int dy)
 {

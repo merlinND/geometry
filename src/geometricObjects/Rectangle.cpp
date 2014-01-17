@@ -2,7 +2,6 @@
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <sstream>
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Rectangle.h"
@@ -19,12 +18,10 @@ using namespace std;
 //} //----- Fin de Méthode
 string Rectangle::GetRepresentation ( )
 {
-	ostringstream os;
-		os << name << " " << upperLeftCorner.x << " " << upperLeftCorner.y << " " << lowerRightCorner.x << " " << lowerRightCorner.y << endl;
-		string representation;
-		representation = "R " + os.str( );
-		cout << representation;
-		return representation;
+	string representation = "R " + name + " ";
+	representation += upperLeftCorner.GetRepresentation() + " ";
+	representation += lowerRightCorner.GetRepresentation();
+	return representation;
 }
 
 void Rectangle::Move (int dx, int dy)

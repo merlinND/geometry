@@ -2,6 +2,8 @@
 #if ! defined ( POINT_H_ )
 #define POINT_H_
 
+#include <sstream>
+
 struct Point
 {
 	int x;
@@ -17,6 +19,15 @@ struct Point
 	{
 		x = 0;
 		y = 0;
+	}
+	
+	std::string GetRepresentation ( )
+	{
+		ostringstream os;
+		os << x;
+		os << " ";
+		os << y;
+		return os.str();
 	}
 };
 

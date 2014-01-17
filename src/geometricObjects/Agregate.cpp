@@ -27,7 +27,6 @@ string Agregate::GetRepresentation()
 	{
 		representation += " " + controller->GetNameById( *it );
 	}
-	cout << representation << endl;
 	return representation;
 } //----- End GetRepresentation
 

@@ -21,12 +21,8 @@ using namespace std;
 
 string Line::GetRepresentation ( )
 {
-	ostringstream os;
-	os << name << " " << first.x << " " << first.y << " " << last.x << " " << last.y << endl;
-	string representation;
-	representation = "L " + os.str( );
-	cout << representation;
-	return representation;
+	return "L " + name + " " + first.GetRepresentation()
+			+ " " + last.GetRepresentation();
 }
 
 void Line::Move (int dx, int dy)

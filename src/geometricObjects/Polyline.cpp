@@ -15,17 +15,12 @@ using namespace std;
 
 string Polyline::GetRepresentation()
 {
-	ostringstream os;
-	string temp = "";
-
+	
+	string representation = "PL " + name + " ";
 	for (int i = 0; i < (int) points.size(); i++)
 	{
-		os << points[i].x << " " << points[i].y << " " ;
-
+		representation += points[i].GetRepresentation() + " ";
 	}
-	string representation;
-	representation = "PL " + name+" " + os.str();
-	cout << representation << endl;
 	return representation;
 }
 
