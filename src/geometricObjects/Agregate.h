@@ -31,6 +31,7 @@ public:
     //
 	
 	void Move (int dx, int dy);
+	void AddObject(string name);
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

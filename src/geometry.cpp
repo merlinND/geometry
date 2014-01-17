@@ -16,19 +16,27 @@ int main ( )
 {
 
 	Point p1(1, 2);
+	Point p2(3, 4);
 	Circle cercle("myCircle", p1, 3);
 	cercle.GetRepresentation();
+
 	vector <Point> v;
 	v.push_back(p1);
-	v.push_back(p1);
+	v.push_back(p2);
+	Polyline myPoly ("myPoly", v);
+	myPoly.GetRepresentation();
+	myPoly.AddPoint(p1);
+	myPoly.GetRepresentation();
 	
 	vector <string> ag;
 	ag.push_back("myCircle");
+	ag.push_back("myPoly");
+	ag.push_back("myPoly2");
 	Agregate agregat("myFirstAgregate", ag);
-	cout << "hu" << v[0].x << endl;
+	agregat.AddObject("myCyrcle");
 	agregat.GetRepresentation();
-
-	Polyline myPoly ("myPoly", v);
+	agregat.Move(1,1);
+	agregat.GetRepresentation();
 
 	myPoly.GetRepresentation();
 	myPoly.AddPoint(p1);

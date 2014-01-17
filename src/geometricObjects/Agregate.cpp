@@ -17,43 +17,61 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 string Agregate::GetRepresentation()
+
 {
 	string representation = "OA " + name;
 	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
 	{
 		representation += " " + agregateComponents[i];
 	}
-	cout << representation;
+	cout << representation << endl;
 	return representation;
 } //----- End GetRepresentation
+
 
 void Agregate::Move(int dx, int dy)
 {
 	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
 	{
-		agregateComponents [i];
+
 		Controller * controller = Controller::GetInstance();
 		controller->GetObjectByName(agregateComponents [i]);
+
 	}
+
 } //----- End Move
+void Agregate::AddObject(string objectAdded)
+{
+
+
+	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+	{
+
+		if (agregateComponents[i] == objectAdded)
+		{
+			cout << "cannot have twins in an agregate" << endl;
+				return ;
+		}
+	}
+	agregateComponents.push_back(objectAdded);
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-Agregate::Agregate ( string myAgregate, vector <string> components) : GeometricObject ( myAgregate )
+Agregate::Agregate ( std::string myAgregate, vector <std::string> contained) : GeometricObject ( myAgregate )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
-    //cout <<"test";
-    //agregateComponents[0]=components[0];
-    //cout << agregateComponents[0];
-	// affectation ne fonctionne pas....
-    for ( int i = 0; i < components.size(); i++)
+
+    for( int i = 0; i < contained.size(); i++ )
     {
-    	agregateComponents.push_back( components[i] );
+    	agregateComponents.push_back(contained[i]);
+
+
     }
 } //----- Fin de Agregate
 

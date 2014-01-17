@@ -21,11 +21,11 @@ string Polyline::GetRepresentation()
 	for (int i = 0; i < (int) points.size(); i++)
 	{
 		os << points[i].x << " " << points[i].y << " " ;
-		temp += os.str();
+
 	}
 	string representation;
-	representation = "PL " + name +os.str()+ temp;
-	cout << representation;
+	representation = "PL " + name+" " + os.str();
+	cout << representation << endl;
 	return representation;
 }
 
