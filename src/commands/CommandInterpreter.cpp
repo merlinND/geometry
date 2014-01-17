@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "CommandInterpreter.h"
@@ -27,14 +28,20 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	line.get();
 	line.clear();
 	
+	// Ignore empty input or comments (line starting with #)
+	if ( tokens.empty() || tokens[0][0] == '#' )
+		return new NoneCommand();
+	
 	//----- Build a Command from this input
 	// At any time, if anything is wrong, we just let the result pointer
 	// to NULL, which indicates an error.
 	Command * result = NULL;
-	if ( tokens.empty() )
-		return NULL;
 	
-	if ( "MOVE" == tokens[0] )
+	// We allow the commands to be typed in lowercase
+	string command = tokens[0];
+	transform(command.begin(), command.end(), command.begin(),::toupper);
+	
+	if ( "MOVE" == command )
 	{
 		MoveCommand * mc = new MoveCommand( );
 		// Parameters : target name and offset
@@ -53,19 +60,19 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		}
 	}
 	// TODO: add support for all command types
-	else if ( "LIST" == tokens[0] )
+	else if ( "LIST" == command )
 	{
 		result = new ListCommand( );
 	}
-	else if ( "UNDO" == tokens[0] )
+	else if ( "UNDO" == command )
 	{
 		result = new UndoCommand( );
 	}
-	else if ( "REDO" == tokens[0] )
+	else if ( "REDO" == command )
 	{
 		result = new RedoCommand( );
 	}
-	else if ( "EXIT" == tokens[0] )
+	else if ( "EXIT" == command )
 	{
 		result = new ExitCommand( );
 	}

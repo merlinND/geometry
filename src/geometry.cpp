@@ -32,16 +32,20 @@ int main ( )
 
 	myPoly.GetRepresentation();
 	myPoly.AddPoint(p1);
-
+	
+	cout << endl << endl;
+	
 	Controller * controller = Controller::GetInstance();
 	// Basic command prompt
 	string text, returnText;
 	Command * currentCommand = NULL;
 	while ( !controller->ShouldExit() )
 	{
+		// TODO: remove this prompt sign before delivery
 		cout << "> ";
 		
 		currentCommand = CommandInterpreter::InterpretCommand( cin );
+		
 		if ( NULL != currentCommand )
 		{
 			returnText = controller->ProcessCommand( currentCommand );
@@ -52,6 +56,7 @@ int main ( )
 		}
 		
 		// When the application exits, it mustn't output anything
+		// TODO : suppress output for NoneCommand as well
 		if ( !controller->ShouldExit() )
 		{
 			cout << returnText << endl;
