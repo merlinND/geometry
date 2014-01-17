@@ -40,28 +40,44 @@ void Agregate::Move(int dx, int dy)
 	}
 
 } //----- End Move
-void Agregate::AddObject(string objectAdded)
+
+void Agregate::AddComponent(string idToAdd)
 {
-
-
 	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
 	{
 
-		if (agregateComponents[i] == objectAdded)
+		if (agregateComponents[i] == idToAdd)
 		{
-			cout << "cannot have twins in an agregate" << endl;
-				return ;
+			cout << "ERROR: cannot have duplicates in an agregate" << endl;
+			return ;
 		}
 	}
-	agregateComponents.push_back(objectAdded);
+	agregateComponents.push_back(idToAdd);
+}
+
+vector<string> Agregate::GetComponents ( )
+{
+	return agregateComponents;
+}
+
+void Agregate::RemoveComponent( string name )
+{
+	
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-Agregate::Agregate ( std::string myAgregate, vector <std::string> contained) : GeometricObject ( myAgregate )
-// Algorithme :
-//
+Agregate::Agregate ( std::string name ) : GeometricObject ( name )
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Agregate>" << endl;
+#endif
+} //----- Fin de Agregate
+
+Agregate::Agregate ( std::string name,
+					vector <std::string> contained)
+	: GeometricObject ( name )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Agregate>" << endl;
@@ -70,8 +86,6 @@ Agregate::Agregate ( std::string myAgregate, vector <std::string> contained) : G
     for( int i = 0; i < contained.size(); i++ )
     {
     	agregateComponents.push_back(contained[i]);
-
-
     }
 } //----- Fin de Agregate
 

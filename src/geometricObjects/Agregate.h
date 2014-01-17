@@ -30,17 +30,23 @@ public:
     // Contrat :
     //
 	
-	void Move (int dx, int dy);
-	void AddObject(string name);
+	void Move ( int dx, int dy );
+	
+	void AddComponent( string name );
+	vector<string> GetComponents ( );
+	void RemoveComponent( string name );
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-    Agregate ( std::string agregateNames, vector <std::string> contained);
+	Agregate ( std::string name );
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Creates an empty agregate object with the given name.
+	
+    Agregate ( std::string name, vector <std::string> contained );
+    // Mode d'emploi :
+    // Creates an agregate with the given name
+	// and containing the given ids.
 
     virtual ~Agregate ( );
     // Mode d'emploi :

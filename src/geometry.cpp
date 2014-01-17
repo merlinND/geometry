@@ -33,7 +33,7 @@ int main ( )
 	ag.push_back("myPoly");
 	ag.push_back("myPoly2");
 	Agregate agregat("myFirstAgregate", ag);
-	agregat.AddObject("myCyrcle");
+	agregat.AddComponent("myCyrcle");
 	agregat.GetRepresentation();
 	agregat.Move(1,1);
 	agregat.GetRepresentation();

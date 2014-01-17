@@ -28,24 +28,6 @@ Controller * Controller::GetInstance( )
 	return theInstance;
 } // ----- End getInstance
 
-void Controller::Undo()
-{
-	history.Undo();
-}
-void Controller::Redo()
-{
-	history.Redo();
-}
-
-bool Controller::ShouldExit()
-{
-	return exitFlag;
-}
-void Controller::Exit()
-{
-	exitFlag = true;
-}
-
 string Controller::ProcessCommand ( Command * command )
 {
 	command->Execute();
@@ -57,6 +39,15 @@ string Controller::ProcessCommand ( Command * command )
 	
 	return "OK";
 } // ----- End processCommand
+
+void Controller::Undo()
+{
+	history.Undo();
+}
+void Controller::Redo()
+{
+	history.Redo();
+}
 
 GeometricObject * Controller::GetObjectByName ( string name )
 {
@@ -78,6 +69,25 @@ bool Controller::IsNameUsedInDocument( string name )
 	//return model.HasObjectWithName( name );
 }
 
+vector<string> Controller::ClearDocument ( )
+{
+	vector<string> removedIds = model.GetComponents();
+	for ( int i = 0; i < removedIds.size(); ++i )
+	{
+		model.RemoveComponent( removedIds.at(i) );
+	}
+	return removedIds;
+}
+
+bool Controller::ShouldExit()
+{
+	return exitFlag;
+}
+void Controller::Exit()
+{
+	exitFlag = true;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -92,7 +102,7 @@ Controller::~Controller ( )
 
 //----------------------------------------------------- Méthodes protégées
 
-Controller::Controller ( ) : exitFlag( false )
+Controller::Controller ( ) : model( "__model__" ), exitFlag( false )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Controller>" << endl;

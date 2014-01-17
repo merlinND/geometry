@@ -7,7 +7,7 @@
 
 #include "commands/Command.h"
 #include "commands/History.h"
-#include "geometricObjects/GeometricObject.h"
+#include "geometricObjects/Agregate.h"
 //------------------------------------------------------------- Constantes 
 //------------------------------------------------------------------ Types
 typedef map<std::string, GeometricObject *> GeometricMap;
@@ -29,15 +29,17 @@ public:
 	// Mode d'emploi :
 	// Only acess point to a Controller instance (Singleton pattern)
 	
-	void Undo ( );
-	void Redo ( );
+	std::string ProcessCommand ( Command * command );
+	// Mode d'emploi :
+	// Attempt to execute the command passed as argument,
+	// and add it to the History if appropriate.
 	
-	bool ShouldExit ( );
+	void Undo ( );
 	// Mode d'emploi :
-	// Use this method to know wether the application should exit or not
-	void Exit ( );
+	// Undo the last processed command.
+	void Redo ( );
 	// Mode d'emploi :
-	// Use this method to indicate that the application should exit
+	// Redo the last un-done command.
 	
 	GeometricObject * GetObjectByName ( std::string name );
 	// Mode d'emploi :
@@ -53,7 +55,20 @@ public:
 	// Enables to check if a name is used by an object that is
 	// *currently* part of the document.
 	
-	std::string ProcessCommand ( Command * command );
+	vector<string> ClearDocument ( );
+	// Mode d'emploi :
+	// Removes every object from the document. The actual object instances
+	// are not freed, since the clear command could very well be undone.
+	// Returns a list of all the objects' ids contained in the document.
+	
+	bool ShouldExit ( );
+	// Mode d'emploi :
+	// Use this method to know wether the application should exit or not
+	void Exit ( );
+	// Mode d'emploi :
+	// Use this method to indicate that the application should exit
+	
+	
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
@@ -88,8 +103,7 @@ protected:
 
 	// An agregate object which contains all GeometricObjects that *are*
 	// currently part of the document
-	// TODO: change to an Agregate type (and not pointer)
-	GeometricObject * model;
+	Agregate model;
 	
 	// An associative array of GeometricObjects that were created
 	// in this session, even if they are not part of the document
