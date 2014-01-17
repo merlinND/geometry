@@ -4,10 +4,10 @@
 #include <string>
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <set>
 //------------------------------------------------------------- Constantes 
-
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------------------ Types
+typedef set<int> IdSet;
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <GeometricObject>
@@ -22,9 +22,11 @@ class GeometricObject
 public:
 //----------------------------------------------------- Méthodes publiques
 
-	virtual string GetRepresentation() = 0;
-	virtual void Move(int dx, int dy) = 0;
-
+	string GetName ( );
+	int GetId ( );
+	virtual string GetRepresentation ( ) = 0;
+	
+	virtual void Move ( int dx, int dy ) = 0;
 
 //------------------------------------------------- Surcharge d'opérateurs
 

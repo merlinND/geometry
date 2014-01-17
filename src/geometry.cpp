@@ -28,18 +28,12 @@ int main ( )
 	myPoly.AddPoint(p1);
 	myPoly.GetRepresentation();
 	
-	vector <string> ag;
-	ag.push_back("myCircle");
-	ag.push_back("myPoly");
-	ag.push_back("myPoly2");
-	Agregate agregat("myFirstAgregate", ag);
-	agregat.AddComponent("myCyrcle");
-	agregat.GetRepresentation();
-	agregat.Move(1,1);
-	agregat.GetRepresentation();
-
-	myPoly.GetRepresentation();
-	myPoly.AddPoint(p1);
+	//vector<int> components;
+	//components.push_back(cercle.GetId());
+	//components.push_back(myPoly.GetId());
+	//Agregate agregat("myFirstAgregate", components);
+	//agregat.GetRepresentation();
+	//agregat.Move(1,1);
 	
 	cout << endl << endl;
 	

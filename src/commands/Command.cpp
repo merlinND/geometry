@@ -12,9 +12,9 @@ int Command::commandCounter = 0;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void Command::AddTarget( string const targetName )
+void Command::AddTarget( int targetId )
 {
-	targets.push_back( targetName );
+	targets.insert( targetId );
 }
 
 int Command::GetCommandId ( )

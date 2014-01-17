@@ -35,6 +35,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	//----- Build a Command from this input
 	// At any time, if anything is wrong, we just let the result pointer
 	// to NULL, which indicates an error.
+	Controller * controller = Controller::GetInstance();
 	Command * result = NULL;
 	
 	// We allow the commands to be typed in lowercase
@@ -49,7 +50,10 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		{
 			if ( isNameUsedInDocument( tokens[1] ) )
 			{
-				mc->AddTarget(tokens[1]);
+				// Find the id corresponding to this name (in the current document)
+				int targetId = controller->GetIdByName( tokens[1] );
+				mc->AddTarget( targetId );
+				
 				if ( isValidPoint( tokens[2], tokens[3] ) )
 				{
 					Vector2D offset = makePointFromInput( tokens[2], tokens[3] );

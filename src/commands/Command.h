@@ -3,8 +3,7 @@
 #define COMMAND_H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include <vector>
-#include "../geometricObjects/Point.h"
+#include "../geometricObjects/GeometricObject.h"
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
@@ -19,7 +18,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	virtual bool IsHistorizable ( ) = 0;
 	
-	virtual void AddTarget ( std::string const targetName );
+	virtual void AddTarget ( int targetId );
 	
 	virtual void Execute ( ) = 0;
 	// Mode d'emploi :
@@ -44,6 +43,6 @@ protected:
 	
 	// A list of the target(s)' name
 	// To access the actual instances, use Controller::GetObjectByName
-	std::vector<std::string> targets;
+	IdSet targets;
 };
 #endif // COMMAND_H_

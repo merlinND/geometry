@@ -8,9 +8,7 @@
 
 #include "GeometricObject.h"
 //------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types 
-
+//------------------------------------------------------------------ Types
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Agregate>
 //
@@ -32,10 +30,10 @@ public:
 	
 	void Move ( int dx, int dy );
 	
-	void AddComponent( string name );
-	vector<string> GetComponents ( );
-	void RemoveComponent( string name );
-
+	void AddComponent( int idToAdd );
+	IdSet GetComponents ( );
+	void RemoveComponent( int idToRemove );
+	void RemoveAllComponents ( );
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -43,7 +41,7 @@ public:
     // Mode d'emploi :
     // Creates an empty agregate object with the given name.
 	
-    Agregate ( std::string name, vector <std::string> contained );
+    Agregate ( std::string name, vector<int> contained );
     // Mode d'emploi :
     // Creates an agregate with the given name
 	// and containing the given ids.
@@ -60,8 +58,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	// A list of all the ids contained in this agregate object
-	vector <std::string> agregateComponents;
+	// A set of all the ids contained in this agregate object
+	IdSet agregateComponents;
 
 };
 

@@ -20,49 +20,47 @@ string Agregate::GetRepresentation()
 
 {
 	string representation = "OA " + name;
-	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+	
+	Controller * controller = Controller::GetInstance();
+	for ( IdSet::iterator it; it != agregateComponents.end(); ++it )
 	{
-		representation += " " + agregateComponents[i];
+		representation += " " + controller->GetNameById( *it );
 	}
 	cout << representation << endl;
 	return representation;
 } //----- End GetRepresentation
 
 
-void Agregate::Move(int dx, int dy)
+void Agregate::Move( int dx, int dy )
 {
-	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
+	Controller * controller = Controller::GetInstance();
+	GeometricObject * currentObject;
+	for ( IdSet::iterator it; it != agregateComponents.end(); ++it )
 	{
-
-		Controller * controller = Controller::GetInstance();
-		controller->GetObjectByName(agregateComponents [i]);
-
+		currentObject = controller->GetObjectById( *it );
+		currentObject->Move( dx, dy );
 	}
 
 } //----- End Move
 
-void Agregate::AddComponent(string idToAdd)
+void Agregate::AddComponent( int idToAdd )
 {
-	for ( int i = 0; i < ( int )agregateComponents.size (); i++)
-	{
-
-		if (agregateComponents[i] == idToAdd)
-		{
-			cout << "ERROR: cannot have duplicates in an agregate" << endl;
-			return ;
-		}
-	}
-	agregateComponents.push_back(idToAdd);
+	agregateComponents.insert( idToAdd );
 }
 
-vector<string> Agregate::GetComponents ( )
+IdSet Agregate::GetComponents ( )
 {
 	return agregateComponents;
 }
 
-void Agregate::RemoveComponent( string name )
+void Agregate::RemoveComponent( int idToRemove )
 {
-	
+	agregateComponents.erase(agregateComponents.find( idToRemove ));
+}
+
+void Agregate::RemoveAllComponents ( )
+{
+	agregateComponents.clear();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -75,8 +73,7 @@ Agregate::Agregate ( std::string name ) : GeometricObject ( name )
 #endif
 } //----- Fin de Agregate
 
-Agregate::Agregate ( std::string name,
-					vector <std::string> contained)
+Agregate::Agregate ( std::string name, vector<int> contained)
 	: GeometricObject ( name )
 {
 #ifdef MAP
@@ -85,7 +82,7 @@ Agregate::Agregate ( std::string name,
 
     for( int i = 0; i < contained.size(); i++ )
     {
-    	agregateComponents.push_back(contained[i]);
+    	agregateComponents.insert( contained[i] );
     }
 } //----- Fin de Agregate
 

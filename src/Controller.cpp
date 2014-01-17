@@ -49,9 +49,9 @@ void Controller::Redo()
 	history.Redo();
 }
 
-GeometricObject * Controller::GetObjectByName ( string name )
+GeometricObject * Controller::GetObjectById ( int idToFind )
 {
-	GeometricMap::iterator it = allObjects.find( name );
+	GeometricMap::iterator it = allObjects.find( idToFind );
 	if ( it != allObjects.end() )
 	{
 		return it->second;
@@ -60,7 +60,38 @@ GeometricObject * Controller::GetObjectByName ( string name )
 	{
 		return NULL;
 	}
-} // ----- End getObjectByName
+} //----- End GetObjectByName
+
+string Controller::GetNameById ( int idToFind )
+{
+	GeometricMap::iterator found = allObjects.find( idToFind );
+	if ( found != allObjects.end() )
+	{
+		return found->second->GetName();
+	}
+	else
+	{
+		return NULL;
+	}
+} //----- End GetNameById
+
+int Controller::GetIdByName( string name )
+{
+	IdSet components = model.GetComponents();
+	IdSet::iterator it = components.end();
+	GeometricObject * currentObject;
+	while ( it != components.end() )
+	{
+		currentObject = GetObjectById( *it );
+		if ( currentObject->GetName() == name )
+		{
+			return *it;
+		}
+		++it;
+	}
+	return NULL;
+} //----- End GetNameById
+
 
 bool Controller::IsNameUsedInDocument( string name )
 {
@@ -69,13 +100,10 @@ bool Controller::IsNameUsedInDocument( string name )
 	//return model.HasObjectWithName( name );
 }
 
-vector<string> Controller::ClearDocument ( )
+IdSet Controller::ClearDocument ( )
 {
-	vector<string> removedIds = model.GetComponents();
-	for ( int i = 0; i < removedIds.size(); ++i )
-	{
-		model.RemoveComponent( removedIds.at(i) );
-	}
+	IdSet removedIds = model.GetComponents();
+	model.RemoveAllComponents();
 	return removedIds;
 }
 
@@ -102,7 +130,7 @@ Controller::~Controller ( )
 
 //----------------------------------------------------- Méthodes protégées
 
-Controller::Controller ( ) : model( "__model__" ), exitFlag( false )
+Controller::Controller ( ) : model( "__document__" ), exitFlag( false )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Controller>" << endl;

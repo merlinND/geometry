@@ -12,6 +12,16 @@ int GeometricObject::objectIdCounter = 0;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+
+string GeometricObject::GetName ( )
+{
+	return name;
+}
+int GeometricObject::GetId ( )
+{
+	return objectId;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 

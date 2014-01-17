@@ -5,6 +5,8 @@
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "MoveCommand.h"
+#include "../geometricObjects/Point.h"
+
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
