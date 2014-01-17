@@ -22,7 +22,8 @@ string Agregate::GetRepresentation()
 	string representation = "OA " + name;
 	
 	Controller * controller = Controller::GetInstance();
-	for ( IdSet::iterator it; it != agregateComponents.end(); ++it )
+	for ( IdSet::iterator it = agregateComponents.begin();
+		 it != agregateComponents.end(); ++it )
 	{
 		representation += " " + controller->GetNameById( *it );
 	}
@@ -35,7 +36,8 @@ void Agregate::Move( int dx, int dy )
 {
 	Controller * controller = Controller::GetInstance();
 	GeometricObject * currentObject;
-	for ( IdSet::iterator it; it != agregateComponents.end(); ++it )
+	for ( IdSet::iterator it = agregateComponents.begin();
+		 it != agregateComponents.end(); ++it )
 	{
 		currentObject = controller->GetObjectById( *it );
 		currentObject->Move( dx, dy );

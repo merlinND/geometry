@@ -115,7 +115,7 @@ string Controller::GetNameById ( int idToFind )
 int Controller::GetIdByName( string name )
 {
 	IdSet components = model.GetComponents();
-	IdSet::iterator it = components.end();
+	IdSet::iterator it = components.begin();
 	GeometricObject * currentObject;
 	while ( it != components.end() )
 	{
