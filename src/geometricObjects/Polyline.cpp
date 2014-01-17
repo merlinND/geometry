@@ -45,17 +45,28 @@ void Polyline::Move (int dx, int dy)
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-Polyline::Polyline ( string myPolyline, vector <Point> polyPoint)
-	: GeometricObject ( myPolyline)
+
+Polyline::Polyline ( string name ) : GeometricObject ( name)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Polyline>" << endl;
 #endif
-	for (int i = 0; i < (int) polyPoint.size(); i++)
+} //----- Fin de Polyline
+
+
+Polyline::Polyline ( string name, vector <Point> points)
+	: GeometricObject ( name)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Polyline>" << endl;
+#endif
+	for (int i = 0; i < (int) points.size(); i++)
 	{
-		points.push_back( polyPoint [i] );
+		points.push_back( points [i] );
 	}
 } //----- Fin de Polyline
 

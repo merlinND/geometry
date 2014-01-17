@@ -7,7 +7,7 @@
 
 #include "commands/Command.h"
 #include "commands/History.h"
-#include "geometricObjects/Agregate.h"
+#include "geometricObjects/AllGeometricObjects.h"
 //------------------------------------------------------------- Constantes 
 //------------------------------------------------------------------ Types
 typedef map<int, GeometricObject *> GeometricMap;
@@ -33,6 +33,16 @@ public:
 	// Mode d'emploi :
 	// Attempt to execute the command passed as argument,
 	// and add it to the History if appropriate.
+	
+	Circle * CreateCircle ( std::string name, Point center, int radius );
+	Line * CreateLine ( std::string name, Point begin, Point end );
+	Polyline * CreatePolyline ( std::string name );
+	Rectangle * CreateRectangle ( std::string name, Point ulc, Point lrc );
+	Agregate * CreateAgregate ( std::string name );
+	// Mode d'emploi :
+	// All methods above create an instance of the desired GeometricObject
+	// add it to allObjects as well as the document
+	// and return a pointer to the new instance.
 	
 	void Undo ( );
 	// Mode d'emploi :

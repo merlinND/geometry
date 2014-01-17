@@ -50,7 +50,13 @@ public:
     // Contrat :
     //
 
-    Polyline ( string, vector <Point> );
+	Polyline ( string name );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+	
+    Polyline ( string name, vector<Point> points );
     // Mode d'emploi :
     //
     // Contrat :
