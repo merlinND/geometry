@@ -91,6 +91,20 @@ IdSet Controller::GetAllIdsInDocument ( )
 {
 	return model.GetComponents();
 }
+IdSet Controller::GetAllAgregatesInDocument ( )
+{
+	IdSet all = GetAllIdsInDocument();
+	IdSet agregatesOnly;
+	for ( IdSet::iterator it = all.begin();
+		 it != all.end(); ++it )
+	{
+		if ( GetObjectById( *it)->GetInitials() == Agregate::INITIALS )
+		{
+			agregatesOnly.insert( *it );
+		}
+	}
+	return agregatesOnly;
+}
 
 GeometricObject * Controller::GetObjectById ( int idToFind )
 {

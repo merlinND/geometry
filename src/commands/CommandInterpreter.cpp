@@ -63,6 +63,34 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			}
 		}
 	}
+	else if ( "DELETE" == command )
+	{
+		DeleteCommand * dc = new DeleteCommand( );
+		// Parameters : a list of target names (at least one)
+		if ( tokens.size() >= 2 )
+		{
+			// Find the id corresponding each name (in the current document)
+			bool valid = true;
+			for ( int i = 1; i < tokens.size(); ++i )
+			{
+				int targetId = controller->GetIdByName( tokens[1] );
+				if ( targetId != Controller::NOT_FOUND )
+				{
+					dc->AddTarget( targetId );
+				}
+				else
+				{
+					valid = false;
+				}
+			}
+			// All given names must exist in the document, otherwise we do
+			// not delete *any* of the given names
+			if ( valid )
+			{
+				result = dc;
+			}
+		}
+	}
 	// TODO: add support for all command types
 	else if ( "LIST" == command )
 	{

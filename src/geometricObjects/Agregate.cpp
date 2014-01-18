@@ -54,6 +54,12 @@ IdSet Agregate::GetComponents ( )
 	return agregateComponents;
 }
 
+bool Agregate::Contains( int idToFind )
+{
+	return ( agregateComponents.find( idToFind )
+			!= agregateComponents.end() );
+}
+
 void Agregate::RemoveComponent( int idToRemove )
 {
 	agregateComponents.erase(agregateComponents.find( idToRemove ));

@@ -34,6 +34,8 @@ public:
 	
 	void AddComponent( int idToAdd );
 	IdSet GetComponents ( );
+	bool Contains ( int idToFind );
+	
 	void RemoveComponent( int idToRemove );
 	void RemoveAllComponents ( );
 //------------------------------------------------- Surcharge d'opérateurs

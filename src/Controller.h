@@ -56,6 +56,10 @@ public:
 	IdSet GetAllIdsInDocument ( );
 	// Mode d'emploi :
 	// Returns the set of ids currently contained in the document.
+	IdSet GetAllAgregatesInDocument ( );
+	// Mode d'emploi :
+	// Returns the set of all agregates' ids.
+	
 	
 	GeometricObject * GetObjectById ( int idToFind );
 	// Mode d'emploi :
