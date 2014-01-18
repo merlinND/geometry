@@ -11,9 +11,10 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void NoneCommand::Execute ( )
+string NoneCommand::Execute ( )
 {
 	// Doing nothing is this command's job
+	return STATUS_OK_SILENT;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

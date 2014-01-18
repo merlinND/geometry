@@ -44,7 +44,7 @@ int main ( )
 	agregate->GetRepresentation();
 	
 	// Basic command prompt
-	string text, returnText;
+	string returnText;
 	Command * currentCommand = NULL;
 	while ( !controller->ShouldExit() )
 	{
@@ -59,12 +59,10 @@ int main ( )
 		}
 		else
 		{
-			returnText = "ERR";
+			returnText = Command::STATUS_ERROR;
 		}
 		
-		// When the application exits, it mustn't output anything
-		// TODO : suppress output for ListCommand, NoneCommand and others
-		if ( !controller->ShouldExit() )
+		if ( returnText.length() > 0 )
 		{
 			cout << returnText << endl;
 		}

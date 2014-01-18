@@ -8,7 +8,8 @@
 //------------------------------------------------------------------ Types 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <RedoCommand>
-//
+// Indicates to the controller that it should redo the last
+// undone operation.
 //------------------------------------------------------------------------ 
 
 class RedoCommand : public NonHistorizableCommand
@@ -18,13 +19,11 @@ class RedoCommand : public NonHistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void Execute ( );
+	virtual std::string Execute ( );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	RedoCommand ( );
-	// Mode d'emploi :
-	// Indicates to the controller that it should undo the last operation.
 
 	virtual ~RedoCommand ( );
 

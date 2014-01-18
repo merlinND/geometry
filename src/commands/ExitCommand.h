@@ -8,7 +8,7 @@
 //------------------------------------------------------------------ Types 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <ExitCommand>
-//
+// Tells the controller that the program should exit.
 //------------------------------------------------------------------------ 
 
 class ExitCommand : public NonHistorizableCommand
@@ -18,14 +18,12 @@ class ExitCommand : public NonHistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void Execute ( );
+	virtual std::string Execute ( );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	ExitCommand ( );
-	// Mode d'emploi :
-	// Exits the program.
-
+	
 	virtual ~ExitCommand ( );
 
 //------------------------------------------------------------------ PRIVE 

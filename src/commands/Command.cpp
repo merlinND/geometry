@@ -6,9 +6,11 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Command.h"
 //------------------------------------------------------------- Constantes
-// Initializing static field
+// Initializing static fields
 int Command::executionCounter = 0;
-
+string Command::STATUS_OK = "OK";
+string Command::STATUS_OK_SILENT = "";
+string Command::STATUS_ERROR = "ERR";
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 

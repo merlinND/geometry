@@ -8,19 +8,23 @@
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
 // Rôle de la classe <Command>
-// TODO
+// Abstract parent class of all Command classes.
 //------------------------------------------------------------------------
 class Command
 {
 //----------------------------------------------------------------- PUBLIC
-	
 public:
+//--------------------------------------------------- Constantes de classe
+	static std::string STATUS_OK;
+	static std::string STATUS_OK_SILENT;
+	static std::string STATUS_ERROR;
+	
 //----------------------------------------------------- Méthodes publiques
 	virtual bool IsHistorizable ( ) = 0;
 	
 	virtual void AddTarget ( int targetId );
 	
-	virtual void Execute ( ) = 0;
+	virtual std::string Execute ( ) = 0;
 	// Mode d'emploi :
 	// Execute the command. It should gather any information needed
 	// to be able to be undone.

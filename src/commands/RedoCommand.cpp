@@ -11,10 +11,11 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void RedoCommand::Execute ( )
+string RedoCommand::Execute ( )
 {
 	cout << "Executing RedoCommand" << endl;
 	Controller::GetInstance()->Redo();
+	return STATUS_OK_SILENT;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

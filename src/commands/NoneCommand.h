@@ -8,7 +8,7 @@
 //------------------------------------------------------------------ Types 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <NoneCommand>
-//
+// A command that does nothing, but that is not an error either.
 //------------------------------------------------------------------------ 
 
 class NoneCommand : public NonHistorizableCommand
@@ -18,13 +18,11 @@ class NoneCommand : public NonHistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void Execute ( );
+	virtual std::string Execute ( );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	NoneCommand ( );
-	// Mode d'emploi :
-	// A command that does nothing, but that is not an error either.
 
 	virtual ~NoneCommand ( );
 

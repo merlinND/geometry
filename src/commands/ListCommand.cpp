@@ -11,7 +11,7 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-void ListCommand::Execute ( )
+string ListCommand::Execute ( )
 {
 	Controller * controller = Controller::GetInstance();
 	IdSet allIds = controller->GetAllIdsInDocument();
@@ -22,6 +22,8 @@ void ListCommand::Execute ( )
 		currentObject = controller->GetObjectById( *it );
 		cout << currentObject->GetRepresentation() << endl;
 	}
+	
+	return STATUS_OK_SILENT;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

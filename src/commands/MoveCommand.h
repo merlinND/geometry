@@ -9,7 +9,7 @@
 //------------------------------------------------------------------ Types 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <MoveCommand>
-//
+// Moves a set of GeometricObjects by the desired vector.
 //------------------------------------------------------------------------ 
 
 class MoveCommand : public HistorizableCommand
@@ -19,8 +19,8 @@ class MoveCommand : public HistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void Execute ( );
-	virtual void Undo ( );
+	virtual std::string Execute ( );
+	virtual std::string Undo ( );
 	
 	void SetOffset ( Vector2D theOffset );
 	void SetOffset ( int dx, int dy );
@@ -28,8 +28,6 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	MoveCommand ( );
-	// Mode d'emploi :
-	// Moves a set of GeometricObjects by the desired vector.
 
 	virtual ~MoveCommand ( );
 

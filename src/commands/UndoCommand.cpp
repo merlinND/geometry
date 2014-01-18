@@ -11,10 +11,11 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void UndoCommand::Execute ( )
+string UndoCommand::Execute ( )
 {
 	cout << "Executing UndoCommand" << endl;
 	Controller::GetInstance()->Undo();
+	return STATUS_OK_SILENT;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

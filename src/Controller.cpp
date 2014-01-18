@@ -31,14 +31,14 @@ Controller * Controller::GetInstance( )
 
 string Controller::ProcessCommand ( Command * command )
 {
-	command->Execute();
+	string status = command->Execute();
 	
-	if ( command->IsHistorizable() )
+	if ( command->IsHistorizable() && status != Command::STATUS_ERROR )
 	{
 		history.AddCommand( (HistorizableCommand *) command );
 	}
 	
-	return "OK";
+	return status;
 } //----- End ProcessCommand
 
 Circle * Controller::CreateCircle( string name, Point center, int radius)

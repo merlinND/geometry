@@ -8,7 +8,7 @@
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
 // Rôle de la classe <ListCommand>
-// TODO
+// List all objects currently in the document (one object per line).
 //------------------------------------------------------------------------
 class ListCommand : public NonHistorizableCommand
 {
@@ -16,7 +16,7 @@ class ListCommand : public NonHistorizableCommand
 	
 public:
 	//----------------------------------------------------- Méthodes publiques
-	virtual void Execute ( );
+	virtual std::string Execute ( );
 	
 	//------------------------------------------------- Surcharge d'opérateurs
 	//-------------------------------------------- Constructeurs - destructeur

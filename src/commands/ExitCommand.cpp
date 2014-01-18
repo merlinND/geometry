@@ -11,10 +11,11 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void ExitCommand::Execute ( )
+string ExitCommand::Execute ( )
 {
 	Controller * c = Controller::GetInstance();
 	c->Exit();
+	return STATUS_OK_SILENT;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -13,7 +13,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void MoveCommand::Execute ( )
+string MoveCommand::Execute ( )
 {
 	executionCounter++;
 	
@@ -29,13 +29,15 @@ void MoveCommand::Execute ( )
 			currentObject->SetLastAppliedCommandId( executionCounter );
 		}
 	}
+	return STATUS_OK;
 }
-void MoveCommand::Undo ( )
+string MoveCommand::Undo ( )
 {
 	// Re-execute the movement with an inversed offset
 	offset.Reverse();
 	Execute();
 	offset.Reverse();
+	return STATUS_OK;
 }
 
 void MoveCommand::SetOffset ( Vector2D theOffset )
