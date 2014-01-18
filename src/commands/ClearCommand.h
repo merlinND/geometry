@@ -1,6 +1,6 @@
-//-- Interface de la classe <DeleteCommand> (fichier DeleteCommand.h) -
-#if ! defined ( __DeleteCommand___H_ )
-#define __DeleteCommand___H_
+//-- Interface de la classe <ClearCommand> (fichier ClearCommand.h) -
+#if ! defined ( __ClearCommand___H_ )
+#define __ClearCommand___H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
@@ -10,40 +10,35 @@
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <DeleteCommand>
-// Remove a set of GeometricObject from the document.
-// All references to the removed objects in Agregate objects are also
-// removed. Thus, when calling Undo(), theses references are added back.
+// Rôle de la classe <ClearCommand>
+// Remove all objects from the document.
 //------------------------------------------------------------------------
 
-class DeleteCommand : public HistorizableCommand
+class ClearCommand : public HistorizableCommand
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void AddTarget( int targetId );
 	
 	virtual std::string Execute ( );
 	virtual std::string Undo ( );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-	DeleteCommand ( );
+	ClearCommand ( );
 
-	virtual ~DeleteCommand ( );
+	virtual ~ClearCommand ( );
 
 //------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
-	// The agregates in which each deleted object was included at
-	// the time of Execute(). One IdSet per deleted object.
-	vector<IdSet> parentAgregates;
+	IdSet documentContent;
 };
 
-//------------------- Autres définitions dépendantes de <DeleteCommand>
+//------------------- Autres définitions dépendantes de <ClearCommand>
 
-#endif // __DeleteCommand___H_ 
+#endif // __ClearCommand___H_ 

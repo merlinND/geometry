@@ -91,6 +91,14 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			}
 		}
 	}
+	else if ( "CLEAR" == command )
+	{
+		// Parameters : none
+		if ( tokens.size() == 1 )
+		{
+			result = new ClearCommand( );
+		}
+	}
 	// TODO: add support for all command types
 	else if ( "LIST" == command )
 	{

@@ -53,6 +53,8 @@ string DeleteCommand::Execute ( )
 }
 string DeleteCommand::Undo ( )
 {
+	executionCounter++;
+	
 	Controller * controller = Controller::GetInstance();
 	
 	vector<IdSet>::iterator agregatesIterator = parentAgregates.begin();

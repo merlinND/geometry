@@ -8,6 +8,7 @@
 // ----- Historizable commands
 #include "MoveCommand.h"
 #include "DeleteCommand.h"
+#include "ClearCommand.h"
 
 // ----- Non-historizable commands
 #include "NoneCommand.h"
