@@ -9,19 +9,14 @@ using namespace std;
 #include "Line.h"
 
 //------------------------------------------------------------- Constantes
-
+const string Line::INITIALS = "L";
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Line::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
 string Line::GetRepresentation ( )
 {
-	return "L " + name + " " + first.GetRepresentation()
+	return GetInitials() + " " + name + " " + first.GetRepresentation()
 			+ " " + last.GetRepresentation();
 }
 
@@ -38,7 +33,8 @@ void Line::Move (int dx, int dy)
 //-------------------------------------------- Constructeurs - destructeur
 
 Line::Line ( string myLine, Point firstPoint, Point lastPoint )
-	: GeometricObject ( myLine ), first ( firstPoint ), last( lastPoint )
+	: GeometricObject ( myLine, INITIALS ),
+	  first ( firstPoint ), last( lastPoint )
 // Algorithme :
 //
 {

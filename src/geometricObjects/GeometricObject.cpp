@@ -21,6 +21,10 @@ int GeometricObject::GetId ( )
 {
 	return objectId;
 }
+string const GeometricObject::GetInitials ( )
+{
+	return initials;
+}
 
 int GeometricObject::GetLastAppliedCommandId()
 {
@@ -34,7 +38,8 @@ void GeometricObject::SetLastAppliedCommandId( int commandId )
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-GeometricObject::GeometricObject ( string myObject )
+GeometricObject::GeometricObject ( string theName, string theInitials )
+	: name ( theName ), initials( theInitials )
 // Algorithme :
 //
 {
@@ -42,7 +47,6 @@ GeometricObject::GeometricObject ( string myObject )
 	cout << "Appel au constructeur de <GeometricObject>" << endl;
 #endif
 	lastAppliedCommandId = 0;
-	name = myObject;
 	objectId = objectIdCounter;
 	objectIdCounter++;
 } //----- Fin de GeometricObject

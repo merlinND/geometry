@@ -22,27 +22,21 @@ int main ( )
 	Point p4(0, 0);
 	
 	GeometricObject * circle = controller->CreateCircle( "myCircle", p1, 3);
-	circle->GetRepresentation();
 	
 	GeometricObject * line = controller->CreateLine( "myLine", p1, p2);
-	line->GetRepresentation();
 	
 	Polyline * poly = controller->CreatePolyline( "myPoly" );
 	poly->AddPoint( p1 );
 	poly->AddPoint( p2 );
-	poly->GetRepresentation();
 	poly->AddPoint( p3 );
-	poly->GetRepresentation();
 	
 	Rectangle * rectangle = controller->CreateRectangle( "myRectangle", p4, p3);
-	rectangle->GetRepresentation();
 	
 	Agregate * agregate = controller->CreateAgregate( "myAgregate" );
 	agregate->AddComponent( circle->GetId() );
 	agregate->AddComponent( line->GetId() );
 	agregate->AddComponent( poly->GetId() );
-	agregate->GetRepresentation();
-	
+
 	// Basic command prompt
 	string returnText;
 	Command * currentCommand = NULL;

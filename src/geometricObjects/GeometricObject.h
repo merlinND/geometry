@@ -18,12 +18,14 @@ typedef set<int> IdSet;
 class GeometricObject
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
+	
+//--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 
 	string GetName ( );
 	int GetId ( );
+	string const GetInitials ( );
 	virtual string GetRepresentation ( ) = 0;
 	
 	virtual void Move ( int dx, int dy ) = 0;
@@ -36,7 +38,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    GeometricObject ( string );
+    GeometricObject ( string name, string initials );
     // Mode d'emploi :
     //
     // Contrat :
@@ -54,10 +56,13 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	int lastAppliedCommandId;
-	int objectId;
-	static int objectIdCounter;
+	
 	string name;
+	int objectId;
+	string initials;
+	
+	static int objectIdCounter;
+	int lastAppliedCommandId;
 };
 
 //--------------------------- Autres définitions dépendantes de <GeometricObject>

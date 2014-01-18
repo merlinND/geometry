@@ -9,7 +9,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 // Initializing static fields
 Controller * Controller::theInstance = NULL;
-int Controller::NOT_FOUND = -1;
+const int Controller::NOT_FOUND = -1;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques

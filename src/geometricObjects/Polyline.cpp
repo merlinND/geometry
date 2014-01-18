@@ -9,6 +9,7 @@ using namespace std;
 #include "Polyline.h"
 
 //------------------------------------------------------------- Constantes
+const string Polyline::INITIALS = "PL";
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -16,7 +17,7 @@ using namespace std;
 string Polyline::GetRepresentation()
 {
 	
-	string representation = "PL " + name + " ";
+	string representation = GetInitials() + " " + name + " ";
 	for (int i = 0; i < (int) points.size(); i++)
 	{
 		representation += points[i].GetRepresentation() + " ";
@@ -41,7 +42,7 @@ void Polyline::Move (int dx, int dy)
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-Polyline::Polyline ( string name ) : GeometricObject ( name)
+Polyline::Polyline ( string name ) : GeometricObject ( name, INITIALS )
 // Algorithme :
 //
 {
@@ -52,7 +53,7 @@ Polyline::Polyline ( string name ) : GeometricObject ( name)
 
 
 Polyline::Polyline ( string name, vector <Point> points)
-	: GeometricObject ( name)
+	: GeometricObject ( name, INITIALS )
 // Algorithme :
 //
 {

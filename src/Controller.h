@@ -23,7 +23,7 @@ class Controller
 
 public:
 //--------------------------------------------------- Constantes de classe
-	static int NOT_FOUND;
+	static const int NOT_FOUND;
 	
 //----------------------------------------------------- Méthodes publiques
 	

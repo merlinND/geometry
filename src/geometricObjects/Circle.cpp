@@ -8,7 +8,7 @@ using namespace std;
 #include "Circle.h"
 
 //------------------------------------------------------------- Constantes
-
+const string Circle::INITIALS = "C";
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -16,7 +16,7 @@ using namespace std;
 string Circle::GetRepresentation ( )
 {
 	ostringstream os;
-	os << "C " + name + " ";
+	os << GetInitials() + " " + name + " ";
 	os << center.GetRepresentation() + " ";
 	os << radius;
 	return os.str();
@@ -31,7 +31,8 @@ void Circle::Move (int dx, int dy)
 //-------------------------------------------- Constructeurs - destructeur
 
 Circle::Circle ( string myCircle, Point theCenter, int R )
-	: GeometricObject ( myCircle ), center ( theCenter ), radius ( R )
+	: GeometricObject ( myCircle, INITIALS ),
+	  center ( theCenter ), radius ( R )
 // Algorithme :
 //
 {

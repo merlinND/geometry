@@ -11,7 +11,7 @@ using namespace std;
 #include "../Controller.h"
 
 //------------------------------------------------------------- Constantes
-
+const string Agregate::INITIALS = "OA";
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -19,7 +19,7 @@ using namespace std;
 string Agregate::GetRepresentation()
 
 {
-	string representation = "OA " + name;
+	string representation = GetInitials() + " " + name;
 	
 	Controller * controller = Controller::GetInstance();
 	for ( IdSet::iterator it = agregateComponents.begin();
@@ -67,7 +67,8 @@ void Agregate::RemoveAllComponents ( )
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-Agregate::Agregate ( std::string name ) : GeometricObject ( name )
+Agregate::Agregate ( std::string name )
+	: GeometricObject ( name, INITIALS )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Agregate>" << endl;
@@ -75,7 +76,7 @@ Agregate::Agregate ( std::string name ) : GeometricObject ( name )
 } //----- Fin de Agregate
 
 Agregate::Agregate ( std::string name, vector<int> contained)
-	: GeometricObject ( name )
+	: GeometricObject ( name, INITIALS )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Agregate>" << endl;

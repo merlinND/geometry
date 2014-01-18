@@ -20,8 +20,10 @@
 class Line : public GeometricObject
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
+	
+//--------------------------------------------------- Constantes de classe
+	static const std::string INITIALS;
 //----------------------------------------------------- Méthodes publiques
 	// type Méthode ( liste des paramètres );
 	// Mode d'emploi :

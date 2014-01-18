@@ -18,8 +18,10 @@
 class Agregate : public GeometricObject
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
+	
+//--------------------------------------------------- Constantes de classe
+	static const std::string INITIALS;
 //----------------------------------------------------- Méthodes publiques
 	
 	string GetRepresentation ( );

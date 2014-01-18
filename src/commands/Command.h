@@ -15,9 +15,9 @@ class Command
 //----------------------------------------------------------------- PUBLIC
 public:
 //--------------------------------------------------- Constantes de classe
-	static std::string STATUS_OK;
-	static std::string STATUS_OK_SILENT;
-	static std::string STATUS_ERROR;
+	static const std::string STATUS_OK;
+	static const std::string STATUS_OK_SILENT;
+	static const std::string STATUS_ERROR;
 	
 //----------------------------------------------------- Méthodes publiques
 	virtual bool IsHistorizable ( ) = 0;

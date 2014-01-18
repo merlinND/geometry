@@ -7,18 +7,14 @@ using namespace std;
 #include "Rectangle.h"
 
 //------------------------------------------------------------- Constantes
-
+const std::string Rectangle::INITIALS = "R";
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Rectangle::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+
 string Rectangle::GetRepresentation ( )
 {
-	string representation = "R " + name + " ";
+	string representation = GetInitials() + " " + name + " ";
 	representation += upperLeftCorner.GetRepresentation() + " ";
 	representation += lowerRightCorner.GetRepresentation();
 	return representation;
@@ -38,7 +34,8 @@ void Rectangle::Move (int dx, int dy)
 //-------------------------------------------- Constructeurs - destructeur
 
 Rectangle::Rectangle ( string myRectangle, Point uLC, Point lRC )
-	: GeometricObject ( myRectangle ),upperLeftCorner( uLC ), lowerRightCorner( lRC )
+	: GeometricObject ( myRectangle, INITIALS ),
+	  upperLeftCorner( uLC ), lowerRightCorner( lRC )
 // Algorithme :
 //
 {
