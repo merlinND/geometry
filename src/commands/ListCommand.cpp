@@ -14,13 +14,11 @@ using namespace std;
 string ListCommand::Execute ( )
 {
 	Controller * controller = Controller::GetInstance();
-	IdSet allIds = controller->GetAllIdsInDocument();
-	GeometricObject * currentObject;
-	for ( IdSet::iterator it = allIds.begin();
-		 it != allIds.end(); ++it )
+	vector<string> representations = controller->GetSortedRepresentations();
+	for ( vector<string>::iterator it = representations.begin();
+		 it != representations.end(); ++it )
 	{
-		currentObject = controller->GetObjectById( *it );
-		cout << currentObject->GetRepresentation() << endl;
+		cout << *it << endl;
 	}
 	
 	return STATUS_OK_SILENT;

@@ -12,6 +12,23 @@
 //------------------------------------------------------------------ Types
 typedef map<int, GeometricObject *> GeometricMap;
 
+// This custom comparer seems to be necessary to achieve a true
+// alphabetical order, that doesn't put every capital letters first.
+struct customAlphabeticalComparer
+{
+    bool operator()(const std::string& left, const std::string& right) const
+    {
+        return std::lexicographical_compare(left.cbegin(), left.cend(),
+											right.cbegin(), right.cend(),
+											[](char l, char r) -> bool
+											{
+												l = tolower(l);
+												r = tolower(r);
+												return l < r;
+											});
+    }
+};
+
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Controller>
 //
@@ -59,7 +76,10 @@ public:
 	IdSet GetAllAgregatesInDocument ( );
 	// Mode d'emploi :
 	// Returns the set of all agregates' ids.
-	
+	vector<std::string> GetSortedRepresentations ( );
+	// Mode d'emploi :
+	// Returns a vector of representations of all objects currently in
+	// the document, sorted by alphabetical order on their names.
 	
 	GeometricObject * GetObjectById ( int idToFind );
 	// Mode d'emploi :

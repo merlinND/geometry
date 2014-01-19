@@ -106,6 +106,27 @@ IdSet Controller::GetAllAgregatesInDocument ( )
 	return agregatesOnly;
 }
 
+vector<string> Controller::GetSortedRepresentations ( )
+{
+	// In order to output a sorted list of GeometricObjects representation,
+	// we use a map (keys being the object's name).
+	map<string, string, customAlphabeticalComparer> sortedMap;
+	IdSet components = model.GetComponents();
+	GeometricObject * currentObject;
+	for (IdSet::iterator it = components.begin();
+		it != components.end(); ++it) {
+		currentObject = GetObjectById( *it );
+		sortedMap[currentObject->GetName()] = currentObject->GetRepresentation();
+	}
+	vector<string> result;
+	for (map<string, string, customAlphabeticalComparer>::iterator it = sortedMap.begin();
+		 it != sortedMap.end(); ++it)
+	{
+		result.push_back( it->second );
+	}
+	return result;
+}
+
 GeometricObject * Controller::GetObjectById ( int idToFind )
 {
 	GeometricMap::iterator it = allObjects.find( idToFind );
