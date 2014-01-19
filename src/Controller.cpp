@@ -32,7 +32,7 @@ Controller * Controller::GetInstance( )
 string Controller::ProcessCommand ( Command * command )
 {
 	string status = command->Execute();
-	
+	 
 	if ( command->IsHistorizable() && status != Command::STATUS_ERROR )
 	{
 		history.AddCommand( (HistorizableCommand *) command );

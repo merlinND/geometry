@@ -39,7 +39,7 @@ bool SaveCommand::Good ( )
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 SaveCommand::SaveCommand ( string const path )
-	: outputStream( path, ios::out|ios::trunc )
+	: outputStream( path.c_str() )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <SaveCommand>" << endl;

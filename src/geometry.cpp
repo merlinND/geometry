@@ -30,11 +30,10 @@ int main ( )
 	poly->AddPoint( p2 );
 	poly->AddPoint( p3 );
 	
-	Rectangle * rectangle = controller->CreateRectangle( "myRectangle", p4, p3);
-	Rectangle * rectangle2 = controller->CreateRectangle( "abc", p4, p3);
-	Rectangle * rectangle3 = controller->CreateRectangle( "acc", p4, p3);
-	Rectangle * rectangle4 = controller->CreateRectangle( "Ade", p4, p3);
-	
+	controller->CreateRectangle( "myRectangle", p4, p3);
+	controller->CreateRectangle( "abc", p4, p3);
+	controller->CreateRectangle( "acc", p4, p3);
+	controller->CreateRectangle( "Ade", p4, p3);
 	
 	Agregate * agregate = controller->CreateAgregate( "myAgregate" );
 	agregate->AddComponent( circle->GetId() );

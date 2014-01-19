@@ -16,16 +16,14 @@ typedef map<int, GeometricObject *> GeometricMap;
 // alphabetical order, that doesn't put every capital letters first.
 struct customAlphabeticalComparer
 {
-    bool operator()(const std::string& left, const std::string& right) const
+    bool operator() ( const std::string& left,
     {
-        return std::lexicographical_compare(left.cbegin(), left.cend(),
-											right.cbegin(), right.cend(),
-											[](char l, char r) -> bool
-											{
-												l = tolower(l);
-												r = tolower(r);
-												return l < r;
-											});
+		std::string lCopy ( left );
+		std::string rCopy ( right );
+		transform(lCopy.begin(), lCopy.end(), lCopy.begin(), ::tolower);
+		transform(rCopy.begin(), rCopy.end(), rCopy.begin(), ::tolower);
+        return std::lexicographical_compare( lCopy.begin(), lCopy.end(),
+											rCopy.begin(), rCopy.end());
     }
 };
 
