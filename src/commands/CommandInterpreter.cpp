@@ -5,7 +5,6 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-#include <fstream>
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "CommandInterpreter.h"
@@ -18,20 +17,22 @@ using namespace std;
 
 Command * CommandInterpreter::InterpretCommand ( istream & line )
 {
-	//----- Extract all we can from the input
+	//----- Extract all we can from one line of the input
 	string token;
 	vector<string> tokens;
-	while ( line.good() && line.peek() != '\n' )
+	while ( line && line.peek() != '\n' )
 	{
 		line >> token;
-		tokens.push_back(token);
+		if ( token.length() > 0 )
+		{
+			tokens.push_back(token);
+		}
 	}
 	// Empty the last character (linefeed)
 	line.get();
-	line.clear();
 	
 	// Ignore empty input or comments (line starting with #)
-	if ( tokens.empty() || tokens[0][0] == '#' )
+	if ( tokens.empty() || tokens[0][0] == '#')
 		return new NoneCommand();
 	
 	//----- Build a Command from this input
@@ -97,7 +98,6 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	{
 		result = new ClearCommand( );
 	}
-	// TODO: LOAD command
 	else if ( "SAVE" == command )
 	{
 		// Parameter: a path to the file
@@ -108,6 +108,19 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			if ( sc->Good() )
 			{
 				result = sc;
+			}
+		}
+	}
+	else if ( "LOAD" == command )
+	{
+		// Parameter: a path to the file
+		if ( tokens.size() >= 2 )
+		{
+			LoadCommand * lc = new LoadCommand ( tokens[1] );
+			// Check that this path is indeed readable
+			if ( lc->Good() )
+			{
+				result = lc;
 			}
 		}
 	}
