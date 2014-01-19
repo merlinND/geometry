@@ -1,4 +1,4 @@
-//---------- Réalisation de la classe <Command> (fichier Command.cpp) ----
+//---------- Réalisation de la classe <ListCommand> (fichier ListCommand.cpp) ----
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>

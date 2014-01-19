@@ -15,6 +15,7 @@
 #include "ListCommand.h"
 #include "UndoCommand.h"
 #include "RedoCommand.h"
+#include "SaveCommand.h"
 #include "ExitCommand.h"
 
 #endif // __AllCommands___H_ 

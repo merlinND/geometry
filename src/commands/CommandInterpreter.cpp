@@ -5,11 +5,13 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "CommandInterpreter.h"
 #include "AllCommands.h"
 #include "../Controller.h"
+#include "SaveCommand.h"
 //------------------------------------------------------------- Constantes
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -96,7 +98,19 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		result = new ClearCommand( );
 	}
 	// TODO: LOAD command
-	// TODO: SAVE command
+	else if ( "SAVE" == command )
+	{
+		// Parameter: a path to the file
+		if ( tokens.size() >= 2 )
+		{
+			SaveCommand * sc = new SaveCommand ( tokens[1] );
+			// Check that this path is indeed writable
+			if ( sc->Good() )
+			{
+				result = sc;
+			}
+		}
+	}
 	else if ( "LIST" == command )
 	{
 		result = new ListCommand( );

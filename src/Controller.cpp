@@ -111,7 +111,7 @@ vector<string> Controller::GetSortedRepresentations ( )
 	// In order to output a sorted list of GeometricObjects representation,
 	// we use a map (keys being the object's name).
 	map<string, string, customAlphabeticalComparer> sortedMap;
-	IdSet components = model.GetComponents();
+	IdSet components = GetAllIdsInDocument();
 	GeometricObject * currentObject;
 	for (IdSet::iterator it = components.begin();
 		it != components.end(); ++it) {
