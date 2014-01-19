@@ -1,0 +1,6 @@
+../geometry
+C myCircle 0 0 1
+OA myAgregate myCircle
+DELETE myAgregate
+LIST
+EXIT
