@@ -93,13 +93,10 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	}
 	else if ( "CLEAR" == command )
 	{
-		// Parameters : none
-		if ( tokens.size() == 1 )
-		{
-			result = new ClearCommand( );
-		}
+		result = new ClearCommand( );
 	}
-	// TODO: add support for all command types
+	// TODO: LOAD command
+	// TODO: SAVE command
 	else if ( "LIST" == command )
 	{
 		result = new ListCommand( );
@@ -149,7 +146,7 @@ bool CommandInterpreter::isValidPoint( string stringX, string stringY )
 	valid = valid && ( stringY.length() > 0 ) && ( stringY.length() > 0 );
 	
 	// Try to convert both strings to integers
-	int x, y;
+	int x = 0, y = 0;
 	stringstream ss( stringX + " " + stringY );
 	valid = valid && ( ss >> x );
 	valid = valid && ( ss >> y );
@@ -161,6 +158,7 @@ Point CommandInterpreter::makePointFromInput( string stringX, string stringY )
 {
 	int x, y;
 	// Convert both strings to integers and return a new point
+	// TODO : support for negative integers
 	stringstream ss( stringX + " " + stringY );
 	ss >> x;
 	ss >> y;
