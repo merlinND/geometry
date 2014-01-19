@@ -17,6 +17,7 @@ typedef map<int, GeometricObject *> GeometricMap;
 struct customAlphabeticalComparer
 {
     bool operator() ( const std::string& left,
+					  const std::string& right ) const
     {
 		std::string lCopy ( left );
 		std::string rCopy ( right );
