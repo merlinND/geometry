@@ -210,6 +210,12 @@ Controller::~Controller ( )
 #ifdef MAP
 	cout << "Appel au destructeur de <Controller>" << endl;
 #endif
+	
+	for ( GeometricMap::iterator it = allObjects.begin();
+		 it != allObjects.end(); ++it )
+	{
+		delete it->second;
+	}
 } //----- Fin de ~Controller
 
 //------------------------------------------------------------------ PRIVÉ

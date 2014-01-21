@@ -38,5 +38,6 @@ int main ( )
 		}
 	}
 	
+	delete controller;
 	return 0;
 }

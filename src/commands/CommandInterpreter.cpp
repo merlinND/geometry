@@ -171,36 +171,35 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	}
 	else if ( "MOVE" == command )
 	{
-		MoveCommand * mc = new MoveCommand( );
 		// Parameters: target name and offset
 		if ( tokens.size() == 4 )
 		{
 			// Find the id corresponding to this name (in the current document)
 			int targetId = controller->GetIdByName( tokens[1] );
-			if ( targetId != Controller::NOT_FOUND )
+			if ( targetId != Controller::NOT_FOUND
+				&& isValidPoint( tokens[2], tokens[3] ) )
 			{
-				mc->AddTarget( targetId );
+				Vector2D offset = makePointFromInput( tokens[2], tokens[3] );
 				
-				if ( isValidPoint( tokens[2], tokens[3] ) )
-				{
-					Vector2D offset = makePointFromInput( tokens[2], tokens[3] );
-					mc->SetOffset( offset );
-					result = mc;
-				}
+				MoveCommand * mc = new MoveCommand( );
+				mc->AddTarget( targetId );
+				mc->SetOffset( offset );
+				result = mc;
 			}
 		}
 	}
 	else if ( "DELETE" == command )
 	{
-		DeleteCommand * dc = new DeleteCommand( );
 		// Parameters: a list of target names (at least one)
 		if ( tokens.size() >= 2 )
 		{
 			// Find the id corresponding each name (in the current document)
 			bool valid = true;
-			for ( int i = 1; i < tokens.size(); ++i )
+			DeleteCommand * dc = new DeleteCommand( );
+			int i = 1;
+			while ( valid && i < tokens.size() )
 			{
-				int targetId = controller->GetIdByName( tokens[1] );
+				int targetId = controller->GetIdByName( tokens[i] );
 				if ( targetId != Controller::NOT_FOUND )
 				{
 					dc->AddTarget( targetId );
@@ -208,7 +207,9 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 				else
 				{
 					valid = false;
+					delete dc;
 				}
+				++i;
 			}
 			// All given names must exist in the document, otherwise we do
 			// not delete *any* of the given names
@@ -232,6 +233,10 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			if ( sc->Good() )
 			{
 				result = sc;
+			}
+			else
+			{
+				delete sc;
 			}
 		}
 	}

@@ -57,6 +57,16 @@ History::~History ( )
 #ifdef MAP
 	cout << "Appel au destructeur de <History>" << endl;
 #endif
+	while ( undoStack.size() > 0)
+	{
+		delete undoStack.top();
+		undoStack.pop();
+	}
+	while ( redoStack.size() > 0)
+	{
+		delete redoStack.top();
+		redoStack.pop();
+	}
 } //----- Fin de ~History
 
 //------------------------------------------------------------------ PRIVE
@@ -64,6 +74,9 @@ History::~History ( )
 //----------------------------------------------------- Méthodes protégées
 void History::emptyRedoStack ( )
 {
-	CommandStack emptyStack;
-	redoStack = emptyStack;
+	while ( redoStack.size() > 0)
+	{
+		delete redoStack.top();
+		redoStack.pop();
+	}
 }
