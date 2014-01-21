@@ -24,6 +24,7 @@ then
   echo "-----------------------------------------------------------"
   echo "Description :"
   cat description
+  echo
   echo "-----------------------------------------------------------"
 fi
 
@@ -35,8 +36,13 @@ if [ -r "run" ]
 then
   sRun=`cat run`
 else
-  echo "No run file found. Exiting."
-  exit 2
+  if [ -r "../run" ]
+  then
+    sRun=`cat ../run`
+  else
+    echo "No run file found. Exiting."
+    exit 2
+  fi
 fi
 
 # stdin has been specified
@@ -55,6 +61,12 @@ fi
 if [ -r "stderr.out" ]
 then 
   sRun="$sRun 2>temperr.txt"
+fi
+
+# prompt has been specified
+if [ -r "prompt" ]
+then
+  prompt=`cat prompt`
 fi
 
 echo $sRun
