@@ -74,7 +74,7 @@ protected:
 	// Contract :
 	// The given strings have been checked first using isValidPoint.
 	
-	static int makeIntegerFromInput ( std::string text );
+	static long makeNumberFromInput ( std::string text );
 	// Mode d'emploi :
 	// Creates an integer from the given string.
 	// Contract :

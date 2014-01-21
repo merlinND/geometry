@@ -30,7 +30,7 @@ public:
 
 	string GetRepresentation ( );
 	
-	void Move ( int dx, int dy );
+	void Move ( long dx, long dy );
 	void AddPoint ( Point extraPoint );
 
 //------------------------------------------------- Surcharge d'opérateurs

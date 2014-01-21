@@ -25,7 +25,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	
 	std::string GetRepresentation ( );
-	void Move (int dx, int dy);
+	void Move (long dx, long dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

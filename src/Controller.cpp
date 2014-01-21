@@ -41,7 +41,7 @@ string Controller::ProcessCommand ( Command * command )
 	return status;
 } //----- End ProcessCommand
 
-Circle * Controller::CreateCircle( string name, Point center, int radius)
+Circle * Controller::CreateCircle( string name, Point center, long radius)
 {
 	Circle * circle = new Circle( name, center, radius );
 	allObjects[ circle->GetId() ] = circle;

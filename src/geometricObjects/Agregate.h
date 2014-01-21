@@ -29,7 +29,7 @@ public:
     // Contrat :
     //
 	
-	void Move ( int dx, int dy );
+	void Move ( long dx, long dy );
 	
 	void AddComponent( TId idToAdd );
 	IdSet GetComponents ( );

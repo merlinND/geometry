@@ -23,7 +23,7 @@ public:
 	virtual std::string Undo ( );
 	
 	void SetOffset ( Vector2D theOffset );
-	void SetOffset ( int dx, int dy );
+	void SetOffset ( long dx, long dy );
 	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

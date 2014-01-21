@@ -19,7 +19,7 @@ string Line::GetRepresentation ( )
 			+ " " + last.GetRepresentation();
 }
 
-void Line::Move (int dx, int dy)
+void Line::Move (long dx, long dy)
 {
 	first.x += dx;
 	first.y += dy;

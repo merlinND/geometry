@@ -27,12 +27,12 @@ public:
 	
 //----------------------------------------------------- Méthodes publiques
 	string GetRepresentation ( );
-	void Move (int dx, int dy);
+	void Move (long dx, long dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-	Circle ( string myCircle, Point theCenter, int R );
+	Circle ( string myCircle, Point theCenter, long R );
 
 	virtual ~Circle ( );
 
@@ -43,7 +43,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 	Point center;
-	int radius;
+	long radius;
 };
 
 //--------------------------- Autres définitions dépendantes de <Circle>

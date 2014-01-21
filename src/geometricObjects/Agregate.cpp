@@ -31,7 +31,7 @@ string Agregate::GetRepresentation()
 } //----- End GetRepresentation
 
 
-void Agregate::Move( int dx, int dy )
+void Agregate::Move( long dx, long dy )
 {
 	Controller * controller = Controller::GetInstance();
 	GeometricObject * currentObject;

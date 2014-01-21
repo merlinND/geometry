@@ -56,7 +56,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			{
 				string name = tokens[1];
 				Point center = makePointFromInput( tokens[2], tokens[3] );
-				int radius = makeIntegerFromInput( tokens[4] );
+				long radius = makeNumberFromInput( tokens[4] );
 				if ( radius >= 0 )
 				{
 					Circle * circle = controller->CreateCircle( name, center, radius );
@@ -299,7 +299,7 @@ bool CommandInterpreter::isValidName( string text )
 
 bool CommandInterpreter::isValidInteger( string text )
 {
-	int x = 0;
+	long x = 0;
 	stringstream ss( text );
 	return ( text.length() > 0 ) && ( ss >> x );
 }
@@ -309,9 +309,9 @@ bool CommandInterpreter::isValidPoint( string stringX, string stringY )
 	return isValidInteger( stringX ) && isValidInteger( stringY );
 }
 
-int CommandInterpreter::makeIntegerFromInput( string text )
+long CommandInterpreter::makeNumberFromInput( string text )
 {
-	int x;
+	long x;
 	stringstream ss( text );
 	ss >> x;
 	return x;
@@ -319,5 +319,5 @@ int CommandInterpreter::makeIntegerFromInput( string text )
 
 Point CommandInterpreter::makePointFromInput( string stringX, string stringY )
 {
-	return Point( makeIntegerFromInput(stringX), makeIntegerFromInput(stringY) );
+	return Point( makeNumberFromInput(stringX), makeNumberFromInput(stringY) );
 }

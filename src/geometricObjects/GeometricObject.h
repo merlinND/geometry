@@ -29,7 +29,7 @@ public:
 	string const GetInitials ( );
 	virtual string GetRepresentation ( ) = 0;
 	
-	virtual void Move ( int dx, int dy ) = 0;
+	virtual void Move ( long dx, long dy ) = 0;
 
 	int GetLastAppliedCommandId ( );
 	void SetLastAppliedCommandId ( int commandId );

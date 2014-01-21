@@ -30,7 +30,7 @@ void Polyline::AddPoint(Point extraPoint)
 	points.push_back(extraPoint);
 }
 
-void Polyline::Move (int dx, int dy)
+void Polyline::Move (long dx, long dy)
 {
 	for (int i = 0;  i < ( int ) points.size(); i++)
 	{

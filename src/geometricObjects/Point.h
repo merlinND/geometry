@@ -6,10 +6,10 @@
 
 struct Point
 {
-	int x;
-	int y;
+	long x;
+	long y;
 	
-	Point ( int initialX, int initialY )
+	Point ( long initialX, long initialY )
 	{
 		x = initialX;
 		y = initialY;

@@ -21,7 +21,7 @@ string Circle::GetRepresentation ( )
 	os << radius;
 	return os.str();
 }
-void Circle::Move (int dx, int dy)
+void Circle::Move (long dx, long dy)
 {
 	center.x += dx;
 	center.y += dy;
@@ -30,7 +30,7 @@ void Circle::Move (int dx, int dy)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Circle::Circle ( string myCircle, Point theCenter, int R )
+Circle::Circle ( string myCircle, Point theCenter, long R )
 	: GeometricObject ( myCircle, INITIALS ),
 	  center ( theCenter ), radius ( R )
 // Algorithme :

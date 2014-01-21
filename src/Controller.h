@@ -52,7 +52,7 @@ public:
 	// Attempt to execute the command passed as argument,
 	// and add it to the History if appropriate.
 	
-	Circle * CreateCircle ( std::string name, Point center, int radius );
+	Circle * CreateCircle ( std::string name, Point center, long radius );
 	Line * CreateLine ( std::string name, Point begin, Point end );
 	Polyline * CreatePolyline ( std::string name );
 	Rectangle * CreateRectangle ( std::string name, Point ulc, Point lrc );

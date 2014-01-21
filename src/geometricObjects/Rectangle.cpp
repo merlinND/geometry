@@ -20,7 +20,7 @@ string Rectangle::GetRepresentation ( )
 	return representation;
 }
 
-void Rectangle::Move (int dx, int dy)
+void Rectangle::Move (long dx, long dy)
 {
 	upperLeftCorner.x += dx;
 	upperLeftCorner.y += dy;

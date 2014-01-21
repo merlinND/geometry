@@ -44,7 +44,7 @@ void MoveCommand::SetOffset ( Vector2D theOffset )
 {
 	offset = theOffset;
 }
-void MoveCommand::SetOffset ( int dx, int dy )
+void MoveCommand::SetOffset ( long dx, long dy )
 {
 	offset.x = dx;
 	offset.y = dy;
