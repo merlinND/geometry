@@ -18,10 +18,6 @@ void History::Undo ( )
 		mostRecentCommand->Undo();
 		redoStack.push(mostRecentCommand);
 	}
-	else
-	{
-		cout << "Nothing to undo" << endl;
-	}
 } // ----- End undo
 
 void History::Redo ( )
@@ -32,10 +28,6 @@ void History::Redo ( )
 		redoStack.pop();
 		mostRecentlyUndoneCommand->Execute();
 		undoStack.push(mostRecentlyUndoneCommand);
-	}
-	else
-	{
-		cout << "Nothing to redo" << endl;
 	}
 } // ----- End redo
 

@@ -13,9 +13,10 @@ using namespace std;
 
 string UndoCommand::Execute ( )
 {
-	cout << "Executing UndoCommand" << endl;
 	Controller::GetInstance()->Undo();
-	return STATUS_OK_SILENT;
+	// TODO: we should take into account the returned status
+	// from the Command itself
+	return STATUS_OK;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

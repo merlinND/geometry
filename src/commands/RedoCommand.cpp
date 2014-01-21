@@ -13,9 +13,10 @@ using namespace std;
 
 string RedoCommand::Execute ( )
 {
-	cout << "Executing RedoCommand" << endl;
 	Controller::GetInstance()->Redo();
-	return STATUS_OK_SILENT;
+	// TODO: we should take into account the returned status
+	// from the Command itself
+	return STATUS_OK;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
