@@ -10,7 +10,7 @@
 #include "geometricObjects/AllGeometricObjects.h"
 //------------------------------------------------------------- Constantes 
 //------------------------------------------------------------------ Types
-typedef map<int, GeometricObject *> GeometricMap;
+typedef map<TId, GeometricObject *> GeometricMap;
 
 // This custom comparer seems to be necessary to achieve a true
 // alphabetical order, that doesn't put every capital letters first.
@@ -39,7 +39,7 @@ class Controller
 
 public:
 //--------------------------------------------------- Constantes de classe
-	static const int NOT_FOUND;
+	static const TId NOT_FOUND;
 	
 //----------------------------------------------------- Méthodes publiques
 	
@@ -80,7 +80,7 @@ public:
 	// Returns a vector of representations of all objects currently in
 	// the document, sorted by alphabetical order on their names.
 	
-	GeometricObject * GetObjectById ( int idToFind );
+	GeometricObject * GetObjectById ( TId idToFind );
 	// Mode d'emploi :
 	// This method should be the only access point to actual
 	// GeometricObject instances. Agregate and Command objects only
@@ -89,13 +89,13 @@ public:
 	// Contrat :
 	// Returns NULL if the object is not found
 	
-	std::string GetNameById ( int idToFind );
+	std::string GetNameById ( TId idToFind );
 	// Mode d'emploi :
 	// Returns an object's name from its id.
 	// Contrat :
 	// Returns NULL if the object is not found
 	
-	int GetIdByName ( std::string name );
+	TId GetIdByName ( std::string name );
 	// Mode d'emploi :
 	// Returns the id corresponding to this name *in the current
 	// document only*, not in all objects that were ever created.
@@ -107,12 +107,12 @@ public:
 	// Enables to check if a name is used by an object that is
 	// *currently* part of the document.
 	
-	void RemoveObjectFromDocument ( int idToRemove );
+	void RemoveObjectFromDocument ( TId idToRemove );
 	// Mode d'emploi :
 	// This method removes the given id from the document (model)
 	// but its instance keeps living since we might add it back
 	// to the document later.
-	void AddIdToDocument ( int idToAdd );
+	void AddIdToDocument ( TId idToAdd );
 	// Mode d'emploi :
 	// Add an object to the document (model) from its id.
 	// Contrat :
@@ -137,18 +137,7 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-	// Constructeur par copie
-	Controller ( const Controller & theController );
-	// Mode d'emploi :
-	// 
-	// Contrat :
-	// 
-
 	virtual ~Controller ( );
-	// Mode d'emploi :
-	// 
-	// Contrat :
-	// 
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -169,7 +158,7 @@ protected:
 
 	// An associative array of GeometricObjects that were created
 	// in this session, even if they are not part of the document
-	// Object id (int) => Pointer to the instance
+	// Object id (type TId) => Pointer to the instance
 	GeometricMap allObjects;
 	
 	// An agregate object which contains all GeometricObjects that are

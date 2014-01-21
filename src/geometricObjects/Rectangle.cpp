@@ -28,7 +28,6 @@ void Rectangle::Move (int dx, int dy)
 	lowerRightCorner.y += dy;
 }
 
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -36,8 +35,6 @@ void Rectangle::Move (int dx, int dy)
 Rectangle::Rectangle ( string myRectangle, Point uLC, Point lRC )
 	: GeometricObject ( myRectangle, INITIALS ),
 	  upperLeftCorner( uLC ), lowerRightCorner( lRC )
-// Algorithme :
-//
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Rectangle>" << endl;
@@ -46,8 +43,6 @@ Rectangle::Rectangle ( string myRectangle, Point uLC, Point lRC )
 } //----- Fin de Rectangle
 
 Rectangle::~Rectangle ( )
-// Algorithme :
-//
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <Rectangle>" << endl;

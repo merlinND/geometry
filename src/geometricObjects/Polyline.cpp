@@ -43,33 +43,13 @@ void Polyline::Move (int dx, int dy)
 //-------------------------------------------- Constructeurs - destructeur
 
 Polyline::Polyline ( string name ) : GeometricObject ( name, INITIALS )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Polyline>" << endl;
 #endif
 } //----- Fin de Polyline
-
-
-Polyline::Polyline ( string name, vector <Point> points)
-	: GeometricObject ( name, INITIALS )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Polyline>" << endl;
-#endif
-	for (int i = 0; i < (int) points.size(); i++)
-	{
-		points.push_back( points [i] );
-	}
-} //----- Fin de Polyline
-
 
 Polyline::~Polyline ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Polyline>" << endl;
@@ -78,5 +58,4 @@ Polyline::~Polyline ( )
 
 
 //------------------------------------------------------------------ PRIVE
-
 //----------------------------------------------------- Méthodes protégées

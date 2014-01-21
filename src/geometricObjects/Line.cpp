@@ -1,9 +1,7 @@
 //---------- Réalisation de la classe <Line> (fichier Line.cpp) -------
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
-
 #include <iostream>
-#include <sstream>
 using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Line.h"
@@ -16,7 +14,8 @@ const string Line::INITIALS = "L";
 
 string Line::GetRepresentation ( )
 {
-	return GetInitials() + " " + name + " " + first.GetRepresentation()
+	return GetInitials() + " " + name
+			+ " " + first.GetRepresentation()
 			+ " " + last.GetRepresentation();
 }
 
@@ -35,8 +34,6 @@ void Line::Move (int dx, int dy)
 Line::Line ( string myLine, Point firstPoint, Point lastPoint )
 	: GeometricObject ( myLine, INITIALS ),
 	  first ( firstPoint ), last( lastPoint )
-// Algorithme :
-//
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Line>" << endl;
@@ -45,8 +42,6 @@ Line::Line ( string myLine, Point firstPoint, Point lastPoint )
 } //----- Fin de Line
 
 Line::~Line ( )
-// Algorithme :
-//
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <Line>" << endl;

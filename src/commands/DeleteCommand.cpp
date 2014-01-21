@@ -12,7 +12,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void DeleteCommand::AddTarget( int targetId )
+void DeleteCommand::AddTarget( TId targetId )
 {
 	targets.insert( targetId );
 	IdSet emptySet;

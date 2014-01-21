@@ -3,8 +3,6 @@
 
 
 //--------------------------------------------------- Interfaces utilisées
-#include <sstream>
-
 #include "Point.h"
 #include "GeometricObject.h"
 //------------------------------------------------------------- Constantes 
@@ -25,39 +23,15 @@ public:
 //--------------------------------------------------- Constantes de classe
 	static const std::string INITIALS;
 //----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste des paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-	string GetRepresentation ( );
+	
+	std::string GetRepresentation ( );
 	void Move (int dx, int dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
-	Line & operator = ( const Line & unLine );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
 //-------------------------------------------- Constructeurs - destructeur
-	Line ( const Line & unLine );
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
-
-	Line ( string , Point , Point );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	Line ( std::string name, Point begin, Point end );
 
 	virtual ~Line ( );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -65,7 +39,6 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
 	Point first;
 	Point last;
 };

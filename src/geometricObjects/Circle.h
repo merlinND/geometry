@@ -24,40 +24,17 @@ public:
 	
 //--------------------------------------------------- Constantes de classe
 	static const std::string INITIALS;
+	
 //----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste des paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
 	string GetRepresentation ( );
 	void Move (int dx, int dy);
-//------------------------------------------------- Surcharge d'opérateurs
-	Circle & operator = ( const Circle & unCircle );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
+//------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
-	Circle ( const Circle & unCircle );
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
 
 	Circle ( string myCircle, Point theCenter, int R );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
 	virtual ~Circle ( );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE 
 

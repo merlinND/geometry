@@ -7,7 +7,8 @@
 #include <set>
 //------------------------------------------------------------- Constantes 
 //------------------------------------------------------------------ Types
-typedef set<int> IdSet;
+typedef long TId;
+typedef set<TId> IdSet;
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <GeometricObject>
@@ -24,7 +25,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 	string GetName ( );
-	int GetId ( );
+	TId GetId ( );
 	string const GetInitials ( );
 	virtual string GetRepresentation ( ) = 0;
 	
@@ -58,10 +59,12 @@ protected:
 //----------------------------------------------------- Attributs protégés
 	
 	string name;
-	int objectId;
 	string initials;
 	
-	static int objectIdCounter;
+	static TId objectIdCounter;
+	TId objectId;
+	
+	
 	int lastAppliedCommandId;
 };
 

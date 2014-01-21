@@ -1,12 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <sstream>
 using namespace std;
-#include "geometricObjects/Circle.h"
-#include "geometricObjects/Rectangle.h"
-#include "geometricObjects/Line.h"
-#include "geometricObjects/Polyline.h"
-#include "geometricObjects/Agregate.h"
 
 #include "commands/CommandInterpreter.h"
 #include "commands/AllCommands.h"

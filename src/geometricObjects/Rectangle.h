@@ -1,10 +1,10 @@
 //---------- Interface de la classe <Rectangle> (fichier Rectangle.h) ------
 #if ! defined ( RECTANGLE_H_ )
 #define RECTANGLE_H_
-#include "Point.h"
-#include "GeometricObject.h"
-#include <string>
+
 //--------------------------------------------------- Interfaces utilisées
+#include "GeometricObject.h"
+#include "Point.h"
 
 //------------------------------------------------------------- Constantes 
 
@@ -24,34 +24,14 @@ public:
 //--------------------------------------------------- Constantes de classe
 	static const std::string INITIALS;
 //----------------------------------------------------- Méthodes publiques
-	string GetRepresentation ( );
+	std::string GetRepresentation ( );
 	void Move (int dx, int dy);
 
 //------------------------------------------------- Surcharge d'opérateurs
-	Rectangle & operator = ( const Rectangle & unRectangle );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
 //-------------------------------------------- Constructeurs - destructeur
-	Rectangle ( const Rectangle & unRectangle );
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
-
-	Rectangle ( string myRectangle, Point uLC, Point lRC );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	Rectangle ( std::string myRectangle, Point uLC, Point lRC );
 
 	virtual ~Rectangle ( );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE 
 

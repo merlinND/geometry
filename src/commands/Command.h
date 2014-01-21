@@ -22,7 +22,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	virtual bool IsHistorizable ( ) = 0;
 	
-	virtual void AddTarget ( int targetId );
+	virtual void AddTarget ( TId targetId );
 	
 	virtual std::string Execute ( ) = 0;
 	// Mode d'emploi :

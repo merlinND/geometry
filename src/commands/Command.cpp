@@ -14,7 +14,7 @@ const string Command::STATUS_ERROR = "ERR";
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void Command::AddTarget( int targetId )
+void Command::AddTarget( TId targetId )
 {
 	targets.insert( targetId );
 }

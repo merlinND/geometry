@@ -20,11 +20,7 @@ class History
 public:
 	//----------------------------------------------------- Méthodes publiques
 	void Undo ( );
-	// Mode d'emploi :
-	// Contrat :
 	void Redo ( );
-	// Mode d'emploi :
-	// Contrat :
 	
 	void AddCommand ( HistorizableCommand * commandToAdd );
 	// Mode d'emploi :

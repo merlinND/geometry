@@ -4,7 +4,6 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
-#include <sstream>
 using namespace std;
 
 #include "GeometricObject.h"
@@ -30,49 +29,23 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 	string GetRepresentation ( );
-	void Move (int dx, int dy);
-	void AddPoint (Point);
+	
+	void Move ( int dx, int dy );
+	void AddPoint ( Point extraPoint );
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Polyline & operator = ( const Polyline & unPolyline );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
 //-------------------------------------------- Constructeurs - destructeur
-    Polyline ( const Polyline & unPolyline );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-	Polyline ( string name );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 	
-    Polyline ( string name, vector<Point> points );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+	Polyline ( string name );
 
     virtual ~Polyline ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
 //----------------------------------------------------- Attributs protégés
-vector <Point> points;
+	vector <Point> points;
 };
 
 //--------------------------- Autres définitions dépendantes de <Polyline>

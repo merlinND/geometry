@@ -7,7 +7,7 @@ using namespace std;
 #include "GeometricObject.h"
 
 //------------------------------------------------------------- Constantes
-int GeometricObject::objectIdCounter = 0;
+TId GeometricObject::objectIdCounter = 0;
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -17,7 +17,7 @@ string GeometricObject::GetName ( )
 {
 	return name;
 }
-int GeometricObject::GetId ( )
+TId GeometricObject::GetId ( )
 {
 	return objectId;
 }

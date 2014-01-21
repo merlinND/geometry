@@ -9,7 +9,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 // Initializing static fields
 Controller * Controller::theInstance = NULL;
-const int Controller::NOT_FOUND = -1;
+const TId Controller::NOT_FOUND = -1;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -122,7 +122,7 @@ vector<string> Controller::GetSortedRepresentations ( )
 	return result;
 }
 
-GeometricObject * Controller::GetObjectById ( int idToFind )
+GeometricObject * Controller::GetObjectById ( TId idToFind )
 {
 	GeometricMap::iterator it = allObjects.find( idToFind );
 	if ( it != allObjects.end() )
@@ -135,7 +135,7 @@ GeometricObject * Controller::GetObjectById ( int idToFind )
 	}
 } //----- End GetObjectByName
 
-string Controller::GetNameById ( int idToFind )
+string Controller::GetNameById ( TId idToFind )
 {
 	GeometricMap::iterator found = allObjects.find( idToFind );
 	if ( found != allObjects.end() )
@@ -148,7 +148,7 @@ string Controller::GetNameById ( int idToFind )
 	}
 } //----- End GetNameById
 
-int Controller::GetIdByName( string name )
+TId Controller::GetIdByName( string name )
 {
 	IdSet components = model.GetComponents();
 	for ( IdSet::iterator it = components.begin();
@@ -178,11 +178,11 @@ bool Controller::IsNameUsedInDocument( string name )
 	return found;
 }
 
-void Controller::RemoveObjectFromDocument( int idToRemove )
+void Controller::RemoveObjectFromDocument( TId idToRemove )
 {
 	model.RemoveComponent( idToRemove );
 }
-void Controller::AddIdToDocument( int idToAdd )
+void Controller::AddIdToDocument( TId idToAdd )
 {
 	model.AddComponent( idToAdd );
 }

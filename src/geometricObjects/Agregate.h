@@ -4,7 +4,6 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
-#include <sstream>
 
 #include "GeometricObject.h"
 //------------------------------------------------------------- Constantes
@@ -32,11 +31,11 @@ public:
 	
 	void Move ( int dx, int dy );
 	
-	void AddComponent( int idToAdd );
+	void AddComponent( TId idToAdd );
 	IdSet GetComponents ( );
-	bool Contains ( int idToFind );
+	bool Contains ( TId idToFind );
 	
-	void RemoveComponent( int idToRemove );
+	void RemoveComponent( TId idToRemove );
 	void RemoveAllComponents ( );
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
@@ -45,16 +44,7 @@ public:
     // Mode d'emploi :
     // Creates an empty agregate object with the given name.
 	
-    Agregate ( std::string name, vector<int> contained );
-    // Mode d'emploi :
-    // Creates an agregate with the given name
-	// and containing the given ids.
-
     virtual ~Agregate ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -66,7 +56,6 @@ protected:
 	IdSet agregateComponents;
 
 };
-
 //--------------------------- Autres définitions dépendantes de <Agregate>
 
 #endif // AGREGATE_H_

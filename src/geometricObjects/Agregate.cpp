@@ -48,7 +48,7 @@ void Agregate::Move( int dx, int dy )
 
 } //----- End Move
 
-void Agregate::AddComponent( int idToAdd )
+void Agregate::AddComponent( TId idToAdd )
 {
 	agregateComponents.insert( idToAdd );
 }
@@ -58,13 +58,13 @@ IdSet Agregate::GetComponents ( )
 	return agregateComponents;
 }
 
-bool Agregate::Contains( int idToFind )
+bool Agregate::Contains( TId idToFind )
 {
 	return ( agregateComponents.find( idToFind )
 			!= agregateComponents.end() );
 }
 
-void Agregate::RemoveComponent( int idToRemove )
+void Agregate::RemoveComponent( TId idToRemove )
 {
 	agregateComponents.erase(agregateComponents.find( idToRemove ));
 }
@@ -84,20 +84,6 @@ Agregate::Agregate ( std::string name )
     cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
 } //----- Fin de Agregate
-
-Agregate::Agregate ( std::string name, vector<int> contained)
-	: GeometricObject ( name, INITIALS )
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Agregate>" << endl;
-#endif
-
-    for( int i = 0; i < contained.size(); i++ )
-    {
-    	agregateComponents.insert( contained[i] );
-    }
-} //----- Fin de Agregate
-
 Agregate::~Agregate ( )
 {
 #ifdef MAP

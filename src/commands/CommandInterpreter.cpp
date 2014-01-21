@@ -146,7 +146,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			int i = 2;
 			while ( valid && i < tokens.size() )
 			{
-				int correspondingId = controller->GetIdByName( tokens[i] );
+				TId correspondingId = controller->GetIdByName( tokens[i] );
 				valid = valid && ( correspondingId != Controller::NOT_FOUND );
 				if ( valid )
 				{
@@ -175,7 +175,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		if ( tokens.size() == 4 )
 		{
 			// Find the id corresponding to this name (in the current document)
-			int targetId = controller->GetIdByName( tokens[1] );
+			TId targetId = controller->GetIdByName( tokens[1] );
 			if ( targetId != Controller::NOT_FOUND
 				&& isValidPoint( tokens[2], tokens[3] ) )
 			{
@@ -199,7 +199,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			int i = 1;
 			while ( valid && i < tokens.size() )
 			{
-				int targetId = controller->GetIdByName( tokens[i] );
+				TId targetId = controller->GetIdByName( tokens[i] );
 				if ( targetId != Controller::NOT_FOUND )
 				{
 					dc->AddTarget( targetId );
