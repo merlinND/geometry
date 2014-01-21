@@ -1,7 +1,6 @@
-../geometry
 C myCircle 0 0 1
 C mySecondCircle 1 1 42
 OA myAgregate myCircle mySecondCircle
-MOVE myAgregate 1 1
+DELETE myAgregate
 LIST
 EXIT

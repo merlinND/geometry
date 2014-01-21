@@ -1,4 +1,3 @@
-../geometry
 C myCircle 0 0 1
 C mySecondCircle 1 1 42
 C myThirdCircle 0 0 41
