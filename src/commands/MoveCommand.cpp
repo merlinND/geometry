@@ -25,8 +25,8 @@ string MoveCommand::Execute ( )
 		currentObject = controller->GetObjectById( *it );
 		if ( currentObject->GetLastAppliedCommandId() != executionCounter )
 		{
-			currentObject->Move( offset.x, offset.y );
 			currentObject->SetLastAppliedCommandId( executionCounter );
+			currentObject->Move( offset.x, offset.y );
 		}
 	}
 	return STATUS_OK;

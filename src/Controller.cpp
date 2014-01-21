@@ -108,13 +108,13 @@ vector<string> Controller::GetSortedRepresentations ( )
 	map<string, string, customAlphabeticalComparer> sortedMap;
 	IdSet components = GetAllIdsInDocument();
 	GeometricObject * currentObject;
-	for (IdSet::iterator it = components.begin();
-		it != components.end(); ++it) {
+	for ( IdSet::iterator it = components.begin();
+		it != components.end(); ++it ) {
 		currentObject = GetObjectById( *it );
 		sortedMap[currentObject->GetName()] = currentObject->GetRepresentation();
 	}
 	vector<string> result;
-	for (map<string, string, customAlphabeticalComparer>::iterator it = sortedMap.begin();
+	for ( map<string, string, customAlphabeticalComparer>::iterator it = sortedMap.begin();
 		 it != sortedMap.end(); ++it)
 	{
 		result.push_back( it->second );
@@ -151,16 +151,13 @@ string Controller::GetNameById ( int idToFind )
 int Controller::GetIdByName( string name )
 {
 	IdSet components = model.GetComponents();
-	IdSet::iterator it = components.begin();
-	GeometricObject * currentObject;
-	while ( it != components.end() )
+	for ( IdSet::iterator it = components.begin();
+		 it != components.end(); ++it )
 	{
-		currentObject = GetObjectById( *it );
-		if ( currentObject->GetName() == name )
+		if ( GetObjectById( *it )->GetName() == name )
 		{
 			return *it;
 		}
-		++it;
 	}
 	return NOT_FOUND;
 } //----- End GetNameById

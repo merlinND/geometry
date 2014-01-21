@@ -87,7 +87,7 @@ public:
 	// have their targets' id. They must use this method to access
 	// the corresponding instances.
 	// Contrat :
-	// Returns NOT_FOUND if the object is not found
+	// Returns NULL if the object is not found
 	
 	std::string GetNameById ( int idToFind );
 	// Mode d'emploi :

@@ -39,7 +39,11 @@ void Agregate::Move( int dx, int dy )
 		 it != agregateComponents.end(); ++it )
 	{
 		currentObject = controller->GetObjectById( *it );
-		currentObject->Move( dx, dy );
+		if ( currentObject->GetLastAppliedCommandId() != GetLastAppliedCommandId() )
+		{
+			currentObject->SetLastAppliedCommandId( GetLastAppliedCommandId() );
+			currentObject->Move( dx, dy );
+		}
 	}
 
 } //----- End Move
