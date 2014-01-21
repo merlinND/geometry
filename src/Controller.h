@@ -59,7 +59,7 @@ public:
 	Agregate * CreateAgregate ( std::string name );
 	// Mode d'emploi :
 	// All methods above create an instance of the desired GeometricObject
-	// add it to allObjects as well as the document
+	// add it to allObjects but *not* to the document
 	// and return a pointer to the new instance.
 	
 	void Undo ( );
@@ -112,12 +112,12 @@ public:
 	// This method removes the given id from the document (model)
 	// but its instance keeps living since we might add it back
 	// to the document later.
-	void AddObjectBackInDocument ( int idToAdd );
+	void AddIdToDocument ( int idToAdd );
 	// Mode d'emploi :
-	// Add an object back into the document (model).
+	// Add an object to the document (model) from its id.
 	// Contrat :
 	// The given id corresponds to an object that was previously
-	// removed from the document using RemoveObjectFromDocument.
+	// created with one of the factory methods (CreateCircle, etc).
 	
 	IdSet ClearDocument ( );
 	// Mode d'emploi :

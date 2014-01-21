@@ -22,23 +22,25 @@ int main ( )
 	Point p4(0, 0);
 	
 	GeometricObject * circle = controller->CreateCircle( "myCircle", p1, 3);
+	controller->AddIdToDocument( circle->GetId() );
 	
 	GeometricObject * line = controller->CreateLine( "myLine", p1, p2);
+	controller->AddIdToDocument( line->GetId() );
 	
 	Polyline * poly = controller->CreatePolyline( "myPoly" );
 	poly->AddPoint( p1 );
 	poly->AddPoint( p2 );
 	poly->AddPoint( p3 );
+	controller->AddIdToDocument( line->GetId() );
 	
-	controller->CreateRectangle( "myRectangle", p4, p3);
-	controller->CreateRectangle( "abc", p4, p3);
-	controller->CreateRectangle( "acc", p4, p3);
-	controller->CreateRectangle( "Ade", p4, p3);
+	GeometricObject * rectangle = controller->CreateRectangle( "myRectangle", p4, p3);
+	controller->AddIdToDocument( rectangle->GetId() );
 	
 	Agregate * agregate = controller->CreateAgregate( "myAgregate" );
 	agregate->AddComponent( circle->GetId() );
 	agregate->AddComponent( line->GetId() );
 	agregate->AddComponent( poly->GetId() );
+	controller->AddIdToDocument( agregate->GetId() );
 
 	// Basic command prompt
 	string returnText;

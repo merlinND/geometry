@@ -29,7 +29,7 @@ string ClearCommand::Undo ( )
 	for ( IdSet::iterator it = documentContent.begin();
 		 it != documentContent.end(); ++it )
 	{
-		controller->AddObjectBackInDocument( *it );
+		controller->AddIdToDocument( *it );
 	}
 	return STATUS_OK;
 }

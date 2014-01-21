@@ -64,7 +64,7 @@ string DeleteCommand::Undo ( )
 		 it != targets.end(); ++it )
 	{
 		// Add it back to the document
-		controller->AddObjectBackInDocument( *it );
+		controller->AddIdToDocument( *it );
 		
 		// And add it back in all agregates that it used
 		// to be part of
