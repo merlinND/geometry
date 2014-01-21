@@ -227,7 +227,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		// Parameter: a path to the file
 		if ( tokens.size() == 2 )
 		{
-			SaveCommand * sc = new SaveCommand ( tokens[1] );
+			SaveCommand * sc = new SaveCommand( tokens[1] );
 			// Check that this path is indeed writable
 			if ( sc->Good() )
 			{
@@ -240,12 +240,9 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 		// Parameter: a path to the file
 		if ( tokens.size() == 2 )
 		{
-			LoadCommand * lc = new LoadCommand ( tokens[1] );
-			// Check that this path is indeed readable
-			if ( lc->Good() )
-			{
-				result = lc;
-			}
+			// Unfortunately, we can't check much before the actual
+			// execution of the command
+			result = new LoadCommand( tokens[1] );
 		}
 	}
 	// All commands with no parameters

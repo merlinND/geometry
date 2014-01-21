@@ -14,38 +14,43 @@ using namespace std;
 
 string LoadCommand::Execute ( )
 {
-	// We must execute succesfully *all* commands, otherwise we just
-	// cancel the whole thing
-	string status = STATUS_OK;
-	
-	while ( commandsToDo.size() > 0 && status == STATUS_OK )
+	string status;
+	if ( !loadPerformed )
 	{
-		Command * currentCommand = commandsToDo.top();
-		status = currentCommand->Execute();
-		// We consider all OK statuses to be equivalent
-		if ( status == STATUS_OK_SILENT || status == STATUS_OK )
+		// First run of Execute: we load the commands from the input stream
+		input = new ifstream( path.c_str() );
+		status = loadAndExecute( input );
+		input->close();
+		if ( status == STATUS_OK )
 		{
-			status = STATUS_OK;
-			commandsToDo.pop();
-			commandsDone.push( currentCommand );
+			loadPerformed = true;
 		}
 	}
-	
-	// If we see as much as one error, we need to undo everything
-	if ( status == STATUS_ERROR )
+	else
 	{
-		while ( commandsDone.size() > 0 )
+		// We must execute succesfully *all* commands, otherwise we just
+		// cancel the whole thing
+		string status = STATUS_OK;
+		
+		while ( commandsToDo.size() > 0 && status == STATUS_OK )
 		{
-			Command * currentCommand = commandsDone.top();
-			if ( currentCommand->IsHistorizable() )
+			Command * currentCommand = commandsToDo.top();
+			status = currentCommand->Execute();
+			// We consider all OK statuses to be equivalent
+			if ( status == STATUS_OK_SILENT || status == STATUS_OK )
 			{
-				((HistorizableCommand *)currentCommand)->Undo();
+				status = STATUS_OK;
+				commandsToDo.pop();
+				commandsDone.push( currentCommand );
 			}
-			commandsDone.pop();
-			commandsToDo.push( currentCommand );
+		}
+		
+		// If we see as much as one error, we need to undo everything
+		if ( status == STATUS_ERROR )
+		{
+			cancelEverything( true );
 		}
 	}
-	
 	return status;
 }
 string LoadCommand::Undo ( )
@@ -77,43 +82,21 @@ string LoadCommand::Undo ( )
 	// If we see as much as one error, we need to undo everything
 	if ( status == STATUS_ERROR )
 	{
-		while ( commandsToDo.size() > 0 )
-		{
-			Command * currentCommand = commandsToDo.top();
-			currentCommand->Execute();
-			commandsToDo.pop();
-			commandsDone.push( currentCommand );
-		}
+		cancelEverything ( false );
 	}
 	
 	return status;
 }
 
-bool LoadCommand::Good ( )
-{
-	return !loadFailed;
-}
-
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-LoadCommand::LoadCommand ( std::string path )
-	: input ( path.c_str() )
+LoadCommand::LoadCommand ( std::string thePath )
+	: path( thePath ), loadPerformed( false )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <LoadCommand>" << endl;
 #endif
-	
-	loadFailed = false;
-	if ( input.good() )
-	{
-		loadCommandsFromInput( input );
-	}
-	else
-	{
-		loadFailed = true;
-	}
-	
 } //----- Fin de LoadCommand 
 
 LoadCommand::~LoadCommand ( )
@@ -141,27 +124,68 @@ LoadCommand::~LoadCommand ( )
 //------------------------------------------------------------------ PRIVÉ
 
 //----------------------------------------------------- Méthodes protégées
-void LoadCommand::loadCommandsFromInput ( istream & input )
+string LoadCommand::loadAndExecute ( istream * input )
 {
-	Command * loadedCommand;
-	AnyCommandStack wrongOrderStack;
-	while ( !loadFailed  && input ) // && input.peek() != input.eof()
+	string status = STATUS_OK;
+	while ( status != STATUS_ERROR && input->good() )
 	{
-		loadedCommand = CommandInterpreter::InterpretCommand( input );
+		Command * loadedCommand = CommandInterpreter::InterpretCommand( *input );
 		if ( loadedCommand == NULL )
 		{
-			loadFailed = true;
+			status = STATUS_ERROR;
 		}
 		else
 		{
-			wrongOrderStack.push( loadedCommand );
+			status = loadedCommand->Execute();
+			// We consider all OK statuses to be equivalent
+			if ( status == STATUS_OK_SILENT || status == STATUS_OK )
+			{
+				status = STATUS_OK;
+				commandsDone.push( loadedCommand );
+			}
+			else
+			{
+				delete loadedCommand;
+			}
 		}
 	}
 	
-	// If everything went well, we put the Commands back into the right order
-	while ( wrongOrderStack.size() > 0 )
+	// If anything went wrong, we must rewind
+	if ( status == STATUS_ERROR )
 	{
-		commandsToDo.push ( wrongOrderStack.top() );
-		wrongOrderStack.pop();
+		cancelEverything( true );
+	}
+	
+	return status;
+}
+
+void LoadCommand::cancelEverything ( bool undo )
+{
+	// We were Executing commands but something failed,
+	// so now we undo everything.
+	if ( undo )
+	{
+		while ( commandsDone.size() > 0 )
+		{
+			Command * currentCommand = commandsDone.top();
+			if ( currentCommand->IsHistorizable() )
+			{
+				((HistorizableCommand *)currentCommand)->Undo();
+			}
+			commandsDone.pop();
+			commandsToDo.push( currentCommand );
+		}
+	}
+	// We were Undoing commands but something failed,
+	// so now we redo everything we had undone
+	else
+	{
+		while ( commandsToDo.size() > 0 )
+		{
+			Command * currentCommand = commandsToDo.top();
+			currentCommand->Execute();
+			commandsToDo.pop();
+			commandsDone.push( currentCommand );
+		}
 	}
 }
