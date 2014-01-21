@@ -48,7 +48,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	if ( "MOVE" == command )
 	{
 		MoveCommand * mc = new MoveCommand( );
-		// Parameters : target name and offset
+		// Parameters: target name and offset
 		if ( tokens.size() == 4 )
 		{
 			// Find the id corresponding to this name (in the current document)
@@ -69,7 +69,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	else if ( "DELETE" == command )
 	{
 		DeleteCommand * dc = new DeleteCommand( );
-		// Parameters : a list of target names (at least one)
+		// Parameters: a list of target names (at least one)
 		if ( tokens.size() >= 2 )
 		{
 			// Find the id corresponding each name (in the current document)
@@ -101,7 +101,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	else if ( "SAVE" == command )
 	{
 		// Parameter: a path to the file
-		if ( tokens.size() >= 2 )
+		if ( tokens.size() == 2 )
 		{
 			SaveCommand * sc = new SaveCommand ( tokens[1] );
 			// Check that this path is indeed writable
@@ -114,7 +114,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	else if ( "LOAD" == command )
 	{
 		// Parameter: a path to the file
-		if ( tokens.size() >= 2 )
+		if ( tokens.size() == 2 )
 		{
 			LoadCommand * lc = new LoadCommand ( tokens[1] );
 			// Check that this path is indeed readable
@@ -124,21 +124,25 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			}
 		}
 	}
-	else if ( "LIST" == command )
+	// All commands with no parameters
+	else if ( tokens.size() == 1 )
 	{
-		result = new ListCommand( );
-	}
-	else if ( "UNDO" == command )
-	{
-		result = new UndoCommand( );
-	}
-	else if ( "REDO" == command )
-	{
-		result = new RedoCommand( );
-	}
-	else if ( "EXIT" == command )
-	{
-		result = new ExitCommand( );
+		if ( "LIST" == command )
+		{
+			result = new ListCommand( );
+		}
+		else if ( "UNDO" == command )
+		{
+			result = new UndoCommand( );
+		}
+		else if ( "REDO" == command )
+		{
+			result = new RedoCommand( );
+		}
+		else if ( "EXIT" == command )
+		{
+			result = new ExitCommand( );
+		}
 	}
 	
 	return result;
