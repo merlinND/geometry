@@ -6,6 +6,7 @@
 // Simple header file that includes all different command classes
 
 // ----- Historizable commands
+#include "AddCommand.h"
 #include "MoveCommand.h"
 #include "DeleteCommand.h"
 #include "ClearCommand.h"
