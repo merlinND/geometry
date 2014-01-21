@@ -37,7 +37,10 @@ string Controller::ProcessCommand ( Command * command )
 	{
 		history.AddCommand( (HistorizableCommand *) command );
 	}
-	
+	else
+	{
+		delete command;
+	}
 	return status;
 } //----- End ProcessCommand
 
