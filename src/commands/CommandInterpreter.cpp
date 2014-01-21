@@ -10,7 +10,7 @@ using namespace std;
 #include "CommandInterpreter.h"
 #include "AllCommands.h"
 #include "../Controller.h"
-#include "SaveCommand.h"
+#include "../geometricObjects/AllGeometricObjects.h"
 //------------------------------------------------------------- Constantes
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -45,7 +45,131 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 	string command = tokens[0];
 	transform(command.begin(), command.end(), command.begin(),::toupper);
 	
-	if ( "MOVE" == command )
+	if ( Circle::INITIALS == command )
+	{
+		// Parameters: target name, circle center and radius
+		if ( tokens.size() == 5 )
+		{
+			if ( isValidName( tokens[1] )
+				&& isValidPoint( tokens[2], tokens[3] )
+				&& isValidInteger ( tokens[4] ) )
+			{
+				string name = tokens[1];
+				Point center = makePointFromInput( tokens[2], tokens[3] );
+				int radius = makeIntegerFromInput( tokens[4] );
+				if ( radius >= 0 )
+				{
+					Circle * circle = controller->CreateCircle( name, center, radius );
+					AddCommand * ac = new AddCommand();
+					ac->AddTarget( circle->GetId() );
+					result = ac;
+				}
+			}
+		}
+	}
+	else if ( Line::INITIALS == command )
+	{
+		// Parameters: target name and the two extreme points
+		if ( tokens.size() == 6 )
+		{
+			if ( isValidName( tokens[1] )
+				&& isValidPoint( tokens[2], tokens[3] )
+				&& isValidPoint( tokens[4], tokens[5] ) )
+			{
+				string name = tokens[1];
+				Point begin = makePointFromInput( tokens[2], tokens[3] );
+				Point end = makePointFromInput( tokens[4], tokens[5] );
+				Line * line = controller->CreateLine( name, begin, end );
+				AddCommand * ac = new AddCommand();
+				ac->AddTarget( line->GetId() );
+				result = ac;
+			}
+		}
+	}
+	else if ( Polyline::INITIALS == command )
+	{
+		// Parameters: target name and a list of points (at least one)
+		if ( tokens.size() >= 4 && tokens.size() % 2 == 0 )
+		{
+			bool valid = isValidName( tokens[1] );
+			vector<Point> points;
+			int i = 2;
+			while ( valid && i < tokens.size() - 1 )
+			{
+				valid = valid && isValidPoint( tokens[i], tokens[i+1] );
+				if ( valid )
+				{
+					points.push_back( makePointFromInput( tokens[i], tokens[i+1] ) );
+				}
+				i += 2;
+			}
+			// If every point was a valid point
+			if ( valid )
+			{
+				Polyline * polyline = controller->CreatePolyline( tokens[1] );
+				for ( int i = 0; i < points.size(); ++i )
+				{
+					polyline->AddPoint( points.at( i ) );
+				}
+				AddCommand * ac = new AddCommand();
+				ac->AddTarget( polyline->GetId() );
+				result = ac;
+			}
+		}
+	}
+	else if ( Rectangle::INITIALS == command )
+	{
+		// Parameters: target name and two corner points
+		if ( tokens.size() == 6 )
+		{
+			if ( isValidName( tokens[1] )
+				&& isValidPoint( tokens[2], tokens[3] )
+				&& isValidPoint( tokens[4], tokens[5] ) )
+			{
+				string name = tokens[1];
+				Point ulc = makePointFromInput( tokens[2], tokens[3] );
+				Point lrc = makePointFromInput( tokens[4], tokens[5] );
+				Rectangle * rectangle = controller->CreateRectangle( name, ulc, lrc );
+				AddCommand * ac = new AddCommand();
+				ac->AddTarget( rectangle->GetId() );
+				result = ac;
+			}
+		}
+	}
+	else if ( Agregate::INITIALS == command )
+	{
+		// Parameters: target name and a list of object names
+		if ( tokens.size() >= 3 )
+		{
+			bool valid = isValidName( tokens[1] );
+			IdSet componentsId;
+			int i = 2;
+			while ( valid && i < tokens.size() )
+			{
+				int correspondingId = controller->GetIdByName( tokens[i] );
+				valid = valid && ( correspondingId != Controller::NOT_FOUND );
+				if ( valid )
+				{
+					componentsId.insert( correspondingId );
+				}
+				++i;
+			}
+			// If every name given corresponds to an object in the document
+			if ( valid )
+			{
+				Agregate * agregate = controller->CreateAgregate( tokens[1] );
+				for ( IdSet::iterator it = componentsId.begin();
+					 it != componentsId.end(); ++it )
+				{
+					agregate->AddComponent( * it );
+				}
+				AddCommand * ac = new AddCommand();
+				ac->AddTarget( agregate->GetId() );
+				result = ac;
+			}
+		}
+	}
+	else if ( "MOVE" == command )
 	{
 		MoveCommand * mc = new MoveCommand( );
 		// Parameters: target name and offset
@@ -157,7 +281,8 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 
 bool CommandInterpreter::isNameUsedInDocument( string text )
 {
-	return Controller::GetInstance()->IsNameUsedInDocument( text );
+	Controller * controller = Controller::GetInstance();
+	return controller->IsNameUsedInDocument( text );
 }
 
 bool CommandInterpreter::isValidName( string text )
@@ -166,32 +291,31 @@ bool CommandInterpreter::isValidName( string text )
 	valid = valid && ( text.length() > 0 ); // At least one character
 	valid = valid && ( text.find(' ') == string::npos ); // No space
 	// TODO : add other constraints
-	// TODO : check that name is unique !
 	valid = valid && !isNameUsedInDocument( text );
 	return valid;
 }
 
+bool CommandInterpreter::isValidInteger( string text )
+{
+	int x = 0;
+	stringstream ss( text );
+	return ( text.length() > 0 ) && ( ss >> x );
+}
+
 bool CommandInterpreter::isValidPoint( string stringX, string stringY )
 {
-	bool valid = true;
-	valid = valid && ( stringY.length() > 0 ) && ( stringY.length() > 0 );
-	
-	// Try to convert both strings to integers
-	int x = 0, y = 0;
-	stringstream ss( stringX + " " + stringY );
-	valid = valid && ( ss >> x );
-	valid = valid && ( ss >> y );
-	
-	return valid;
+	return isValidInteger( stringX ) && isValidInteger( stringY );
+}
+
+int CommandInterpreter::makeIntegerFromInput( string text )
+{
+	int x;
+	stringstream ss( text );
+	ss >> x;
+	return x;
 }
 
 Point CommandInterpreter::makePointFromInput( string stringX, string stringY )
 {
-	int x, y;
-	// Convert both strings to integers and return a new point
-	// TODO : support for negative integers
-	stringstream ss( stringX + " " + stringY );
-	ss >> x;
-	ss >> y;
-	return Point( x, y );
+	return Point( makeIntegerFromInput(stringX), makeIntegerFromInput(stringY) );
 }

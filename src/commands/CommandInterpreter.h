@@ -50,12 +50,17 @@ protected:
 	static bool isNameUsedInDocument ( std::string name );
 	// Mode d'emploi :
 	// Checks whether an object with the given name *currently*
-	// exists in the document
+	// exists in the document.
 	
 	static bool isValidName ( std::string text );
 	// Mode d'emploi :
 	// Checks if a given string is a valid name to be given
-	// to a GeometricObject
+	// to a GeometricObject.
+	
+	static bool isValidInteger ( std::string text );
+	// Mode d'emploi :
+	// Checks if a given string can be converted to a valid integer.
+	// An empty string is not considered to be a valid integer.
 	
 	static bool isValidPoint ( std::string stringX, std::string stringY );
 	// Mode d'emploi :
@@ -68,6 +73,12 @@ protected:
 	// Creates a Point instance from the given strings.
 	// Contract :
 	// The given strings have been checked first using isValidPoint.
+	
+	static int makeIntegerFromInput ( std::string text );
+	// Mode d'emploi :
+	// Creates an integer from the given string.
+	// Contract :
+	// The given string have been checked first using isValidInteger.
 	
 //----------------------------------------------------- Attributs protégés
 };
