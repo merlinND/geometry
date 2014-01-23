@@ -1,0 +1,3 @@
+LOAD input/10000.in
+SAVE output/10000.out
+EXIT
