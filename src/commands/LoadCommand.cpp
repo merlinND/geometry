@@ -92,7 +92,7 @@ string LoadCommand::Undo ( )
 //-------------------------------------------- Constructeurs - destructeur
 
 LoadCommand::LoadCommand ( std::string thePath )
-		: path( thePath ), loadPerformed( false )
+		: path( thePath ), input( NULL ), loadPerformed( false )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <LoadCommand>" << endl;

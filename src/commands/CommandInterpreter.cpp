@@ -95,7 +95,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			bool valid = isValidName( tokens[1] );
 			vector<Point> points;
 			int i = 2;
-			while ( valid && i < tokens.size( ) - 1 )
+			while ( valid && i < (int) tokens.size( ) - 1 )
 			{
 				valid = valid && isValidPoint( tokens[i], tokens[i + 1] );
 				if ( valid )
@@ -109,7 +109,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			if ( valid )
 			{
 				Polyline * polyline = controller->CreatePolyline( tokens[1] );
-				for ( int i = 0; i < points.size( ); ++i )
+				for ( int i = 0; i < (int) points.size( ); ++i )
 				{
 					polyline->AddPoint( points.at( i ) );
 				}
@@ -147,7 +147,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			bool valid = isValidName( tokens[1] );
 			IdSet componentsId;
 			int i = 2;
-			while ( valid && i < tokens.size( ) )
+			while ( valid && i < (int) tokens.size( ) )
 			{
 				TId correspondingId = controller->GetIdByName( tokens[i] );
 				valid = valid && ( correspondingId != Controller::NOT_FOUND );
@@ -200,7 +200,7 @@ Command * CommandInterpreter::InterpretCommand ( istream & line )
 			bool valid = true;
 			DeleteCommand * dc = new DeleteCommand( );
 			int i = 1;
-			while ( valid && i < tokens.size( ) )
+			while ( valid && i < (int) tokens.size( ) )
 			{
 				TId targetId = controller->GetIdByName( tokens[i] );
 				if ( targetId != Controller::NOT_FOUND )
