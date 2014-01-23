@@ -304,7 +304,8 @@ bool CommandInterpreter::isValidInteger ( string text )
 {
 	long x = 0;
 	stringstream ss( text );
-	return ( text.length( ) > 0 ) && ( ss >> x );
+	return ( text.length( ) > 0 ) && ( text.find(',') == string::npos )
+		&& ( text.find('.') == string::npos ) && ( ss >> x );
 }
 
 bool CommandInterpreter::isValidPoint ( string stringX, string stringY )
