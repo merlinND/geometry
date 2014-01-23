@@ -6,8 +6,8 @@ C myFifthCircle 1 1 489
 C mySeventhCircle 0 0 99
 C mySixthCircle 1 1 27
 C myEightCircle 0 0 1000
-C myNinthCircle 0 1 6 
-C myTenthCircle 1 1 2 7 
+C myNinthCircle 0 1 6
+C myTenthCircle 1 1 2
 R myRectangle 0 0 1 1
 R mySecondRectangle 1 1 4 2
 R myThirdRectangle 0 0 4 4

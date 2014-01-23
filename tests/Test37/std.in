@@ -1,2 +1,3 @@
-LOAD myCircle
+LOAD file.in
+LIST
 EXIT
