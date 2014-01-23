@@ -12,7 +12,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 
-void DeleteCommand::AddTarget( TId targetId )
+void DeleteCommand::AddTarget ( TId targetId )
 {
 	targets.insert( targetId );
 	IdSet emptySet;
@@ -23,13 +23,12 @@ string DeleteCommand::Execute ( )
 {
 	executionCounter++;
 	
-	Controller * controller = Controller::GetInstance();
-	IdSet allAgregates = controller->GetAllAgregatesInDocument();
+	Controller * controller = Controller::GetInstance( );
+	IdSet allAgregates = controller->GetAllAgregatesInDocument( );
 	
-	vector<IdSet>::iterator parentsIterator = parentAgregates.begin();
+	vector<IdSet>::iterator parentsIterator = parentAgregates.begin( );
 	// For each object to delete
-	for ( IdSet::iterator it = targets.begin();
-		 it != targets.end(); ++it )
+	for ( IdSet::iterator it = targets.begin( ); it != targets.end( ); ++it )
 	{
 		// Remove it from the document
 		controller->RemoveObjectFromDocument( *it );
@@ -37,8 +36,8 @@ string DeleteCommand::Execute ( )
 		// Find all agregates containing the deleted object
 		// in order to remember them
 		Agregate * currentAgregate;
-		for ( IdSet::iterator jt = allAgregates.begin();
-			 jt != allAgregates.end(); ++jt )
+		for ( IdSet::iterator jt = allAgregates.begin( );
+				jt != allAgregates.end( ); ++jt )
 		{
 			currentAgregate = (Agregate *) controller->GetObjectById( *jt );
 			if ( currentAgregate->Contains( *it ) )
@@ -55,13 +54,12 @@ string DeleteCommand::Undo ( )
 {
 	executionCounter++;
 	
-	Controller * controller = Controller::GetInstance();
+	Controller * controller = Controller::GetInstance( );
 	
-	vector<IdSet>::iterator agregatesIterator = parentAgregates.begin();
+	vector<IdSet>::iterator agregatesIterator = parentAgregates.begin( );
 	// For each object that was deleted
 	// (and its corresponding parent agregates)
-	for ( IdSet::iterator it = targets.begin();
-		 it != targets.end(); ++it )
+	for ( IdSet::iterator it = targets.begin( ); it != targets.end( ); ++it )
 	{
 		// Add it back to the document
 		controller->AddIdToDocument( *it );
@@ -69,8 +67,8 @@ string DeleteCommand::Undo ( )
 		// And add it back in all agregates that it used
 		// to be part of
 		Agregate * currentAgregate;
-		for ( IdSet::iterator jt = agregatesIterator->begin();
-			 jt != agregatesIterator->end(); ++jt )
+		for ( IdSet::iterator jt = agregatesIterator->begin( );
+				jt != agregatesIterator->end( ); ++jt )
 		{
 			currentAgregate = (Agregate *) controller->GetObjectById( *jt );
 			currentAgregate->AddComponent( *it );

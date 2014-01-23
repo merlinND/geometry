@@ -16,39 +16,40 @@ const string Agregate::INITIALS = "OA";
 
 //----------------------------------------------------- Méthodes publiques
 
-string Agregate::GetRepresentation()
+string Agregate::GetRepresentation ( )
 
 {
-	string representation = GetInitials() + " " + name;
+	string representation = GetInitials( ) + " " + name;
 	
-	Controller * controller = Controller::GetInstance();
-	for ( IdSet::iterator it = agregateComponents.begin();
-		 it != agregateComponents.end(); ++it )
+	Controller * controller = Controller::GetInstance( );
+	for ( IdSet::iterator it = agregateComponents.begin( );
+			it != agregateComponents.end( ); ++it )
 	{
 		representation += " " + controller->GetNameById( *it );
 	}
 	return representation;
 } //----- End GetRepresentation
 
-
-void Agregate::Move( long dx, long dy )
+void Agregate::Move ( long dx, long dy )
 {
-	Controller * controller = Controller::GetInstance();
+	Controller * controller = Controller::GetInstance( );
 	GeometricObject * currentObject;
-	for ( IdSet::iterator it = agregateComponents.begin();
-		 it != agregateComponents.end(); ++it )
+	for ( IdSet::iterator it = agregateComponents.begin( );
+			it != agregateComponents.end( ); ++it )
 	{
 		currentObject = controller->GetObjectById( *it );
-		if ( currentObject->GetLastAppliedCommandId() != GetLastAppliedCommandId() )
+		if ( currentObject->GetLastAppliedCommandId( )
+				!= GetLastAppliedCommandId( ) )
 		{
-			currentObject->SetLastAppliedCommandId( GetLastAppliedCommandId() );
+			currentObject->SetLastAppliedCommandId(
+					GetLastAppliedCommandId( ) );
 			currentObject->Move( dx, dy );
 		}
 	}
 
 } //----- End Move
 
-void Agregate::AddComponent( TId idToAdd )
+void Agregate::AddComponent ( TId idToAdd )
 {
 	agregateComponents.insert( idToAdd );
 }
@@ -58,39 +59,37 @@ IdSet Agregate::GetComponents ( )
 	return agregateComponents;
 }
 
-bool Agregate::Contains( TId idToFind )
+bool Agregate::Contains ( TId idToFind )
 {
-	return ( agregateComponents.find( idToFind )
-			!= agregateComponents.end() );
+	return ( agregateComponents.find( idToFind ) != agregateComponents.end( ) );
 }
 
-void Agregate::RemoveComponent( TId idToRemove )
+void Agregate::RemoveComponent ( TId idToRemove )
 {
-	agregateComponents.erase(agregateComponents.find( idToRemove ));
+	agregateComponents.erase( agregateComponents.find( idToRemove ) );
 }
 
 void Agregate::RemoveAllComponents ( )
 {
-	agregateComponents.clear();
+	agregateComponents.clear( );
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
 Agregate::Agregate ( std::string name )
-	: GeometricObject ( name, INITIALS )
+		: GeometricObject( name, INITIALS )
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Agregate>" << endl;
+	cout << "Appel au constructeur de <Agregate>" << endl;
 #endif
 } //----- Fin de Agregate
 Agregate::~Agregate ( )
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Agregate>" << endl;
+	cout << "Appel au destructeur de <Agregate>" << endl;
 #endif
 } //----- Fin de ~Agregate
-
 
 //------------------------------------------------------------------ PRIVE
 

@@ -8,7 +8,7 @@ struct Point
 {
 	long x;
 	long y;
-	
+
 	Point ( long initialX, long initialY )
 	{
 		x = initialX;
@@ -27,7 +27,7 @@ struct Point
 		os << x;
 		os << " ";
 		os << y;
-		return os.str();
+		return os.str( );
 	}
 	
 	void Reverse ( )
@@ -38,6 +38,6 @@ struct Point
 };
 
 // A vector in two dimensions is simply composed of two coordinates
-typedef	Point Vector2D;
+typedef Point Vector2D;
 
 #endif // POINT_H_

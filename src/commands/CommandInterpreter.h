@@ -37,9 +37,9 @@ public:
 
 	// Static class => private constructor
 	virtual ~CommandInterpreter ( );
-	
-//------------------------------------------------------------------ PRIVE 
 
+//------------------------------------------------------------------ PRIVE
+	
 protected:
 //----------------------------------------------------- Méthodes protégées
 	
@@ -68,7 +68,7 @@ protected:
 	// or Vector2D. We accept integer coordinates only.
 	
 	static Point makePointFromInput ( std::string stringX,
-									  std::string stringY );
+			std::string stringY );
 	// Mode d'emploi :
 	// Creates a Point instance from the given strings.
 	// Contract :

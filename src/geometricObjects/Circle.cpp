@@ -16,23 +16,23 @@ const string Circle::INITIALS = "C";
 string Circle::GetRepresentation ( )
 {
 	ostringstream os;
-	os << GetInitials() + " " + name + " ";
-	os << center.GetRepresentation() + " ";
+	os << GetInitials( ) + " " + name + " ";
+	os << center.GetRepresentation( ) + " ";
 	os << radius;
-	return os.str();
+	return os.str( );
 }
-void Circle::Move (long dx, long dy)
+void Circle::Move ( long dx, long dy )
 {
 	center.x += dx;
 	center.y += dy;
-	return ;
+	return;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
 Circle::Circle ( string myCircle, Point theCenter, long R )
-	: GeometricObject ( myCircle, INITIALS ),
-	  center ( theCenter ), radius ( R )
+		: GeometricObject( myCircle, INITIALS ), center( theCenter ),
+			radius( R )
 // Algorithme :
 //
 {

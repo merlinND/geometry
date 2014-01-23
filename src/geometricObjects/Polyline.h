@@ -29,7 +29,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 	string GetRepresentation ( );
-	
+
 	void Move ( long dx, long dy );
 	void AddPoint ( Point extraPoint );
 
@@ -38,14 +38,14 @@ public:
 	
 	Polyline ( string name );
 
-    virtual ~Polyline ( );
+	virtual ~Polyline ( );
 
 //------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 //----------------------------------------------------- Attributs protégés
-	vector <Point> points;
+	vector<Point> points;
 };
 
 //--------------------------- Autres définitions dépendantes de <Polyline>

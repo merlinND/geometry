@@ -13,7 +13,7 @@ using namespace std;
 
 string RedoCommand::Execute ( )
 {
-	Controller::GetInstance()->Redo();
+	Controller::GetInstance( )->Redo( );
 	// TODO: we should take into account the returned status
 	// from the Command itself
 	return STATUS_OK;

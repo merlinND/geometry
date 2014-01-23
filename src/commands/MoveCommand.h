@@ -21,10 +21,10 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	virtual std::string Execute ( );
 	virtual std::string Undo ( );
-	
+
 	void SetOffset ( Vector2D theOffset );
 	void SetOffset ( long dx, long dy );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	MoveCommand ( );

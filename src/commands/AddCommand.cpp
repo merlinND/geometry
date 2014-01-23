@@ -14,10 +14,9 @@ using namespace std;
 string AddCommand::Execute ( )
 {
 	executionCounter++;
-	Controller * controller = Controller::GetInstance();
+	Controller * controller = Controller::GetInstance( );
 	// For each object to add
-	for ( IdSet::iterator it = targets.begin();
-		 it != targets.end(); ++it )
+	for ( IdSet::iterator it = targets.begin( ); it != targets.end( ); ++it )
 	{
 		controller->AddIdToDocument( *it );
 	}
@@ -26,10 +25,9 @@ string AddCommand::Execute ( )
 string AddCommand::Undo ( )
 {
 	executionCounter++;
-	Controller * controller = Controller::GetInstance();
+	Controller * controller = Controller::GetInstance( );
 	// For each object that we had added
-	for ( IdSet::iterator it = targets.begin();
-		 it != targets.end(); ++it )
+	for ( IdSet::iterator it = targets.begin( ); it != targets.end( ); ++it )
 	{
 		controller->RemoveObjectFromDocument( *it );
 	}

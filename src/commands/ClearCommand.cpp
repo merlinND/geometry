@@ -16,8 +16,8 @@ string ClearCommand::Execute ( )
 {
 	executionCounter++;
 	
-	Controller * controller = Controller::GetInstance();
-	documentContent = controller->ClearDocument();
+	Controller * controller = Controller::GetInstance( );
+	documentContent = controller->ClearDocument( );
 	
 	return STATUS_OK;
 }
@@ -25,9 +25,9 @@ string ClearCommand::Undo ( )
 {
 	executionCounter++;
 	
-	Controller * controller = Controller::GetInstance();
-	for ( IdSet::iterator it = documentContent.begin();
-		 it != documentContent.end(); ++it )
+	Controller * controller = Controller::GetInstance( );
+	for ( IdSet::iterator it = documentContent.begin( );
+			it != documentContent.end( ); ++it )
 	{
 		controller->AddIdToDocument( *it );
 	}

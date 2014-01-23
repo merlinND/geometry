@@ -25,26 +25,26 @@ public:
 	
 	string GetRepresentation ( );
 	// Mode d'emploi :
-    //
-    // Contrat :
-    //
+	//
+	// Contrat :
+	//
 	
 	void Move ( long dx, long dy );
-	
-	void AddComponent( TId idToAdd );
+
+	void AddComponent ( TId idToAdd );
 	IdSet GetComponents ( );
 	bool Contains ( TId idToFind );
-	
-	void RemoveComponent( TId idToRemove );
+
+	void RemoveComponent ( TId idToRemove );
 	void RemoveAllComponents ( );
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
 	Agregate ( std::string name );
-    // Mode d'emploi :
-    // Creates an empty agregate object with the given name.
+	// Mode d'emploi :
+	// Creates an empty agregate object with the given name.
 	
-    virtual ~Agregate ( );
+	virtual ~Agregate ( );
 
 //------------------------------------------------------------------ PRIVE 
 

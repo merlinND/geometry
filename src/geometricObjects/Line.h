@@ -1,7 +1,6 @@
 #if ! defined ( LINE_H_ )
 #define LINE_H_
 
-
 //--------------------------------------------------- Interfaces utilisées
 #include "Point.h"
 #include "GeometricObject.h"
@@ -25,7 +24,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	
 	std::string GetRepresentation ( );
-	void Move (long dx, long dy);
+	void Move ( long dx, long dy );
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

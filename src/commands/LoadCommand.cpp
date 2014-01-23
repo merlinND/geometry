@@ -18,9 +18,9 @@ string LoadCommand::Execute ( )
 	if ( !loadPerformed )
 	{
 		// First run of Execute: we load the commands from the input stream
-		input = new ifstream( path.c_str() );
+		input = new ifstream( path.c_str( ) );
 		status = loadAndExecute( input );
-		input->close();
+		input->close( );
 		if ( status == STATUS_OK )
 		{
 			loadPerformed = true;
@@ -32,15 +32,15 @@ string LoadCommand::Execute ( )
 		// cancel the whole thing
 		string status = STATUS_OK;
 		
-		while ( commandsToDo.size() > 0 && status == STATUS_OK )
+		while ( commandsToDo.size( ) > 0 && status == STATUS_OK )
 		{
-			Command * currentCommand = commandsToDo.top();
-			status = currentCommand->Execute();
+			Command * currentCommand = commandsToDo.top( );
+			status = currentCommand->Execute( );
 			// We consider all OK statuses to be equivalent
 			if ( status == STATUS_OK_SILENT || status == STATUS_OK )
 			{
 				status = STATUS_OK;
-				commandsToDo.pop();
+				commandsToDo.pop( );
 				commandsDone.push( currentCommand );
 			}
 		}
@@ -63,18 +63,18 @@ string LoadCommand::Undo ( )
 	// cancel the whole thing
 	string status = STATUS_OK;
 	
-	while ( commandsDone.size() > 0 && status == STATUS_OK )
+	while ( commandsDone.size( ) > 0 && status == STATUS_OK )
 	{
-		Command * currentCommand = commandsDone.top();
-		if ( currentCommand->IsHistorizable() )
+		Command * currentCommand = commandsDone.top( );
+		if ( currentCommand->IsHistorizable( ) )
 		{
-			((HistorizableCommand *)currentCommand)->Undo();
+			( (HistorizableCommand *) currentCommand )->Undo( );
 		}
 		// We consider all OK statuses to be equivalent
 		if ( status == STATUS_OK_SILENT || status == STATUS_OK )
 		{
 			status = STATUS_OK;
-			commandsDone.pop();
+			commandsDone.pop( );
 			commandsToDo.push( currentCommand );
 		}
 	}
@@ -82,7 +82,7 @@ string LoadCommand::Undo ( )
 	// If we see as much as one error, we need to undo everything
 	if ( status == STATUS_ERROR )
 	{
-		cancelEverything ( false );
+		cancelEverything( false );
 	}
 	
 	return status;
@@ -92,7 +92,7 @@ string LoadCommand::Undo ( )
 //-------------------------------------------- Constructeurs - destructeur
 
 LoadCommand::LoadCommand ( std::string thePath )
-	: path( thePath ), loadPerformed( false )
+		: path( thePath ), input( NULL ), loadPerformed( false )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <LoadCommand>" << endl;
@@ -106,17 +106,17 @@ LoadCommand::~LoadCommand ( )
 #endif
 	
 	Command * current;
-	while ( commandsToDo.size() > 0 )
+	while ( commandsToDo.size( ) > 0 )
 	{
-		current = commandsToDo.top();
+		current = commandsToDo.top( );
 		delete current;
-		commandsToDo.pop();
+		commandsToDo.pop( );
 	}
-	while ( commandsDone.size() > 0 )
+	while ( commandsDone.size( ) > 0 )
 	{
-		current = commandsDone.top();
+		current = commandsDone.top( );
 		delete current;
-		commandsDone.pop();
+		commandsDone.pop( );
 	}
 	
 } //----- Fin de ~LoadCommand
@@ -127,16 +127,17 @@ LoadCommand::~LoadCommand ( )
 string LoadCommand::loadAndExecute ( istream * input )
 {
 	string status = STATUS_OK;
-	while ( status != STATUS_ERROR && input->good() )
+	while ( status != STATUS_ERROR && input->good( ) )
 	{
-		Command * loadedCommand = CommandInterpreter::InterpretCommand( *input );
+		Command * loadedCommand = CommandInterpreter::InterpretCommand(
+				*input );
 		if ( loadedCommand == NULL )
 		{
 			status = STATUS_ERROR;
 		}
 		else
 		{
-			status = loadedCommand->Execute();
+			status = loadedCommand->Execute( );
 			// We consider all OK statuses to be equivalent
 			if ( status == STATUS_OK_SILENT || status == STATUS_OK )
 			{
@@ -165,14 +166,14 @@ void LoadCommand::cancelEverything ( bool undo )
 	// so now we undo everything.
 	if ( undo )
 	{
-		while ( commandsDone.size() > 0 )
+		while ( commandsDone.size( ) > 0 )
 		{
-			Command * currentCommand = commandsDone.top();
-			if ( currentCommand->IsHistorizable() )
+			Command * currentCommand = commandsDone.top( );
+			if ( currentCommand->IsHistorizable( ) )
 			{
-				((HistorizableCommand *)currentCommand)->Undo();
+				( (HistorizableCommand *) currentCommand )->Undo( );
 			}
-			commandsDone.pop();
+			commandsDone.pop( );
 			commandsToDo.push( currentCommand );
 		}
 	}
@@ -180,11 +181,11 @@ void LoadCommand::cancelEverything ( bool undo )
 	// so now we redo everything we had undone
 	else
 	{
-		while ( commandsToDo.size() > 0 )
+		while ( commandsToDo.size( ) > 0 )
 		{
-			Command * currentCommand = commandsToDo.top();
-			currentCommand->Execute();
-			commandsToDo.pop();
+			Command * currentCommand = commandsToDo.top( );
+			currentCommand->Execute( );
+			commandsToDo.pop( );
 			commandsDone.push( currentCommand );
 		}
 	}

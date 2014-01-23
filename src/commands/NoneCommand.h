@@ -19,7 +19,7 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	virtual std::string Execute ( );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	NoneCommand ( );

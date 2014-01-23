@@ -19,11 +19,11 @@ public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
 	virtual std::string Execute ( );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	ExitCommand ( );
-	
+
 	virtual ~ExitCommand ( );
 
 //------------------------------------------------------------------ PRIVE 

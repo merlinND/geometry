@@ -28,28 +28,27 @@ public:
 	TId GetId ( );
 	string const GetInitials ( );
 	virtual string GetRepresentation ( ) = 0;
-	
+
 	virtual void Move ( long dx, long dy ) = 0;
 
 	int GetLastAppliedCommandId ( );
 	void SetLastAppliedCommandId ( int commandId );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
-
-
+	
 //-------------------------------------------- Constructeurs - destructeur
 
-    GeometricObject ( string name, string initials );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+	GeometricObject ( string name, string initials );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
-    virtual ~GeometricObject ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+	virtual ~GeometricObject ( );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 //------------------------------------------------------------------ PRIVE 
 
@@ -60,11 +59,10 @@ protected:
 	
 	string name;
 	string initials;
-	
+
 	static TId objectIdCounter;
 	TId objectId;
-	
-	
+
 	int lastAppliedCommandId;
 };
 

@@ -13,7 +13,7 @@ using namespace std;
 
 string UndoCommand::Execute ( )
 {
-	Controller::GetInstance()->Undo();
+	Controller::GetInstance( )->Undo( );
 	// TODO: we should take into account the returned status
 	// from the Command itself
 	return STATUS_OK;
