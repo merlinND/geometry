@@ -1,0 +1,5 @@
+C myCircle 0 0 1
+UNDO
+C myCircleThatWontAllowRedo 0 1 1
+REDO
+EXIT

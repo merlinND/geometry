@@ -1,0 +1,81 @@
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+C myCircle 0 0 1
+C mySecondCircle 1 1 42
+C myThirdCircle 0 0 44
+C myFourthCircle 0 0 21
+C myFifthCircle 1 1 489
+C mySixthCircle 1 1 27
+C mySeventhCircle 0 0 99
+C myEightCircle 0 0 1000
+C myNinthCircle 0 1 6 
+C myTenthCircle 1 1 2 7 
+R myRectangle 0 0 1 1
+R mySecondRectangle 1 1 4 2
+R myThirdRectangle 0 0 4 4
+R myFourthRectangle 0 0 2 1
+R myFifthRectangle 1 1 48 9
+R mySixthRectangle 1 1 2 7
+R mySeventhRectangle 0 0 9 9
+R myEightRectangle 0 0 10 0
+R myNinthRectangle 0 1 6 9
+R myTenthRectangle 1 1 42 12
+OK
+OK
+C myCircle 0 0 1
+C mySecondCircle 1 1 42
+C myThirdCircle 0 0 44
+C myFourthCircle 0 0 21
+C myFifthCircle 1 1 489
+C mySixthCircle 1 1 27
+C mySeventhCircle 0 0 99
+C myEightCircle 0 0 1000
+C myNinthCircle 0 1 6 
+C myTenthCircle 1 1 2 7 
+R myRectangle 0 0 1 1
+R mySecondRectangle 1 1 4 2
+R myThirdRectangle 0 0 4 4
+R myFourthRectangle 0 0 2 1
+R myFifthRectangle 1 1 48 9
+R mySixthRectangle 1 1 2 7
+R mySeventhRectangle 0 0 9 9
+R myEightRectangle 0 0 10 0
+R myNinthRectangle 0 1 6 9
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
