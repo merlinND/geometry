@@ -24,10 +24,10 @@ public:
 	
 //--------------------------------------------------- Constantes de classe
 	static const std::string INITIALS;
-	
+
 //----------------------------------------------------- Méthodes publiques
 	string GetRepresentation ( );
-	void Move (long dx, long dy);
+	void Move ( long dx, long dy );
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur

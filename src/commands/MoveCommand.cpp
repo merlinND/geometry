@@ -17,13 +17,12 @@ string MoveCommand::Execute ( )
 {
 	executionCounter++;
 	
-	Controller * controller = Controller::GetInstance();
+	Controller * controller = Controller::GetInstance( );
 	GeometricObject * currentObject;
-	for ( IdSet::iterator it = targets.begin();
-		 it != targets.end(); ++it )
+	for ( IdSet::iterator it = targets.begin( ); it != targets.end( ); ++it )
 	{
 		currentObject = controller->GetObjectById( *it );
-		if ( currentObject->GetLastAppliedCommandId() != executionCounter )
+		if ( currentObject->GetLastAppliedCommandId( ) != executionCounter )
 		{
 			currentObject->SetLastAppliedCommandId( executionCounter );
 			currentObject->Move( offset.x, offset.y );
@@ -34,9 +33,9 @@ string MoveCommand::Execute ( )
 string MoveCommand::Undo ( )
 {
 	// Re-execute the movement with an inversed offset
-	offset.Reverse();
-	Execute();
-	offset.Reverse();
+	offset.Reverse( );
+	Execute( );
+	offset.Reverse( );
 	return STATUS_OK;
 }
 
@@ -53,7 +52,8 @@ void MoveCommand::SetOffset ( long dx, long dy )
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
-MoveCommand::MoveCommand ( ) : offset( 0, 0 )
+MoveCommand::MoveCommand ( )
+		: offset( 0, 0 )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <MoveCommand>" << endl;

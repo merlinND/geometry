@@ -21,7 +21,7 @@ public:
 	//----------------------------------------------------- Méthodes publiques
 	void Undo ( );
 	void Redo ( );
-	
+
 	void AddCommand ( HistorizableCommand * commandToAdd );
 	// Mode d'emploi :
 	// Add a command to the history. It will then become the first command to

@@ -18,12 +18,12 @@ public:
 	static const std::string STATUS_OK;
 	static const std::string STATUS_OK_SILENT;
 	static const std::string STATUS_ERROR;
-	
+
 //----------------------------------------------------- Méthodes publiques
 	virtual bool IsHistorizable ( ) = 0;
-	
+
 	virtual void AddTarget ( TId targetId );
-	
+
 	virtual std::string Execute ( ) = 0;
 	// Mode d'emploi :
 	// Execute the command. It should gather any information needed
@@ -41,7 +41,7 @@ protected:
 	// A counter which is incremented each time a new command
 	// is executed.
 	static int executionCounter;
-	
+
 	// A list of the target(s)' name
 	// To access the actual instances, use Controller::GetObjectByName
 	IdSet targets;

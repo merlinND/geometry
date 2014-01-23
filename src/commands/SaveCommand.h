@@ -18,9 +18,9 @@ class SaveCommand : public NonHistorizableCommand
 public:
 	//----------------------------------------------------- Méthodes publiques
 	virtual std::string Execute ( );
-	
+
 	bool Good ( );
-	
+
 	//------------------------------------------------- Surcharge d'opérateurs
 	//-------------------------------------------- Constructeurs - destructeur
 	SaveCommand ( std::string const path );

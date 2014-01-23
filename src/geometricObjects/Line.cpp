@@ -14,12 +14,11 @@ const string Line::INITIALS = "L";
 
 string Line::GetRepresentation ( )
 {
-	return GetInitials() + " " + name
-			+ " " + first.GetRepresentation()
-			+ " " + last.GetRepresentation();
+	return GetInitials( ) + " " + name + " " + first.GetRepresentation( ) + " "
+			+ last.GetRepresentation( );
 }
 
-void Line::Move (long dx, long dy)
+void Line::Move ( long dx, long dy )
 {
 	first.x += dx;
 	first.y += dy;
@@ -32,8 +31,8 @@ void Line::Move (long dx, long dy)
 //-------------------------------------------- Constructeurs - destructeur
 
 Line::Line ( string myLine, Point firstPoint, Point lastPoint )
-	: GeometricObject ( myLine, INITIALS ),
-	  first ( firstPoint ), last( lastPoint )
+		: GeometricObject( myLine, INITIALS ), first( firstPoint ),
+			last( lastPoint )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Line>" << endl;

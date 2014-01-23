@@ -11,23 +11,23 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void History::Undo ( )
 {
-	if ( !undoStack.empty() )
+	if ( !undoStack.empty( ) )
 	{
-		HistorizableCommand * mostRecentCommand = undoStack.top();
-		undoStack.pop();
-		mostRecentCommand->Undo();
-		redoStack.push(mostRecentCommand);
+		HistorizableCommand * mostRecentCommand = undoStack.top( );
+		undoStack.pop( );
+		mostRecentCommand->Undo( );
+		redoStack.push( mostRecentCommand );
 	}
 } // ----- End undo
 
 void History::Redo ( )
 {
-	if ( !redoStack.empty() )
+	if ( !redoStack.empty( ) )
 	{
-		HistorizableCommand * mostRecentlyUndoneCommand = redoStack.top();
-		redoStack.pop();
-		mostRecentlyUndoneCommand->Execute();
-		undoStack.push(mostRecentlyUndoneCommand);
+		HistorizableCommand * mostRecentlyUndoneCommand = redoStack.top( );
+		redoStack.pop( );
+		mostRecentlyUndoneCommand->Execute( );
+		undoStack.push( mostRecentlyUndoneCommand );
 	}
 } // ----- End redo
 
@@ -36,11 +36,11 @@ void History::AddCommand ( HistorizableCommand * commandToAdd )
 	undoStack.push( commandToAdd );
 	// As soon as you add a command on top of the history,
 	// it becomes impossible to redo anything that you had undone
-	emptyRedoStack();
+	emptyRedoStack( );
 } // ----- End addCommand
 void History::DeleteLastCommand ( )
 {
-	undoStack.pop();
+	undoStack.pop( );
 } // ----- End deleteLastCommand
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -57,15 +57,15 @@ History::~History ( )
 #ifdef MAP
 	cout << "Appel au destructeur de <History>" << endl;
 #endif
-	while ( undoStack.size() > 0)
+	while ( undoStack.size( ) > 0 )
 	{
-		delete undoStack.top();
-		undoStack.pop();
+		delete undoStack.top( );
+		undoStack.pop( );
 	}
-	while ( redoStack.size() > 0)
+	while ( redoStack.size( ) > 0 )
 	{
-		delete redoStack.top();
-		redoStack.pop();
+		delete redoStack.top( );
+		redoStack.pop( );
 	}
 } //----- Fin de ~History
 
@@ -74,9 +74,9 @@ History::~History ( )
 //----------------------------------------------------- Méthodes protégées
 void History::emptyRedoStack ( )
 {
-	while ( redoStack.size() > 0)
+	while ( redoStack.size( ) > 0 )
 	{
-		delete redoStack.top();
-		redoStack.pop();
+		delete redoStack.top( );
+		redoStack.pop( );
 	}
 }

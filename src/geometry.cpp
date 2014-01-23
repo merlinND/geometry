@@ -7,12 +7,12 @@ using namespace std;
 
 int main ( )
 {
-	Controller * controller = Controller::GetInstance();
+	Controller * controller = Controller::GetInstance( );
 
 	// Basic command prompt
 	string returnText;
 	Command * currentCommand = NULL;
-	while ( !controller->ShouldExit() )
+	while ( !controller->ShouldExit( ) )
 	{
 		currentCommand = CommandInterpreter::InterpretCommand( cin );
 		
@@ -25,7 +25,7 @@ int main ( )
 			returnText = Command::STATUS_ERROR;
 		}
 		
-		if ( returnText.length() > 0 )
+		if ( returnText.length( ) > 0 )
 		{
 			cout << returnText << endl;
 		}

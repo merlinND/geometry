@@ -24,7 +24,7 @@ public:
 	
 	virtual std::string Execute ( );
 	virtual std::string Undo ( );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	ClearCommand ( );

@@ -26,11 +26,11 @@ string const GeometricObject::GetInitials ( )
 	return initials;
 }
 
-int GeometricObject::GetLastAppliedCommandId()
+int GeometricObject::GetLastAppliedCommandId ( )
 {
 	return lastAppliedCommandId;
 }
-void GeometricObject::SetLastAppliedCommandId( int commandId )
+void GeometricObject::SetLastAppliedCommandId ( int commandId )
 {
 	lastAppliedCommandId = commandId;
 }
@@ -39,7 +39,7 @@ void GeometricObject::SetLastAppliedCommandId( int commandId )
 //-------------------------------------------- Constructeurs - destructeur
 
 GeometricObject::GeometricObject ( string theName, string theInitials )
-	: name ( theName ), initials( theInitials )
+		: name( theName ), initials( theInitials )
 // Algorithme :
 //
 {

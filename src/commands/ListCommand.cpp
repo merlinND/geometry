@@ -13,10 +13,10 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 string ListCommand::Execute ( )
 {
-	Controller * controller = Controller::GetInstance();
-	vector<string> representations = controller->GetSortedRepresentations();
-	for ( vector<string>::iterator it = representations.begin();
-		 it != representations.end(); ++it )
+	Controller * controller = Controller::GetInstance( );
+	vector<string> representations = controller->GetSortedRepresentations( );
+	for ( vector<string>::iterator it = representations.begin( );
+			it != representations.end( ); ++it )
 	{
 		cout << *it << endl;
 	}

@@ -14,13 +14,13 @@ const std::string Rectangle::INITIALS = "R";
 
 string Rectangle::GetRepresentation ( )
 {
-	string representation = GetInitials() + " " + name + " ";
-	representation += upperLeftCorner.GetRepresentation() + " ";
-	representation += lowerRightCorner.GetRepresentation();
+	string representation = GetInitials( ) + " " + name + " ";
+	representation += upperLeftCorner.GetRepresentation( ) + " ";
+	representation += lowerRightCorner.GetRepresentation( );
 	return representation;
 }
 
-void Rectangle::Move (long dx, long dy)
+void Rectangle::Move ( long dx, long dy )
 {
 	upperLeftCorner.x += dx;
 	upperLeftCorner.y += dy;
@@ -33,8 +33,8 @@ void Rectangle::Move (long dx, long dy)
 //-------------------------------------------- Constructeurs - destructeur
 
 Rectangle::Rectangle ( string myRectangle, Point uLC, Point lRC )
-	: GeometricObject ( myRectangle, INITIALS ),
-	  upperLeftCorner( uLC ), lowerRightCorner( lRC )
+		: GeometricObject( myRectangle, INITIALS ), upperLeftCorner( uLC ),
+			lowerRightCorner( lRC )
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Rectangle>" << endl;

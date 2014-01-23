@@ -4,7 +4,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <map>
-
+#include <algorithm>
 #include "commands/Command.h"
 #include "commands/History.h"
 #include "geometricObjects/AllGeometricObjects.h"
@@ -16,16 +16,15 @@ typedef map<TId, GeometricObject *> GeometricMap;
 // alphabetical order, that doesn't put every capital letters first.
 struct customAlphabeticalComparer
 {
-    bool operator() ( const std::string& left,
-					  const std::string& right ) const
-    {
-		std::string lCopy ( left );
-		std::string rCopy ( right );
-		transform(lCopy.begin(), lCopy.end(), lCopy.begin(), ::tolower);
-		transform(rCopy.begin(), rCopy.end(), rCopy.begin(), ::tolower);
-        return std::lexicographical_compare( lCopy.begin(), lCopy.end(),
-											rCopy.begin(), rCopy.end());
-    }
+	bool operator() ( const std::string& left, const std::string& right ) const
+	{
+		std::string lCopy( left );
+		std::string rCopy( right );
+		transform( lCopy.begin( ), lCopy.end( ), lCopy.begin( ), ::tolower );
+		transform( rCopy.begin( ), rCopy.end( ), rCopy.begin( ), ::tolower );
+		return std::lexicographical_compare( lCopy.begin( ), lCopy.end( ),
+				rCopy.begin( ), rCopy.end( ) );
+	}
 };
 
 //------------------------------------------------------------------------ 
@@ -40,7 +39,7 @@ class Controller
 public:
 //--------------------------------------------------- Constantes de classe
 	static const TId NOT_FOUND;
-	
+
 //----------------------------------------------------- Méthodes publiques
 	
 	static Controller * GetInstance ( );
@@ -132,8 +131,6 @@ public:
 	// Mode d'emploi :
 	// Use this method to indicate that the application should exit
 	
-	
-	
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -149,10 +146,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 	// Pointer to the only Controller instance that exists
 	static Controller * theInstance;
-	
-	// Indicated if the application should exit
-	bool exitFlag;
-	
+
 	// Holds the commands that can we can undo & redo
 	History history;
 
@@ -160,10 +154,13 @@ protected:
 	// in this session, even if they are not part of the document
 	// Object id (type TId) => Pointer to the instance
 	GeometricMap allObjects;
-	
+
 	// An agregate object which contains all GeometricObjects that are
 	// *currently* part of the document
 	Agregate model;
+
+	// Indicated if the application should exit
+	bool exitFlag;
 };
 
 //------------------- Autres définitions dépendantes de <Controller>

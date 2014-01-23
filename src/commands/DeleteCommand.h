@@ -23,11 +23,11 @@ class DeleteCommand : public HistorizableCommand
 public:
 //--------------------------------------------------- Constantes de classe
 //----------------------------------------------------- Méthodes publiques
-	virtual void AddTarget( TId targetId );
-	
+	virtual void AddTarget ( TId targetId );
+
 	virtual std::string Execute ( );
 	virtual std::string Undo ( );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	DeleteCommand ( );

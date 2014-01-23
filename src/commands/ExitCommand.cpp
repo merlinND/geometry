@@ -13,8 +13,8 @@ using namespace std;
 
 string ExitCommand::Execute ( )
 {
-	Controller * c = Controller::GetInstance();
-	c->Exit();
+	Controller * c = Controller::GetInstance( );
+	c->Exit( );
 	return STATUS_OK_SILENT;
 }
 

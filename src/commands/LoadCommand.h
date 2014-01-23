@@ -25,7 +25,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	virtual std::string Execute ( );
 	virtual std::string Undo ( );
-	
+
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
 	LoadCommand ( std::string thePath );

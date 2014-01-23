@@ -17,7 +17,7 @@ class ListCommand : public NonHistorizableCommand
 public:
 	//----------------------------------------------------- Méthodes publiques
 	virtual std::string Execute ( );
-	
+
 	//------------------------------------------------- Surcharge d'opérateurs
 	//-------------------------------------------- Constructeurs - destructeur
 	ListCommand ( );
