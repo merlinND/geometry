@@ -11,6 +11,7 @@
 //------------------------------------------------------------- Constantes 
 //------------------------------------------------------------------ Types
 typedef map<TId, GeometricObject *> GeometricMap;
+typedef map<std::string, TId> NamingMap;
 
 // This custom comparer seems to be necessary to achieve a true
 // alphabetical order, that doesn't put every capital letters first.
@@ -154,11 +155,12 @@ protected:
 	// in this session, even if they are not part of the document
 	// Object id (type TId) => Pointer to the instance
 	GeometricMap allObjects;
-
+	
 	// An agregate object which contains all GeometricObjects that are
 	// *currently* part of the document
 	Agregate model;
-
+	NamingMap usedNames;
+	
 	// Indicated if the application should exit
 	bool exitFlag;
 };

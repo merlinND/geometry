@@ -6,6 +6,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Controller.h"
 #include "geometricObjects/AllGeometricObjects.h"
+
 //------------------------------------------------------------- Constantes
 // Initializing static fields
 Controller * Controller::theInstance = NULL;
@@ -48,30 +49,35 @@ Circle * Controller::CreateCircle ( string name, Point center, long radius )
 {
 	Circle * circle = new Circle( name, center, radius );
 	allObjects[circle->GetId( )] = circle;
+	usedNames[name] = circle->GetId();
 	return circle;
 } //----- End CreateCircle
 Line * Controller::CreateLine ( string name, Point begin, Point end )
 {
 	Line * line = new Line( name, begin, end );
 	allObjects[line->GetId( )] = line;
+	usedNames[name] = line->GetId();
 	return line;
 } //----- End CreateLine
 Polyline * Controller::CreatePolyline ( string name )
 {
 	Polyline * polyline = new Polyline( name );
 	allObjects[polyline->GetId( )] = polyline;
+	usedNames[name] = polyline->GetId();
 	return polyline;
 } //----- End CreatePolyline
 Rectangle * Controller::CreateRectangle ( string name, Point ulc, Point lrc )
 {
 	Rectangle * rectangle = new Rectangle( name, ulc, lrc );
 	allObjects[rectangle->GetId( )] = rectangle;
+	usedNames[name] = rectangle->GetId();
 	return rectangle;
 } //----- End CreateRectangle
 Agregate * Controller::CreateAgregate ( string name )
 {
 	Agregate * agregate = new Agregate( name );
 	allObjects[agregate->GetId( )] = agregate;
+	usedNames[name] = agregate->GetId();
 	return agregate;
 } //----- End CreateAgregate
 
@@ -153,45 +159,37 @@ string Controller::GetNameById ( TId idToFind )
 
 TId Controller::GetIdByName ( string name )
 {
-	IdSet components = model.GetComponents( );
-	for ( IdSet::iterator it = components.begin( ); it != components.end( );
-			++it )
+	NamingMap::iterator found = usedNames.find( name );
+	if ( found != usedNames.end() )
 	{
-		if ( GetObjectById( *it )->GetName( ) == name )
-		{
-			return *it;
-		}
+		return found->second;
 	}
-	return NOT_FOUND;
+	else
+	{
+		return NOT_FOUND;
+	}
 } //----- End GetNameById
 
 bool Controller::IsNameUsedInDocument ( string name )
 {
-	bool found = false;
-	IdSet idsInDocument = model.GetComponents( );
-	GeometricObject * current;
-	IdSet::iterator it = idsInDocument.begin( );
-	while ( !found && it != idsInDocument.end( ) )
-	{
-		current = GetObjectById( *it );
-		found = found || ( current->GetName( ) == name );
-		++it;
-	}
-	return found;
+	return ( usedNames.find( name ) != usedNames.end( ) );
 }
 
 void Controller::RemoveObjectFromDocument ( TId idToRemove )
 {
 	model.RemoveComponent( idToRemove );
+	usedNames.erase( GetNameById( idToRemove ) );
 }
 void Controller::AddIdToDocument ( TId idToAdd )
 {
 	model.AddComponent( idToAdd );
+	usedNames[ GetNameById( idToAdd ) ] = idToAdd;
 }
 IdSet Controller::ClearDocument ( )
 {
 	IdSet removedIds = model.GetComponents( );
 	model.RemoveAllComponents( );
+	usedNames.clear();
 	return removedIds;
 }
 

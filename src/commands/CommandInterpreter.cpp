@@ -292,12 +292,7 @@ bool CommandInterpreter::isNameUsedInDocument ( string text )
 
 bool CommandInterpreter::isValidName ( string text )
 {
-	bool valid = true;
-	valid = valid && ( text.length( ) > 0 ); // At least one character
-	valid = valid && ( text.find( ' ' ) == string::npos ); // No space
-	// TODO : add other constraints
-	valid = valid && !isNameUsedInDocument( text );
-	return valid;
+	return ( text.length( ) > 0 && !isNameUsedInDocument( text ) );
 }
 
 bool CommandInterpreter::isValidInteger ( string text )

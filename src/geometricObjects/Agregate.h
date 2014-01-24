@@ -24,10 +24,6 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	
 	string GetRepresentation ( );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 	
 	void Move ( long dx, long dy );
 
