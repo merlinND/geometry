@@ -49,35 +49,30 @@ Circle * Controller::CreateCircle ( string name, Point center, long radius )
 {
 	Circle * circle = new Circle( name, center, radius );
 	allObjects[circle->GetId( )] = circle;
-	usedNames[name] = circle->GetId();
 	return circle;
 } //----- End CreateCircle
 Line * Controller::CreateLine ( string name, Point begin, Point end )
 {
 	Line * line = new Line( name, begin, end );
 	allObjects[line->GetId( )] = line;
-	usedNames[name] = line->GetId();
 	return line;
 } //----- End CreateLine
 Polyline * Controller::CreatePolyline ( string name )
 {
 	Polyline * polyline = new Polyline( name );
 	allObjects[polyline->GetId( )] = polyline;
-	usedNames[name] = polyline->GetId();
 	return polyline;
 } //----- End CreatePolyline
 Rectangle * Controller::CreateRectangle ( string name, Point ulc, Point lrc )
 {
 	Rectangle * rectangle = new Rectangle( name, ulc, lrc );
 	allObjects[rectangle->GetId( )] = rectangle;
-	usedNames[name] = rectangle->GetId();
 	return rectangle;
 } //----- End CreateRectangle
 Agregate * Controller::CreateAgregate ( string name )
 {
 	Agregate * agregate = new Agregate( name );
 	allObjects[agregate->GetId( )] = agregate;
-	usedNames[name] = agregate->GetId();
 	return agregate;
 } //----- End CreateAgregate
 
