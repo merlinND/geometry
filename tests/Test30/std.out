@@ -6,7 +6,7 @@ OK
 OK
 OK
 OA myAgregate myCircle mySecondCircle
-OA mySecondAgregate myCircle myThirdCircle
 C myCircle 3 3 1
+OA mySecondAgregate myCircle myThirdCircle
 C mySecondCircle 2 2 42
 C myThirdCircle 2 2 41
