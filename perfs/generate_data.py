@@ -26,5 +26,8 @@ def generateData(outputPath, N):
 #generateData('input/9500.in', 9500)
 #generateData('input/10000.in', 10000) # It's over 9000!
 #generateData('input/100000.in', 100000)
+#generateData('input/250000.in', 250000)
+#generateData('input/500000.in', 500000)
+#generateData('input/750000.in', 750000)
 #generateData('input/1000000.in', 1000000)
 #generateData('input/10000000.in', 10000000)
