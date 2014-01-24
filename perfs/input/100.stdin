@@ -1,0 +1,3 @@
+LOAD input/100.in
+SAVE output/100.out
+EXIT

@@ -1,0 +1,3 @@
+C myCircleToSave 0 0 1
+SAVE myCircle
+EXIT

@@ -126,6 +126,11 @@ LoadCommand::~LoadCommand ( )
 //----------------------------------------------------- Méthodes protégées
 string LoadCommand::loadAndExecute ( istream * input )
 {
+	if ( !input->good() )
+	{
+		return STATUS_ERROR;
+	}
+		
 	string status = STATUS_OK;
 	while ( status != STATUS_ERROR && input->good( ) )
 	{
