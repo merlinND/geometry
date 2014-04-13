@@ -19,7 +19,11 @@ string Polyline::GetRepresentation ( )
 	string representation = GetInitials( ) + " " + name + " ";
 	for ( int i = 0; i < (int) points.size( ); i++ )
 	{
-		representation += points[i].GetRepresentation( ) + " ";
+		representation += points[i].GetRepresentation( );
+		if (i < (int) points.size( ) - 1 )
+		{
+			representation += " ";
+		}
 	}
 	return representation;
 }
