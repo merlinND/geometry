@@ -1,0 +1,16 @@
+Test ID;Return code validation;Out result;StdErr result;File creation result;Global result
+Test1;Not tested;Passed;Not tested;Not tested;1
+Test10;Not tested;Failed;Not tested;Not tested;0
+Test11;Not tested;Failed;Not tested;Not tested;0
+Test12;Not tested;Failed;Not tested;Not tested;0
+Test13;Not tested;Failed;Not tested;Not tested;0
+Test14;Not tested;Failed;Not tested;Not tested;0
+Test15;Not tested;Failed;Not tested;Not tested;0
+Test2;Not tested;Failed;Not tested;Not tested;0
+Test3;Not tested;Failed;Not tested;Not tested;0
+Test4;Not tested;Passed;Not tested;Not tested;1
+Test5;Not tested;Failed;Not tested;Not tested;0
+Test6;Not tested;Passed;Not tested;Not tested;1
+Test7;Not tested;Failed;Not tested;Not tested;0
+Test8;Not tested;Failed;Not tested;Not tested;0
+Test9;Not tested;Failed;Not tested;Not tested;0
